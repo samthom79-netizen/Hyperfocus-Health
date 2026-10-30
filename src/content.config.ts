@@ -10,7 +10,10 @@ import { z } from 'astro/zod';
 
 /** Simple pages: frontmatter + Markdown body (e.g. other-options.md). */
 const pages = defineCollection({
-  loader: glob({ pattern: ['**/*.{md,mdx}', '!home.md', '!about.md', '!README.md'], base: './src/content' }),
+  loader: glob({
+    pattern: ['**/*.{md,mdx}', '!home.md', '!about.md', '!pricing.md', '!how-it-works.md', '!faq.md', '!README.md'],
+    base: './src/content',
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(155, 'Meta descriptions must be 155 characters or fewer'),
@@ -100,4 +103,53 @@ const about = defineCollection({
   }),
 });
 
-export const collections = { pages, home, about };
+const basePage = {
+  title: z.string(),
+  description: z.string().max(155, 'Meta descriptions must be 155 characters or fewer'),
+  heading: z.string(),
+  readingTime: z.string(),
+  shortVersion: z.array(z.string()).length(3),
+};
+
+/** /pricing */
+const pricing = defineCollection({
+  loader: glob({ pattern: 'pricing.md', base: './src/content' }),
+  schema: z.object({
+    ...basePage,
+    tableHeading: z.string(),
+    rows: z.array(
+      z.object({ stage: z.string(), whatYouGet: z.string(), cost: z.string(), note: z.string().optional() }),
+    ).min(1),
+    example: z.object({ heading: z.string(), intro: z.string(), notIncluded: z.string() }),
+    medicare: z.object({ heading: z.string(), paragraphs: z.array(z.string()).min(1) }),
+    payment: z.object({ heading: z.string(), points: z.array(z.string()).min(1) }),
+  }),
+});
+
+/** /how-it-works */
+const howItWorks = defineCollection({
+  loader: glob({ pattern: 'how-it-works.md', base: './src/content' }),
+  schema: z.object({
+    ...basePage,
+    stepsHeading: z.string(),
+    steps: z.array(z.object({ title: z.string(), time: z.string(), you: z.string(), doctor: z.string() })).length(8),
+    needHeading: z.string(),
+    need: z.array(z.string()).min(1),
+  }),
+});
+
+/** /faq */
+const faq = defineCollection({
+  loader: glob({ pattern: 'faq.md', base: './src/content' }),
+  schema: z.object({
+    ...basePage,
+    groups: z.array(
+      z.object({
+        heading: z.string(),
+        items: z.array(z.object({ question: z.string(), answer: z.string() })).min(1),
+      }),
+    ).min(1),
+  }),
+});
+
+export const collections = { pages, home, about, pricing, howItWorks, faq };

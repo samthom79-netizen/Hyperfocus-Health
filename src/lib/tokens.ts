@@ -40,6 +40,28 @@ export function renderTokens(text: string): string {
 }
 
 /**
+ * Plain text with {tokens} and simple [label](url) links, as safe HTML.
+ * For short answers written in content files (FAQ, how it works).
+ */
+export function renderInline(text: string): string {
+  return renderTokens(text).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_m, label: string, url: string) => {
+    const external = /^https?:\/\//.test(url);
+    return `<a href="${url}"${external ? ' rel="noopener"' : ''}>${label}</a>`;
+  });
+}
+
+/** The same text as plain words: tokens filled, links reduced to their label (for JSON-LD). */
+export function plainText(text: string): string {
+  return text
+    .replace(TOKEN, (_m, path: string) => {
+      const value = lookup(path);
+      if (typeof value !== 'string' && typeof value !== 'number') throw new Error(`Token {${path}} is not a single value.`);
+      return path.startsWith('prices.') && !isTodo(value) ? formatPrice(value) : String(value);
+    })
+    .replace(/\[([^\]]+)\]\([^)\s]+\)/g, '$1');
+}
+
+/**
  * Fills {tokens} inside HTML that Markdown has already rendered (our own
  * trusted copy). Only the token is replaced; the rest of the HTML is untouched.
  */

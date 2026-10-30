@@ -1,0 +1,61 @@
+---
+/**
+ * /faq. Words: src/content/faq.md. Grouped accordions plus FAQPage JSON-LD
+ * built from the same answers (as plain text).
+ */
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import Accordion from '../components/Accordion.astro';
+import CrisisStrip from '../components/CrisisStrip.astro';
+import Button from '../components/Button.astro';
+import CtaLabel from '../components/CtaLabel.astro';
+import { site } from '../config/site';
+import { plainText, renderInline } from '../lib/tokens';
+
+const entry = await getEntry('faq', 'faq');
+if (!entry) throw new Error('src/content/faq.md is missing');
+const c = entry.data;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.groups.flatMap((g) =>
+    g.items.map((i) => ({
+      '@type': 'Question',
+      name: i.question,
+      acceptedAnswer: { '@type': 'Answer', text: plainText(i.answer) },
+    })),
+  ),
+};
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+---
+
+<Base title={c.title} description={c.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  <Container class="py-10 sm:py-14">
+    <div class="max-w-3xl">
+      <h1>{c.heading}</h1>
+      <ShortVersion bullets={c.shortVersion} readingTime={c.readingTime} class="mt-6" />
+
+      {
+        c.groups.map((g) => (
+          <section aria-labelledby={`faq-${slug(g.heading)}`} class="mt-12">
+            <h2 id={`faq-${slug(g.heading)}`}>{g.heading}</h2>
+            <Accordion
+              class="mt-5"
+              items={g.items.map((i) => ({ question: i.question, answer: `<p>${renderInline(i.answer)}</p>` }))}
+            />
+          </section>
+        ))
+      }
+
+      <CrisisStrip variant="full" class="mt-12" />
+
+      <p class="mt-10">
+        <Button href={site.cta.href} arrow data-cta="faq"><CtaLabel /></Button>
+      </p>
+    </div>
+  </Container>
+</Base>

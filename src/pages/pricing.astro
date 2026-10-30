@@ -1,0 +1,111 @@
+---
+/**
+ * /pricing. Words: src/content/pricing.md. Every number: src/config/site.ts.
+ */
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import Button from '../components/Button.astro';
+import CtaLabel from '../components/CtaLabel.astro';
+import Icon from '../components/Icon.astro';
+import { formatPrice, site } from '../config/site';
+import { renderInline } from '../lib/tokens';
+import { firstThreeMonths, priceNumber } from '../lib/pricing';
+
+const entry = await getEntry('pricing', 'pricing');
+if (!entry) throw new Error('src/content/pricing.md is missing');
+const c = entry.data;
+
+// Worked example: assessment + typical number of reviews. Shows TODO until both prices are numbers.
+const { assessmentTotal, review, typicalReviewsFirst3Months: n } = site.prices;
+const r = priceNumber(review);
+const total = firstThreeMonths(assessmentTotal, review, n);
+---
+
+<Base title={c.title} description={c.description}>
+  <Container class="py-10 sm:py-14">
+    <div class="max-w-4xl">
+      <h1>{c.heading}</h1>
+      <ShortVersion bullets={c.shortVersion} readingTime={c.readingTime} class="mt-6" />
+
+      <section aria-labelledby="table-heading" class="mt-12">
+        <h2 id="table-heading">{c.tableHeading}</h2>
+        <div class="mt-5 overflow-hidden rounded-card border border-line bg-surface">
+          <table class="stack-table w-full text-left">
+            <thead class="bg-accent-soft font-display text-primary">
+              <tr>
+                <th scope="col" class="p-4">Stage</th>
+                <th scope="col" class="p-4">What you get</th>
+                <th scope="col" class="p-4">Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                c.rows.map((row) => (
+                  <tr class="border-t border-line align-top">
+                    <th scope="row" class="p-4 font-display font-bold text-primary">{row.stage}</th>
+                    <td class="p-4" data-label="What you get">{row.whatYouGet}</td>
+                    <td class="p-4 font-bold" data-label="Cost">
+                      <span set:html={renderInline(row.cost)} />
+                      {row.note && <span class="mt-1 block text-[0.9rem] font-normal text-ink-muted" set:html={renderInline(row.note)} />}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="example-heading" class="mt-12 rounded-card border-2 border-primary bg-surface p-5 sm:p-7" data-example>
+        <h2 id="example-heading">{c.example.heading}</h2>
+        <p class="mt-3">{c.example.intro}</p>
+        <dl class="mt-5 divide-y divide-line">
+          <div class="flex flex-wrap justify-between gap-2 py-2.5">
+            <dt>Assessment to diagnosis</dt>
+            <dd class="font-bold" set:html={renderInline('{prices.assessmentTotal}')} />
+          </div>
+          <div class="flex flex-wrap justify-between gap-2 py-2.5">
+            <dt>{n} reviews, one every 2-4 weeks after diagnosis (an assumption)</dt>
+            <dd class="font-bold">
+              {r !== null ? `${n} × ${formatPrice(r)}` : <span set:html={renderInline('{prices.review}')} />}
+            </dd>
+          </div>
+          <div class="flex flex-wrap items-baseline justify-between gap-2 pt-4">
+            <dt class="font-display text-[1.15rem] font-extrabold text-primary">Typical total, first 3 months</dt>
+            <dd class="font-display text-[1.6rem] font-extrabold text-primary" data-example-total>
+              {total !== null ? formatPrice(total) : <span class="todo">[TODO: set prices to calculate]</span>}
+            </dd>
+          </div>
+        </dl>
+        <p class="mt-4 text-[0.92rem] text-ink-muted">{c.example.notIncluded}</p>
+      </section>
+
+      <section aria-labelledby="medicare-heading" class="mt-12">
+        <h2 id="medicare-heading">{c.medicare.heading}</h2>
+        <div class="mt-4 space-y-3">
+          {c.medicare.paragraphs.map((p) => <p set:html={renderInline(p)} />)}
+        </div>
+      </section>
+
+      <section aria-labelledby="payment-heading" class="mt-12">
+        <h2 id="payment-heading">{c.payment.heading}</h2>
+        <ul class="mt-4 space-y-2.5">
+          {
+            c.payment.points.map((p) => (
+              <li class="flex gap-2.5">
+                <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+                <span class="[&_a]:font-bold" set:html={renderInline(p)} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <p class="mt-12">
+        <Button href={site.cta.href} arrow data-cta="pricing"><CtaLabel /></Button>
+      </p>
+    </div>
+  </Container>
+</Base>

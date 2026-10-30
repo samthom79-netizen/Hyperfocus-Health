@@ -5,11 +5,16 @@
  * Screen readers hear "Step 1: ..." because the circle number is hidden from them.
  */
 import TimeBadge from './TimeBadge.astro';
+import { renderInline } from '../lib/tokens';
 
 export interface Step {
   title: string;
   time?: string;
   body?: string;
+  /** 'What you do' line (may use {tokens}). */
+  you?: string;
+  /** 'What Dr Sam does' line (may use {tokens}). */
+  doctor?: string;
 }
 
 interface Props {
@@ -44,6 +49,22 @@ const Heading = `h${headingLevel}` as 'h3' | 'h4';
             {step.time && <TimeBadge label={step.time} />}
           </div>
           {step.body && <p class="mt-1.5">{step.body}</p>}
+          {(step.you || step.doctor) && (
+            <dl class="mt-2 space-y-1.5">
+              {step.you && (
+                <div>
+                  <dt class="inline font-bold text-primary">What you do: </dt>
+                  <dd class="inline" set:html={renderInline(step.you)} />
+                </div>
+              )}
+              {step.doctor && (
+                <div>
+                  <dt class="inline font-bold text-primary">What Dr Sam does: </dt>
+                  <dd class="inline" set:html={renderInline(step.doctor)} />
+                </div>
+              )}
+            </dl>
+          )}
         </div>
       </li>
     ))

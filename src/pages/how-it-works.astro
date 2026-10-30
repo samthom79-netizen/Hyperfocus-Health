@@ -1,0 +1,66 @@
+---
+/**
+ * /how-it-works. Words: src/content/how-it-works.md. Steps follow the pathway
+ * in CLAUDE.md exactly.
+ */
+import { getEntry } from 'astro:content';
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import StepList from '../components/StepList.astro';
+import Button from '../components/Button.astro';
+import CtaLabel from '../components/CtaLabel.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config/site';
+import { images } from '../config/images';
+
+const entry = await getEntry('howItWorks', 'how-it-works');
+if (!entry) throw new Error('src/content/how-it-works.md is missing');
+const c = entry.data;
+---
+
+<Base title={c.title} description={c.description}>
+  <Container class="py-10 sm:py-14">
+    <div class="max-w-4xl">
+      <h1>{c.heading}</h1>
+      <ShortVersion bullets={c.shortVersion} readingTime={c.readingTime} class="mt-6" />
+
+      <section aria-labelledby="steps-heading" class="mt-12">
+        <h2 id="steps-heading">{c.stepsHeading}</h2>
+        <div class="mt-6 rounded-card border border-line bg-surface p-5 sm:p-7">
+          <StepList steps={c.steps} />
+        </div>
+      </section>
+
+      <Picture
+        src={images.consult.src}
+        alt={images.consult.alt}
+        width={640}
+        widths={[400, 640, 960]}
+        sizes="(min-width: 700px) 640px, calc(100vw - 32px)"
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        class="mt-12 w-full max-w-[640px] rounded-card bg-accent-soft"
+      />
+
+      <section id="what-you-need" aria-labelledby="need-heading" class="mt-12">
+        <h2 id="need-heading">{c.needHeading}</h2>
+        <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+          {
+            c.need.map((item) => (
+              <li class="flex gap-3 rounded-xl border border-line bg-surface p-4">
+                <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <p class="mt-12">
+        <Button href={site.cta.href} arrow data-cta="how"><CtaLabel /></Button>
+      </p>
+    </div>
+  </Container>
+</Base>

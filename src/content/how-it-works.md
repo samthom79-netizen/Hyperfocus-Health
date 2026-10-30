@@ -1,0 +1,57 @@
+---
+# /how-it-works. The 8 steps must match the pathway in CLAUDE.md exactly.
+# Rules: no medicine names, no wait-time promises.
+
+title: "How it works"
+description: "The eight steps of an adult ADHD assessment with Hyperfocus Health, from a 60-second check to ongoing care. What you do, and what Dr Sam does."
+heading: "How it works"
+readingTime: "3 min read"
+shortVersion:
+  - "Check if this is for you, book and pay, then do the intake on your phone."
+  - "Two video appointments with Dr Sam: an assessment, then a diagnosis and a written plan."
+  - "Reviews every 2-4 weeks while treatment is adjusted, then ongoing care with Dr Sam or your own GP."
+
+stepsHeading: "The 8 steps"
+steps:
+  - title: "Check if this is for you"
+    time: "60 sec"
+    you: "Answer six quick questions."
+    doctor: "Nothing yet. Your answers stay on your device."
+  - title: "Book and pay"
+    time: "about 3 min"
+    you: "Choose a time for your first video appointment and pay."
+    doctor: "Your first appointment is at least {booking.minLeadDays} days away, so there's time for the next two steps."
+  - title: "Online intake on your phone"
+    time: "about 30 min, can be split"
+    you: "Answer by voice, tick boxes or typing, all at once or in short blocks. Ask a partner or parent to fill in their short form."
+    doctor: "Reads your answers and the observer form before you meet."
+  - title: "Baseline checks"
+    time: "short; tests only if needed"
+    you: "Get your blood pressure, pulse and weight checked. Have blood tests or an ECG only if your history needs them."
+    doctor: "Decides from your history whether any tests are needed, and checks the results."
+  - title: "Video appointment 1: assessment"
+    time: "about 60 min"
+    you: "Talk about your history and what day-to-day life is like."
+    doctor: "Goes through your intake with you and assesses for ADHD. Treatment isn't started at this appointment."
+  - title: "Video appointment 2: diagnosis and a written plan"
+    time: "30-45 min"
+    you: "Hear what Dr Sam found and ask anything you like."
+    doctor: "Explains the outcome, talks through all your options and gives you a written plan."
+  - title: "Reviews while treatment is adjusted"
+    time: "every 2-4 weeks"
+    you: "Fill in a short check-in form before each review."
+    doctor: "Checks how things are going and adjusts your plan with you."
+  - title: "Ongoing care"
+    time: "every 3-6 months once stable"
+    you: "Keep seeing Dr Sam, or move to a GP of your choice who agrees in writing to take over."
+    doctor: "With your permission, sends your GP a summary so everyone is on the same page."
+
+needHeading: "What you'll need"
+need:
+  - "A phone or laptop with a camera"
+  - "A quiet room where you can talk privately"
+  - "Photo ID"
+  - "Your Medicare card, for in-person visits at Cannonvale"
+  - "The name and email of a partner or parent, for the short observer form"
+  - "Any school reports or past assessments, if you have them"
+---

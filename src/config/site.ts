@@ -110,12 +110,21 @@ export const site = {
     review: 'TODO',
     /** Optional bundle: diagnosis + 3 months of reviews. */
     bundle: 'TODO',
+    /** Rule 5: any discount states its terms. */
+    bundleTerms: 'TODO: how many reviews the bundle covers, and what happens to any unused ones',
     /** Ongoing review once stable (every 3-6 months). */
     ongoingReview: 'TODO',
     /** In-person at Cannonvale: typical out-of-pocket after the Medicare rebate. */
     inPersonGap: 'TODO',
     reviewLengthMinutes: 'TODO: e.g. 20',
     gstNote: 'TODO: confirm GST treatment with accountant',
+    /** Wording for the blood test / ECG row on /pricing. */
+    testsNote: 'TODO: confirm wording: through your own GP or a pathology collection centre; costs vary',
+    /**
+     * ASSUMPTION used only for the 'typical first 3 months' example on /pricing:
+     * number of review appointments in the first 3 months after diagnosis.
+     */
+    typicalReviewsFirst3Months: 3,
     currency: 'AUD',
   },
 
@@ -125,6 +134,13 @@ export const site = {
     cancellation: 'TODO: how much notice is needed to change or cancel, and any fee',
     noShow: 'TODO: what happens, and any fee, if an appointment is missed without notice',
     notDiagnosed: 'TODO: what the patient receives, and the fee, if ADHD is not diagnosed',
+    /** When payment is taken. Confirm against the booking platform's settings. */
+    paymentTiming: 'You pay the assessment fee when you book. Each review is paid when you book it.',
+  },
+
+  /** Privacy wording used before the full privacy policy exists (Prompt 10). */
+  privacy: {
+    storage: 'TODO: where booking, intake and clinical records are stored (from the privacy policy, Prompt 10)',
   },
 
   /** Appointment lengths (minutes). */

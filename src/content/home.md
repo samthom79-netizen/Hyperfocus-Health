@@ -92,7 +92,7 @@ faq:
     - question: "Do I need a referral?"
       answer: "No. You can book directly."
     - question: "Can a GP diagnose ADHD in Queensland?"
-      answer: "Yes. Since 1 December 2025, specialist GPs in Queensland can diagnose ADHD in adults. If your situation needs a psychiatrist, Dr Sam will tell you."
+      answer: "Yes. In Queensland, specialist GPs can assess, diagnose and manage ADHD in adults, though not every GP chooses to. If your situation needs a psychiatrist, Dr Sam will tell you."
     - question: "Is there a Medicare rebate?"
       answer: "Not for video appointments. Medicare only pays for GP video appointments if you've seen the practice in person in the past 12 months. In-person visits at Cannonvale do have a rebate."
     - question: "Do I need to come to Cannonvale?"
