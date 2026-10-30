@@ -23,7 +23,7 @@ test.describe('/pricing', () => {
     await expect(main).toContainText('In person at Cannonvale Medical Centre in Cannonvale, the fees are the same.');
     await expect(main).toContainText('GP chronic condition management plan');
     await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
-    await expect(main).toContainText('GST:');
+    await expect(main).toContainText('There is no GST on these fees.');
     await expect(main).toContainText('You pay $425 when you book appointment 1, and $320 when you book appointment 2.');
     await expect(main).not.toContainText('bundle');
     await expect(main).toContainText("If Dr Sam finds this service isn't right for you");

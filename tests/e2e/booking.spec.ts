@@ -87,10 +87,13 @@ test.describe('/cancellations', () => {
     await expect(page.locator('main')).toContainText('Australian Consumer Law');
   });
 
-  test('every undecided policy shows as a visible TODO', async ({ page }) => {
+  test('every policy on the page matches site.ts', async ({ page }) => {
     await page.goto('/cancellations');
-    const todos = await page.locator('main .todo').count();
-    expect(todos).toBeGreaterThanOrEqual(4);
+    const main = page.locator('main');
+    for (const key of ['cancellation', 'noShow', 'refundIfUnsuitable', 'notDiagnosed'] as const) {
+      await expect(main, key).toContainText(site.policies[key]);
+    }
+    await expect(main).toContainText('50%');
   });
 
   test('the footer Cancellations link now works', async ({ page }) => {

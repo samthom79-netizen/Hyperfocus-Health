@@ -37,7 +37,7 @@ const linkClass = 'inline-flex min-h-11 items-center text-white underline decora
           {site.clinic.name}<br />
           {site.clinic.street}, {site.clinic.suburb} {site.clinic.state} {site.clinic.postcode}
         </p>
-        <p>ABN <Val value={site.abn} /></p>
+        {site.abn && <p>ABN <Val value={site.abn} /></p>}
       </div>
 
       <nav aria-label="Footer">

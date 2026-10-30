@@ -6,7 +6,7 @@ Written for Prompt 5 (31 Oct 2026). Neither platform's current settings screens 
 
 In `src/config/site.ts`:
 
-1. `booking.provider`: change `'TODO'` to `'VELLUTO_MSGP'` or `'HALAXY'`.
+1. `booking.provider`: change `'TODO'` to `'VELLUTO_MSGP'`, `'HALAXY'`, `'HOTDOC'` or `'HEALTHENGINE'`.
 2. `booking.url`: paste your public booking page link.
 3. Only if the vendor confirms in writing that embedding is allowed: in `bookingProviders`, set that provider's `embed` to `true`. The page then shows a "Choose a time" button that opens their booking page inside yours, plus a fallback "Open booking in a new tab" link.
 
@@ -52,9 +52,21 @@ Commit and push; the preview updates in a few minutes.
 7. Where are booking and payment data stored (country), and for how long?
 8. Does the booking flow work on mobile without patients creating an account?
 
+## Questions for HotDoc or HealthEngine support (added 31 Oct 2026)
+
+Sam is also considering these two. Neither's current settings screens have been checked.
+
+1. Can I take a private telehealth booking with payment at the time of booking, and a different amount per appointment type ($425, $320, $89)?
+2. Can these bookings run under my own practice name (Hyperfocus Health), separate from Cannonvale Medical Centre's listing?
+3. Can the first appointment require at least 10 days' notice?
+4. After a paid booking, can the patient be redirected to a page on my website?
+5. Does my profile page show patient reviews or star ratings, and can I switch them off? (Our advertising rules ban reviews of clinical care, and we link to this page.)
+6. Where is booking and payment data stored (country), and is any of it shared with third parties for marketing?
+7. Can an intake link from another tool be sent automatically after booking?
+
 ## Not decided yet (placeholders on the site)
 
 - `booking.provider`, `booking.url`
-- `prices.assessmentTotal`, `prices.inPersonGap`, `prices.reviewLengthMinutes`
-- `policies.cancellation`, `policies.noShow`, `policies.refundIfUnsuitable`, `policies.notDiagnosed`
-- `contact.email`
+- `contact.email`, `contact.phone`
+
+Prices and policies were set by Sam on 31 Oct 2026; the platform settings must match them.

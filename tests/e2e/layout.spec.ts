@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { site } from '../../src/config/site';
 
 const PAGES = ['/', '/styleguide', '/other-options', '/check', '/book', '/cancellations', '/about', '/pricing', '/how-it-works', '/faq'];
 
@@ -57,7 +58,8 @@ test.describe('footer', () => {
       await expect(footer).toContainText('1300 642 255');
       await expect(footer).toContainText('Queensland adults 18+ only.');
       await expect(footer).toContainText('MED0002290862');
-      await expect(footer).toContainText('ABN');
+      if (site.abn) await expect(footer).toContainText(`ABN ${site.abn}`);
+      else await expect(footer).not.toContainText('ABN');
       const policies = footer.getByRole('navigation', { name: 'Policies' }).getByRole('link');
       await expect(policies).toHaveText(['Privacy', 'Terms', 'Cancellations', 'Complaints', 'Accessibility']);
     });

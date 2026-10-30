@@ -40,7 +40,7 @@ groups:
       - question: "What happens if I am diagnosed?"
         answer: "You leave appointment 2 with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine. Any treatment is a decision you make together. Reviews follow every 2-4 weeks while things are adjusted."
       - question: "What if I'm not diagnosed with ADHD?"
-        answer: "Dr Sam will explain what he found and what could help next. {policies.notDiagnosed}"
+        answer: "Dr Sam explains what he found and what could help next. {policies.notDiagnosed}"
       - question: "Can I move my ongoing care to my own GP later?"
         answer: "Yes. Once things are stable, you can keep seeing Dr Sam every 3-6 months, or move to a GP of your choice who agrees in writing to take over. With your permission, Dr Sam sends them a summary."
 

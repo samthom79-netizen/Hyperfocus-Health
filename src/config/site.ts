@@ -6,7 +6,7 @@
  * (Prompt 11) blocks production builds while any TODO remains.
  */
 
-export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'TODO';
+export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'HOTDOC' | 'HEALTHENGINE' | 'TODO';
 
 /**
  * What each booking platform supports. 'embed' = its booking page may be shown
@@ -16,8 +16,16 @@ export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'TODO';
 export const bookingProviders = {
   VELLUTO_MSGP: { name: 'MySpecialistGP (Velluto)', embed: false },
   HALAXY: { name: 'Halaxy', embed: false },
+  HOTDOC: { name: 'HotDoc', embed: false },
+  HEALTHENGINE: { name: 'HealthEngine', embed: false },
   TODO: { name: 'TODO: booking platform', embed: false },
 } as const satisfies Record<BookingProvider, { name: string; embed: boolean }>;
+
+/**
+ * Fees in AUD, set by Sam on 31 Oct 2026. Change them here only:
+ * prices and policy wording below are built from these.
+ */
+const FEES = { assessmentTotal: 745, payAtBooking: 425, payAppointment2: 320, review: 89 } as const;
 
 export const site = {
   /**
@@ -32,9 +40,10 @@ export const site = {
   tagline: 'Adult ADHD assessment by video, for Queenslanders',
   /** TODO: replace with the real domain once registered */
   url: 'https://hyperfocushealth.example',
-  /** TODO: operating entity (not JIC Global) and its ABN */
+  /** TODO: operating entity (not JIC Global). Sam, 31 Oct 2026: probably trading as Hyperfocus Health; not set up yet. */
   legalEntity: 'TODO: operating entity name',
-  abn: 'TODO: ABN',
+  /** Sam, 31 Oct 2026: not needed on the site. Leave empty to hide it; the footer shows it only when set. */
+  abn: '',
 
   /** Clinician */
   doctor: {
@@ -48,7 +57,8 @@ export const site = {
     adhdTraining:
       "TODO: list only the units completed, with year, e.g. 'Unit 1: Adult ADHD: Diagnosis, Assessment and Physical Health Management (2026)'",
     /** One or two lines for the 'Outside work' section on /about. */
-    outsideWork: 'TODO: one or two lines Sam is happy for patients to know',
+    /** Sam, 31 Oct 2026: leave out for now. Empty = only the 'Irish-born' line shows. */
+    outsideWork: '',
     /** Third-person short bio for DoctorCard, schema and directory listings. */
     bioShort:
       'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video.',
@@ -83,7 +93,8 @@ export const site = {
     /** Public email for enquiries (not Sam's personal address). */
     email: 'TODO: public email',
     /** Business hours within which a human replies to messages. */
-    humanReplyWithin: 'TODO: e.g. 1 business day',
+    /** Sam, 31 Oct 2026. */
+    humanReplyWithin: '24 hours',
     complaintsReplyWithin: 'TODO: e.g. 5 business days',
   },
 
@@ -110,17 +121,19 @@ export const site = {
   /** Prices in AUD. Keep as numbers; format in the UI. */
   prices: {
     /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
-    assessmentTotal: 745,
+    assessmentTotal: FEES.assessmentTotal,
     /** Sam, 31 Oct 2026: paid in two parts (must add up to assessmentTotal; a unit test checks). */
-    payAtBooking: 425,
-    payAppointment2: 320,
+    payAtBooking: FEES.payAtBooking,
+    payAppointment2: FEES.payAppointment2,
     /** Each review appointment while treatment is adjusted, until things are stable. Set by Sam 31 Oct 2026. */
-    review: 89,
+    review: FEES.review,
     /** Ongoing review once stable (every 3-6 months). Sam, 31 Oct 2026: same as a review. */
-    ongoingReview: 89,
-        gstNote: 'TODO: confirm GST treatment with accountant',
+    ongoingReview: FEES.review,
+        /** Sam, 31 Oct 2026. */
+    gstNote: 'There is no GST on these fees.',
     /** Wording for the blood test / ECG row on /pricing. */
-    testsNote: 'TODO: confirm wording: through your own GP or a pathology collection centre; costs vary',
+    /** Sam, 31 Oct 2026: succinct, in line with how other services word it. */
+    testsNote: 'Not included. Done at a local pathology centre or by your own GP, and often bulk-billed. Check any cost with them.',
     /**
      * ASSUMPTION used only for the 'typical first 3 months' example on /pricing:
      * number of review appointments in the first 3 months after diagnosis.
@@ -131,15 +144,23 @@ export const site = {
 
   /** Policies: wording shown to patients. */
   policies: {
-    refundIfUnsuitable: 'TODO: refund rule if Dr Sam finds the service unsuitable after reviewing the intake',
-    cancellation: 'TODO: how much notice is needed to change or cancel, and any fee',
-    noShow: 'TODO: what happens, and any fee, if an appointment is missed without notice',
-    notDiagnosed: 'TODO: what the patient receives, and the fee, if ADHD is not diagnosed',
+    /** Sam, 31 Oct 2026: fee kept because the work is done. Wording (keeping appointment 1) needs Sam's OK. */
+    refundIfUnsuitable:
+      `The $${FEES.payAtBooking} for appointment 1 isn't refunded, because Dr Sam has already read your intake and prepared. You still have appointment 1, where he explains why and talks through your next steps. You won't need appointment 2 or pay for it.`,
+    /** Sam, 31 Oct 2026. */
+    cancellation:
+      "You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee.",
+    /** Sam, 31 Oct 2026. */
+    noShow: "If you miss an appointment without telling us, you pay that appointment's full fee.",
+    /** Sam, 31 Oct 2026. */
+    notDiagnosed:
+      `If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The $${FEES.payAtBooking} for appointment 1 isn't refunded: it covers reading your intake, preparing and the appointment. With your permission, Dr Sam writes to your GP.`,
   },
 
   /** Privacy wording used before the full privacy policy exists (Prompt 10). */
   privacy: {
-    storage: 'TODO: where booking, intake and clinical records are stored (from the privacy policy, Prompt 10)',
+    /** Sam, 31 Oct 2026: practice software is probably Halaxy. Confirm the data location once chosen. */
+    storage: 'Your booking, intake and clinical records are kept in secure practice software, stored in Australia.',
   },
 
   /** Appointment lengths (minutes). */
