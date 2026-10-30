@@ -16,17 +16,18 @@ Anything marked [NOT DECIDED YET] is unknown. The agent says: "I don't know that
 
 ## The basics
 
-- Name: Hyperfocus Health. Adult ADHD assessment by video, for Queenslanders.
+- Name: Hyperfocus Health. Adult ADHD assessment by video or phone, for Queenslanders.
 - Who it is for: adults 18 and over who live in Queensland and will be in Queensland for their appointments. Uncomplicated adult ADHD only.
 - Doctor: Dr Sam Thomas, Specialist GP (FRACGP). Special interest in adult ADHD. He has ADHD himself. One doctor from start to finish.
-- Appointments: by video anywhere in Queensland, or in person at Cannonvale Medical Centre, Unit 7/230 Shute Harbour Road, Cannonvale QLD 4802. There is no other clinic.
+- Appointments: by video or phone (the patient chooses) anywhere in Queensland, or in person at Cannonvale Medical Centre, Unit 7/230 Shute Harbour Road, Cannonvale QLD 4802. There is no other clinic.
 - First step for anyone interested: the 60-second check on the website, called "Check if this is for you (60 sec)".
 - Online booking link (text this to callers who ask how to book): [NOT DECIDED YET]
 - In-person bookings: through Cannonvale Medical Centre, phone 07 4948 0041, or HotDoc. The caller must say it's for an ADHD assessment.
-- Same fees as video. You may be able to claim a Medicare rebate for each appointment.
+- Same fees as video or phone. You may be able to claim a Medicare rebate for each appointment.
+- Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments.
 - Our phone number: [NOT DECIDED YET]. Our email: [NOT DECIDED YET].
 - A person replies to messages within 1 business day. Complaints get a reply within 1 business day.
-- The first video appointment is at least 10 days after booking, to allow time for the intake and baseline checks. There are no other wait times to give.
+- The first appointment is at least 10 days after booking, to allow time for the intake and baseline checks. There are no other wait times to give.
 
 ## Who the service is not suitable for
 
@@ -47,11 +48,11 @@ Read this only as general information if a caller asks who the service is not fo
 
 - It costs $745 in total to reach a diagnosis and a written plan.
 - Reviews while treatment is adjusted cost $89 each. Every likely cost is on this page.
-- Video appointments have no Medicare rebate. In person at Cannonvale, the fees are the same and you may get a rebate.
+- Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate.
 
 ### Every cost, stage by stage
 
-Appointment lengths are approximate. They depend on how complex your situation is. The same fees apply by video or in person at Cannonvale.
+Appointment lengths are approximate. They depend on how complex your situation is. The same fees apply by video, phone or in person at Cannonvale.
 
 - Assessment to diagnosis: Online intake, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan. Cost: $745 total. Paid in 2 parts: $425 when you book, then $320 when you book appointment 2.
 - Review appointment: About 15 min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first. Cost: $89 each.
@@ -65,7 +66,8 @@ Not included: any blood tests or ECG, which are arranged and charged separately.
 
 ### Medicare in plain words
 
-- Video appointments have no Medicare rebate. Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have.
+- Video and phone appointments have no Medicare rebate for new patients. Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months.
+- Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments.
 - In person at Cannonvale Medical Centre in Cannonvale, the fees are the same. You may be able to claim a Medicare rebate for each appointment, which lowers what you pay.
 - If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and you may be able to claim a Medicare rebate for it. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.
 
@@ -82,17 +84,17 @@ Not included: any blood tests or ECG, which are arranged and charged separately.
 Appointment lengths are approximate. They depend on how complex your situation is.
 
 1. Check if this is for you (60 sec). What the patient does: Answer six quick questions. What Dr Sam does: Nothing yet. Your answers stay on your device.
-2. Book and pay (about 3 min). What the patient does: Choose a time for your first video appointment and pay. What Dr Sam does: Your first appointment is at least 10 days away, so there's time for the next two steps.
+2. Book and pay (about 3 min). What the patient does: Choose a time for your first appointment, by video or phone, and pay. What Dr Sam does: Your first appointment is at least 10 days away, so there's time for the next two steps.
 3. Online intake on your phone (about 30 min, can be split). What the patient does: Answer by voice, tick boxes or typing, all at once or in short blocks. Ask a partner or parent to fill in their short form. What Dr Sam does: Reads your answers and the observer form before you meet.
 4. Baseline checks (short; tests only if needed). What the patient does: Get your blood pressure, pulse and weight checked. Have blood tests or an ECG only if your history needs them. What Dr Sam does: Decides from your history whether any tests are needed, and checks the results.
-5. Video appointment 1: assessment (about 60 min). What the patient does: Talk about your history and what day-to-day life is like. What Dr Sam does: Goes through your intake with you and assesses for ADHD. Treatment isn't started at this appointment.
-6. Video appointment 2: diagnosis and a written plan (about 30-45 min). What the patient does: Hear what Dr Sam found and ask anything you like. What Dr Sam does: Explains the outcome, talks through all your options and gives you a written plan.
+5. Appointment 1: assessment (about 60 min). What the patient does: Talk about your history and what day-to-day life is like. What Dr Sam does: Goes through your intake with you and assesses for ADHD. Treatment isn't started at this appointment.
+6. Appointment 2: diagnosis and a written plan (about 30-45 min). What the patient does: Hear what Dr Sam found and ask anything you like. What Dr Sam does: Explains the outcome, talks through all your options and gives you a written plan.
 7. Reviews while treatment is adjusted (every 2-4 weeks). What the patient does: Fill in a short check-in form before each review. What Dr Sam does: Checks how things are going and adjusts your plan with you.
 8. Ongoing care (every 3-6 months once stable). What the patient does: Keep seeing Dr Sam, or move to a GP of your choice who agrees in writing to take over. What Dr Sam does: With your permission, sends your GP a summary so everyone is on the same page.
 
 ### What you'll need
 
-- A phone or laptop with a camera
+- A phone, or a laptop with a camera if you'd like video
 - A quiet room where you can talk privately
 - Photo ID
 - Your Medicare card, for in-person visits at Cannonvale
@@ -164,7 +166,7 @@ Q: I live outside Queensland. Can I use this service?
 A: Not at this stage. This service is only for adults who live in Queensland and will be in Queensland for their appointments. Your own GP is the right place to start.
 
 Q: Why is there no Medicare rebate for telehealth?
-A: Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have. In person at Cannonvale, the fees are the same and you may be able to claim a rebate. See all prices (on the website).
+A: Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months. New patients won't have. Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments. See all prices (on the website).
 
 Q: Who fills in the observer form, and what if I don't have anyone?
 A: Someone who knew you growing up, like a parent, or someone who knows you well now, like a partner. If you don't have anyone, say so in your intake. Dr Sam will talk with you about other ways to fill in the picture, such as old school reports.
@@ -172,8 +174,8 @@ A: Someone who knew you growing up, like a parent, or someone who knows you well
 Q: Can I do the intake in several sittings, or by voice?
 A: Yes. Do it all at once or in short blocks, and answer by voice, tick boxes or typing. It takes about 30 minutes in total.
 
-Q: What do I need for a video appointment?
-A: A phone or laptop with a camera, a quiet room where you can talk privately, and photo ID. See the full checklist (on the website).
+Q: What do I need for a video or phone appointment?
+A: A phone (or a laptop with a camera, for video), a quiet room where you can talk privately, and photo ID. See the full checklist (on the website).
 
 Q: What happens if I am diagnosed?
 A: You leave appointment 2 with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine. Any treatment is a decision you make together. Reviews follow every 2-4 weeks while things are adjusted.

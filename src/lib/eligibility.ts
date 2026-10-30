@@ -47,7 +47,7 @@ export const questions: readonly Question[] = [
   {
     id: 'queensland',
     kind: 'yesno',
-    title: 'Do you live in Queensland, and will you be in Queensland for your video appointments?',
+    title: 'Do you live in Queensland, and will you be in Queensland for your appointments?',
   },
   {
     id: 'history',
@@ -123,7 +123,7 @@ export const outcomes = {
     heading: 'This service looks like a good fit.',
     nextHeading: 'What happens next',
     next: [
-      'Book your first video appointment and pay.',
+      'Book your first appointment and pay.',
       'You get a link by text and email to do the intake on your phone. About 30 minutes, in short blocks if you like.',
       'Your first appointment is at least {minLeadDays} days after booking, so there is time for the intake and your baseline checks.',
     ],

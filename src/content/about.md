@@ -3,7 +3,7 @@
 # Rules: no medicine names, no superlatives, never "ADHD specialist", no promised outcomes.
 
 title: "Dr Sam Thomas, specialist GP"
-description: "Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. Video appointments across Queensland."
+description: "Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. Video and phone appointments across Queensland."
 heading: "Dr Sam Thomas"
 sub:
   - "Specialist GP (FRACGP)"
@@ -33,7 +33,7 @@ timeline:
     - when: "2019"
       text: "Started in Australian general practice on the Gold Coast"
     - when: "Now"
-      text: "Cannonvale Medical Centre in the Whitsundays, plus adult ADHD care by video across Queensland"
+      text: "Cannonvale Medical Centre in the Whitsundays, plus adult ADHD care by video or phone across Queensland"
 
 sections:
   - heading: "What that means for you"

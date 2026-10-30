@@ -1,20 +1,20 @@
 ---
 city: "Townsville"
-title: "Adult ADHD assessment by video, Townsville"
-description: "Adult ADHD assessment by video for Townsville adults, including Magnetic Island and the Burdekin. Our only physical clinic is in Cannonvale."
+title: "Adult ADHD assessment by video or phone, Townsville"
+description: "Adult ADHD assessment by video or phone for Townsville adults, including Magnetic Island and the Burdekin. Our only physical clinic is in Cannonvale."
 order: 4
 shortVersion:
-  - "Every appointment is by video, so there's no travel for most people."
+  - "Every appointment is by video or phone, so there's no travel for most people."
   - "Serving Defence members should speak to their Defence health centre first."
   - "Prefer face to face? Cannonvale, in the Whitsundays, is our only clinic."
 nearby: ["Townsville city", "Magnetic Island", "Ayr", "Home Hill", "Ingham", "Charters Towers"]
 ---
 
-## Video from Townsville and around
+## Video or phone, from Townsville and around
 
 You can join from anywhere private in Queensland, including Magnetic Island. What matters most is a connection that holds for about an hour.
 
-If you're on a station property or out of town, try a short video call from the same spot first.
+If you're on a station property or out of town, try a short video call from the same spot first, or choose a phone appointment.
 
 ## If you're in the Defence Force
 

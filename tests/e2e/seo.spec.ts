@@ -94,10 +94,10 @@ test('/llms.txt summarises the service, follows the rules and links every area a
 
 test.describe('location pages', () => {
   for (const c of LOCATIONS) {
-    test(`${c}: first line says video and that the only clinic is Cannonvale`, async ({ page }) => {
+    test(`${c}: first line says video or phone, and that the only clinic is Cannonvale`, async ({ page }) => {
       await page.goto(`/adhd-assessment/${c}`);
       const first = page.locator('[data-first-line]');
-      await expect(first).toHaveText(/^Video appointments for adults (in|on) .+\. Our only physical clinic is in Cannonvale\.$/);
+      await expect(first).toHaveText(/^Video or phone appointments for adults (in|on) .+\. Our only physical clinic is in Cannonvale\.$/);
       await expect(page.locator('main h1 + p')).toHaveAttribute('data-first-line', '');
       await expect(page.locator('[data-in-person]')).toHaveCount(['mackay', 'whitsundays'].includes(c) ? 1 : 0);
       await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toContainText('Areas we cover');

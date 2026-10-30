@@ -8,7 +8,7 @@ heading: "Common questions"
 readingTime: "4 min read"
 shortVersion:
   - "No referral needed. Specialist GPs in Queensland can diagnose ADHD in adults."
-  - "Video appointments have no Medicare rebate. In person at Cannonvale, the fees are the same and you may get a rebate."
+  - "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
   - "Struggling right now? Call 000 in an emergency, or Lifeline on 13 11 14."
 
 groups:
@@ -24,7 +24,7 @@ groups:
   - heading: "Cost"
     items:
       - question: "Why is there no Medicare rebate for telehealth?"
-        answer: "Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have. In person at Cannonvale, the fees are the same and you may be able to claim a rebate. [See all prices](/pricing)."
+        answer: "Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months. New patients won't have. {booking.inPerson.telehealthRebateNote} [See all prices](/pricing)."
 
   - heading: "The assessment"
     items:
@@ -32,8 +32,8 @@ groups:
         answer: "Someone who knew you growing up, like a parent, or someone who knows you well now, like a partner. If you don't have anyone, say so in your intake. Dr Sam will talk with you about other ways to fill in the picture, such as old school reports."
       - question: "Can I do the intake in several sittings, or by voice?"
         answer: "Yes. Do it all at once or in short blocks, and answer by voice, tick boxes or typing. It takes about 30 minutes in total."
-      - question: "What do I need for a video appointment?"
-        answer: "A phone or laptop with a camera, a quiet room where you can talk privately, and photo ID. [See the full checklist](/how-it-works#what-you-need)."
+      - question: "What do I need for a video or phone appointment?"
+        answer: "A phone (or a laptop with a camera, for video), a quiet room where you can talk privately, and photo ID. [See the full checklist](/how-it-works#what-you-need)."
 
   - heading: "After diagnosis"
     items:

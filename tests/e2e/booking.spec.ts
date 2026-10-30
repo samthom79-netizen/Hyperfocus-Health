@@ -8,7 +8,7 @@ test.describe('/book', () => {
     await expect(page.locator('section[aria-labelledby="short-version"] li')).toHaveCount(3);
     await expect(page.getByRole('heading', { name: 'Telehealth assessment' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'In person at Cannonvale' })).toBeVisible();
-    await expect(page.locator('main')).toContainText('No Medicare rebate for video appointments.');
+    await expect(page.locator('main')).toContainText('No Medicare rebate for new patients.');
     await expect(page.locator('main')).toContainText('Medicare rebate may apply');
     await expect(page.getByRole('link', { name: /Do that first/ })).toHaveAttribute('href', '/check');
     await expect(page.locator('main')).toContainText(`at least ${site.booking.minLeadDays} days away`);

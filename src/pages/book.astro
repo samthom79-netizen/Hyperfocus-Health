@@ -29,19 +29,19 @@ const { clinic } = site;
         price={site.prices.assessmentTotal}
         priceLabel="total to reach a diagnosis"
         includes={[
-          'Video, anywhere in Queensland',
+          'Video or phone, anywhere in Queensland',
           'Online intake on your phone',
-          `Video appointment 1 (about ${site.appointments.assessment} min)`,
-          `Video appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
+          `Appointment 1 (about ${site.appointments.assessment} min)`,
+          `Appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
           'Your written plan',
         ]}
-        note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for video appointments.`}
+        note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for new patients.`}
         featured
       />
       <PriceCard
         title={`In person at ${clinic.suburb}`}
         price={site.prices.assessmentTotal}
-        priceLabel="total, same as video"
+        priceLabel="total, same as video or phone"
         includes={['Medicare rebate may apply', `${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}`]}
         note={`${site.booking.inPerson.feeNote} Booked through the clinic, not online here.`}
       >
@@ -50,7 +50,7 @@ const { clinic } = site;
     </div>
     <p class="mt-4 text-ink-muted" data-lengths-note>{site.appointments.lengthsNote}</p>
 
-    <Callout class="mt-6" title={`Your first video appointment will be at least ${site.booking.minLeadDays} days away`}>
+    <Callout class="mt-6" title={`Your first appointment will be at least ${site.booking.minLeadDays} days away`}>
       <p>That gives you time to finish the intake and baseline checks.</p>
     </Callout>
 

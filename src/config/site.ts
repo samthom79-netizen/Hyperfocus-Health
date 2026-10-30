@@ -37,13 +37,21 @@ export const site = {
 
   /** Brand */
   name: 'Hyperfocus Health',
-  tagline: 'Adult ADHD assessment by video, for Queenslanders',
+  tagline: 'Adult ADHD assessment by video or phone, for Queenslanders',
   /** TODO: replace with the real domain once registered */
   url: 'https://hyperfocushealth.example',
   /** TODO: operating entity (not JIC Global). Sam, 31 Oct 2026: probably trading as Hyperfocus Health; not set up yet. */
   legalEntity: 'TODO: operating entity name',
   /** Sam, 31 Oct 2026: not needed on the site. Leave empty to hide it; the footer shows it only when set. */
   abn: '',
+
+  /** Business (postal) address. Sam, 31 Oct 2026. Not a clinic: patients are seen at site.clinic only. */
+  business: {
+    street: '13 Begley Street',
+    suburb: 'Cannonvale',
+    state: 'QLD',
+    postcode: '4802',
+  },
 
   /** Clinician */
   doctor: {
@@ -143,12 +151,15 @@ export const site = {
       /** Patients must say this when booking, so the right appointment length is set aside. */
       sayWhenBooking: "say it's for an ADHD assessment",
       /** Sam, 31 Oct 2026: same fees in person; a Medicare rebate may apply (standard GP consult items). */
-      feeNote: 'Same fees as video. You may be able to claim a Medicare rebate for each appointment.',
+      feeNote: 'Same fees as video or phone. You may be able to claim a Medicare rebate for each appointment.',
+      /** Sam, 31 Oct 2026: patients seen in person at Cannonvale can then have rebated video/phone appointments (Medicare's 12-month rule). */
+      telehealthRebateNote:
+        'Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments.',
       /** Sam, 31 Oct 2026: care plan can be done in appointment 2 if in person and a regular patient there. */
       carePlanNote:
         "If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and you may be able to claim a Medicare rebate for it. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.",
     },
-    /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
+    /** Minimum days between booking and appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,
   },
 

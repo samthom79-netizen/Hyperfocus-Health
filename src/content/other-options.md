@@ -15,7 +15,7 @@ That isn't a judgement about you. It's about making sure you get care that's saf
 
 ## Why some people should start elsewhere
 
-- **Some conditions can look like ADHD.** Sorting out which is which can take more than video appointments.
+- **Some conditions can look like ADHD.** Sorting out which is which can take more than video or phone appointments.
 - **Some health histories need closer monitoring.** Heart, mood and substance-use histories are examples.
 - **Your own GP knows you.** They can bring your other care together in one place.
 

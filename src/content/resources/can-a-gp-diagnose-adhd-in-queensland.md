@@ -104,6 +104,6 @@ If the answer to question 2 is no, that's fine. Ask question 3 next.
 
 You still have choices. You can ask for a referral, or see a different specialist GP.
 
-Hyperfocus Health is one option. A specialist GP assesses adults who live in Queensland, by video or in person at Cannonvale. You can read [how it works](/how-it-works), check [prices](/pricing) or browse [other options](/other-options).
+Hyperfocus Health is one option. A specialist GP assesses adults who live in Queensland, by video, phone or in person at Cannonvale. You can read [how it works](/how-it-works), check [prices](/pricing) or browse [other options](/other-options).
 
 Still have questions? See our [common questions](/faq).

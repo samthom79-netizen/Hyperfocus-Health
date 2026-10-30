@@ -89,14 +89,15 @@ export function buildKnowledgeBase(generatedOn: string): string {
     `- Name: ${site.name}. ${site.tagline}.`,
     '- Who it is for: adults 18 and over who live in Queensland and will be in Queensland for their appointments. Uncomplicated adult ADHD only.',
     `- Doctor: ${doctor.name}, ${doctor.title}. ${doctor.focus}. He has ADHD himself. One doctor from start to finish.`,
-    `- Appointments: by video anywhere in Queensland, or in person at ${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}. There is no other clinic.`,
+    `- Appointments: by video or phone (the patient chooses) anywhere in Queensland, or in person at ${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}. There is no other clinic.`,
     `- First step for anyone interested: the 60-second check on the website, called "${site.cta.label}".`,
     `- Online booking link (text this to callers who ask how to book): ${val('booking.url')}`,
     `- In-person bookings: through ${clinic.name}, phone ${clinic.phone}, or HotDoc. The caller must ${booking.inPerson.sayWhenBooking}.`,
     `- ${booking.inPerson.feeNote}`,
+    `- ${booking.inPerson.telehealthRebateNote}`,
     `- Our phone number: ${val('contact.phone')}. Our email: ${val('contact.email')}.`,
     `- A person replies to messages within ${contact.humanReplyWithin}. Complaints get a reply within ${contact.complaintsReplyWithin}.`,
-    `- The first video appointment is at least ${booking.minLeadDays} days after booking, to allow time for the intake and baseline checks. There are no other wait times to give.`,
+    `- The first appointment is at least ${booking.minLeadDays} days after booking, to allow time for the intake and baseline checks. There are no other wait times to give.`,
     '',
   );
 

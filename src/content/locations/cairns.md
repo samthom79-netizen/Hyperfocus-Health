@@ -1,20 +1,20 @@
 ---
 city: "Cairns"
-title: "Adult ADHD assessment by video, Cairns"
-description: "Adult ADHD assessment by video for Cairns and Far North Queensland adults, including the Tablelands. Our only physical clinic is in Cannonvale."
+title: "Adult ADHD assessment by video or phone, Cairns"
+description: "Adult ADHD assessment by video or phone for Cairns and Far North Queensland adults, including the Tablelands. Our only physical clinic is in Cannonvale."
 order: 5
 shortVersion:
-  - "Every appointment is by video, from Cairns, the Tablelands or further north."
+  - "Every appointment is by video or phone, from Cairns, the Tablelands or further north."
   - "In the wet season, have a backup plan in case power or internet drops."
   - "Once things are stable, you can keep seeing Dr Sam or move to a local GP."
 nearby: ["Cairns city", "Smithfield", "Gordonvale", "Port Douglas", "Atherton", "Innisfail"]
 ---
 
-## Video from Far North Queensland
+## Video or phone, from Far North Queensland
 
 You can join from anywhere private in Queensland. What matters most is a connection that holds for about an hour.
 
-In the wet season, storms can knock out power or internet. Charge your phone beforehand and know where you'd join from if home doesn't work.
+In the wet season, storms can knock out power or internet. Charge your phone beforehand. If the internet drops, a phone appointment still works.
 
 ## Remote communities
 

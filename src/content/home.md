@@ -4,10 +4,10 @@
 # Rules: no medicine names, no superlatives, no wait times, no testimonials.
 
 title: "Adult ADHD assessment in Queensland"
-description: "Adult ADHD assessment by video for Queenslanders 18+. One specialist GP who has ADHD himself, from first appointment to ongoing care."
+description: "Adult ADHD assessment by video or phone for Queenslanders 18+. One specialist GP who has ADHD himself, from first appointment to ongoing care."
 
 hero:
-  heading: "Adult ADHD assessment by video, for Queenslanders"
+  heading: "Adult ADHD assessment by video or phone, for Queenslanders"
   sub: "One doctor who has ADHD himself, from your first appointment to ongoing care. The full cost is shown upfront."
   secondaryLink:
     label: "See how it works"
@@ -19,7 +19,7 @@ hero:
     - "No referral needed"
 
 shortVersion:
-  - "An adult ADHD assessment by video with one specialist GP, for people living in Queensland."
+  - "An adult ADHD assessment by video or phone with one specialist GP, for people living in Queensland."
   - "It costs {prices.assessmentTotal} in total to reach a diagnosis and a written plan."
   - "The online intake takes about 30 minutes, and you can split it into short blocks."
 
@@ -33,7 +33,7 @@ howItWorks:
     - title: "Intake on your phone"
       time: "about 30 min, split it if you like"
       body: "Answer by voice, tick boxes or typing. Someone who knew you growing up fills in a short form too."
-    - title: "Two video appointments"
+    - title: "Two appointments, video or phone"
       time: "about 60 min, then about 30-45 min"
       body: "The first is your assessment. The second is your diagnosis and a written plan."
     - title: "Reviews, then ongoing care"
@@ -66,8 +66,8 @@ meetDrSam:
 pricing:
   heading: "What it costs"
   totalLabel: "total to reach a diagnosis"
-  includes: "Covers the online intake, both video appointments and your written plan."
-  medicare: "Video appointments have no Medicare rebate. In person at Cannonvale, the fees are the same and you may get a rebate."
+  includes: "Covers the online intake, both appointments and your written plan."
+  medicare: "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
   link:
     label: "See all prices, including reviews"
     href: "/pricing"
@@ -94,9 +94,9 @@ faq:
     - question: "Can a GP diagnose ADHD in Queensland?"
       answer: "Yes. In Queensland, specialist GPs can assess, diagnose and manage ADHD in adults, though not every GP chooses to. If your situation needs a psychiatrist, Dr Sam will tell you."
     - question: "Is there a Medicare rebate?"
-      answer: "Not for video appointments. Medicare only pays for GP video appointments if you've seen the practice in person in the past 12 months. In person at Cannonvale, the fees are the same and you may be able to claim a rebate."
+      answer: "Not for new patients' video or phone appointments. Medicare only pays for these if you've seen the practice in person in the past 12 months. In person at Cannonvale, the fees are the same and you may be able to claim a rebate."
     - question: "Do I need to come to Cannonvale?"
-      answer: "No. Your appointments are by video, wherever you are in Queensland. Seeing Dr Sam in person at Cannonvale is optional."
+      answer: "No. Your appointments are by video or phone, wherever you are in Queensland. Seeing Dr Sam in person at Cannonvale is optional."
     - question: "What happens if I'm diagnosed?"
       answer: "You leave your second appointment with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine, and you decide together."
   link:

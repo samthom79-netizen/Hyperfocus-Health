@@ -112,3 +112,21 @@ test('every main-menu page now exists', async ({ request }) => {
     expect((await request.get(item.href)).status(), item.href).toBe(200);
   }
 });
+
+test('video or phone, and the in-person rebate rule, are on pricing, FAQ and how it works', async ({ page }) => {
+  await page.goto('/pricing');
+  await expect(page.locator('main')).toContainText(site.booking.inPerson.telehealthRebateNote);
+  await expect(page.locator('main')).toContainText('Video and phone appointments have no Medicare rebate for new patients.');
+  await page.goto('/faq');
+  await expect(page.locator('main')).toContainText(site.booking.inPerson.telehealthRebateNote);
+  await page.goto('/how-it-works');
+  await expect(page.locator('main')).toContainText('by video or phone');
+});
+
+test('structured data: business address is the postal address; patients are seen at the clinic', async ({ page }) => {
+  await page.goto('/');
+  const all = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b));
+  const b = all.find((d) => d['@type'] === 'MedicalBusiness');
+  expect(b.address.streetAddress).toBe(site.business.street);
+  expect(b.location.address.streetAddress).toBe(site.clinic.street);
+});

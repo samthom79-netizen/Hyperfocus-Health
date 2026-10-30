@@ -9,10 +9,10 @@ readingTime: "2 min read"
 shortVersion:
   - "It costs {prices.assessmentTotal} in total to reach a diagnosis and a written plan."
   - "Reviews while treatment is adjusted cost {prices.review} each. Every likely cost is on this page."
-  - "Video appointments have no Medicare rebate. In person at Cannonvale, the fees are the same and you may get a rebate."
+  - "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
 
 tableHeading: "Every cost, stage by stage"
-tableNote: "{appointments.lengthsNote} The same fees apply by video or in person at {clinic.suburb}."
+tableNote: "{appointments.lengthsNote} The same fees apply by video, phone or in person at {clinic.suburb}."
 rows:
   - stage: "Assessment to diagnosis"
     whatYouGet: "Online intake, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
@@ -36,7 +36,8 @@ example:
 medicare:
   heading: "Medicare in plain words"
   paragraphs:
-    - "Video appointments have no Medicare rebate. Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have."
+    - "Video and phone appointments have no Medicare rebate for new patients. Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months."
+    - "{booking.inPerson.telehealthRebateNote}"
     - "In person at {clinic.name} in {clinic.suburb}, the fees are the same. You may be able to claim a Medicare rebate for each appointment, which lowers what you pay."
     - "{booking.inPerson.carePlanNote}"
 

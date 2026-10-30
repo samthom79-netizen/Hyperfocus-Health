@@ -6,7 +6,7 @@ readingTime: "4 min read"
 order: 5
 shortVersion:
   - "Medicare usually only pays a rebate for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare."
-  - "So new patients of a video-only service usually pay a private fee with no rebate."
+  - "So new patients of a telehealth-only service usually pay a private fee with no rebate."
   - "In person, the usual Medicare rebate can apply. A GP plan can also open up rebates for some allied health visits."
 reviewed: "TODO: Dr Sam to read and approve"
 references:
@@ -83,19 +83,19 @@ Some kinds of appointment are exempt too [3] [4]:
 
 The doctor has to record which exemption applies and why [3].
 
-## Why new patients of a video-only service usually pay privately
+## Why new patients of a telehealth service usually pay privately
 
-A video-only service hasn't seen a new patient face to face. So the 12-month rule usually isn't met, unless an exemption applies [3] [4]. GPs can only use the Medicare telehealth items when the rule is met [3].
+A telehealth service hasn't seen a new patient face to face. So the 12-month rule usually isn't met, unless an exemption applies [3] [4]. GPs can only use the Medicare telehealth items when the rule is met [3].
 
 That means the appointment usually can't be claimed through Medicare. Instead, you pay a private fee with no rebate.
 
-Hyperfocus Health video appointments have no Medicare rebate. You can see every cost on our [prices](/pricing) page.
+Hyperfocus Health video and phone appointments have no Medicare rebate for new patients. You can see every cost on our [prices](/pricing) page.
 
 ## What changes if you're seen in person
 
 The 12-month rule is about telehealth [3]. A face-to-face GP visit isn't affected by it. So a Medicare rebate can apply to an in-person appointment in the usual way [1].
 
-Hyperfocus Health also sees people in person at Cannonvale Medical Centre. The fees are the same, and a Medicare rebate may apply.
+Hyperfocus Health also sees people in person at Cannonvale Medical Centre. The fees are the same, and a Medicare rebate may apply. After an in-person visit there, later video and phone appointments with the practice may also attract a rebate for 12 months [3].
 
 ## GP chronic condition management plans
 

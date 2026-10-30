@@ -6,7 +6,7 @@ test.describe('homepage', () => {
     await page.goto('/');
     const headings = await page.locator('main h1, main h2').allInnerTexts();
     expect(headings).toEqual([
-      'Adult ADHD assessment by video, for Queenslanders',
+      'Adult ADHD assessment by video or phone, for Queenslanders',
       'Dr Sam Thomas',
       'Short version',
       'How it works',

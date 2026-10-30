@@ -43,12 +43,12 @@ export interface Crumb {
 }
 
 /**
- * The service itself, on every page. Address = Cannonvale Medical Centre,
- * the only place patients are seen in person. Phone and email are added
+ * The service itself, on every page. Address = the business address (Sam,
+ * 31 Oct 2026); location = Cannonvale Medical Centre, where patients are seen in person. Phone and email are added
  * once they're set in site.ts.
  */
 export function businessSchema(base: URL) {
-  const { clinic, contact, doctor } = site;
+  const { clinic, contact, doctor, business } = site;
   const home = new URL('/', base).href;
   const out: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -62,11 +62,24 @@ export function businessSchema(base: URL) {
     medicalSpecialty: 'https://schema.org/PrimaryCare',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: clinic.street,
-      addressLocality: clinic.suburb,
-      addressRegion: clinic.state,
-      postalCode: clinic.postcode,
+      streetAddress: business.street,
+      addressLocality: business.suburb,
+      addressRegion: business.state,
+      postalCode: business.postcode,
       addressCountry: 'AU',
+    },
+    // Where patients are seen in person.
+    location: {
+      '@type': 'MedicalClinic',
+      name: clinic.name,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: clinic.street,
+        addressLocality: clinic.suburb,
+        addressRegion: clinic.state,
+        postalCode: clinic.postcode,
+        addressCountry: 'AU',
+      },
     },
     areaServed: { '@type': 'State', name: 'Queensland' },
     knowsAbout: ['Adult ADHD assessment', 'Telehealth'],
