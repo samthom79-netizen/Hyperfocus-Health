@@ -51,6 +51,14 @@ describe('site config', () => {
     expect(`${site.cta.text} (${site.cta.time})`).toBe(site.cta.label);
   });
 
+  it('cannot be switched to launched while any TODO remains', () => {
+    if (site.launched) {
+      expect(listTodos(), 'Fill every TODO in src/config/site.ts before launching').toEqual([]);
+    } else {
+      expect(site.launched).toBe(false);
+    }
+  });
+
   it('lists every remaining placeholder by path', () => {
     const todos = listTodos();
     expect(todos).toContain('contact.phone');

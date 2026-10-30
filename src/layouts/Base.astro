@@ -14,7 +14,9 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex: pageNoindex = false } = Astro.props;
+// Before launch, every page is hidden from search engines (see site.launched).
+const noindex = pageNoindex || !site.launched;
 const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 ---

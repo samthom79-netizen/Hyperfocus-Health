@@ -4,9 +4,11 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import prelaunchHeaders from './src/integrations/prelaunch-headers.mjs';
+import { site } from './src/config/site.ts';
 
 // Static output: every page is pre-rendered to HTML at build time.
-// React is used only for interactive islands (eligibility checker, accordions).
+// React is used only for interactive islands (eligibility checker).
 export default defineConfig({
   // TODO: replace with the real domain once registered (needed for sitemap + canonical URLs)
   site: 'https://hyperfocushealth.example',
@@ -16,6 +18,8 @@ export default defineConfig({
     mdx(),
     // Internal pages (e.g. /styleguide) stay out of the sitemap.
     sitemap({ filter: (page) => !page.includes('/styleguide') }),
+    // While site.launched is false, every response carries X-Robots-Tag: noindex.
+    prelaunchHeaders({ launched: site.launched }),
   ],
   vite: {
     plugins: [tailwindcss()],

@@ -89,6 +89,13 @@ Look at `/styleguide` before building any page. Use these components; don't rest
 - **Images**: `<Picture>` from `astro:assets` with `formats={['avif','webp']}`, a `width`, `widths` and `sizes`. Photos of Sam other than the headshot stay at most 640px wide.
 - **Tap targets**: interactive elements use `min-h-11` (44px+) or `min-h-12`.
 
+## Preview and pre-launch protection
+
+- Every push to `main` deploys to Cloudflare Pages (a public `*.pages.dev` preview link).
+- `launched: false` in `src/config/site.ts` hides the whole site from search engines in three ways: `<meta name="robots" content="noindex">` on every page, `robots.txt` disallowing everything (`src/pages/robots.txt.ts`), and `X-Robots-Tag: noindex` in `dist/_headers` (`src/integrations/prelaunch-headers.mjs`).
+- Only Prompt 12 (go-live) flips `launched` to `true`. A unit test fails if it's true while any TODO remains.
+- `.node-version` pins Node 22.23.4 for Cloudflare's build (Astro 7 needs at least that).
+
 ## Stack
 
 - Astro (static output), TypeScript strict, Tailwind CSS v4 via `@tailwindcss/vite`, `@astrojs/react` for islands, `@astrojs/mdx` for content, `@astrojs/sitemap`.

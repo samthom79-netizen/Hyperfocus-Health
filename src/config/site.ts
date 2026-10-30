@@ -9,6 +9,13 @@
 export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'TODO';
 
 export const site = {
+  /**
+   * PRE-LAUNCH SWITCH. While false, every page is hidden from search engines
+   * (noindex meta tag, X-Robots-Tag header, robots.txt disallow), because the
+   * preview link is public. Set to true only at go-live (Prompt 12).
+   */
+  launched: false,
+
   /** Brand */
   name: 'Hyperfocus Health',
   tagline: 'Adult ADHD assessment by video, for Queenslanders',
