@@ -87,6 +87,8 @@ Look at `/styleguide` before building any page. Use these components; don't rest
 - **Page copy** lives in `src/content/`: `home.md` (structured frontmatter, schema in `src/content.config.ts`) and simple Markdown pages (`pages` collection, rendered inside `.prose-hf`). Copy can pull site values with `{tokens}`, e.g. `{prices.assessmentTotal}` (`src/lib/tokens.ts`); unknown tokens fail the build.
 - The **'not suitable for' list** is `site.notSuitable` in `src/config/site.ts`, word for word from this file. Use it; never retype it.
 - `Button variant="inverse"` = white button for dark teal bands. `DoctorCard layout="hero"` = tall card with a 280px photo. `Base flushFooter` joins a final dark band to the footer.
+- **Eligibility checker** (`/check`): questions, outcomes and the decision live in `src/lib/eligibility.ts` (pure, fully unit-tested); `src/components/Checker.tsx` only displays them. Every question is asked regardless of earlier answers so everyone reaches the safety question; a safety 'yes' stops at once and overrides everything. No storage, no cookies, no requests. Analytics (`src/lib/analytics.ts`) sends event names only, never from the safety screen. Under-18s who answer the safety question 'yes' also see Kids Helpline.
+- Banned words live in `src/lib/banned.ts`, used by both the unit tests (all checker copy) and the browser tests (every public page).
 - `tests/e2e/copy-rules.spec.ts` scans every public page for banned words; add each new page to its `PAGES` list.
 - **Header** controls use fixed px sizes so they always fit a phone screen. Don't change them to rem.
 - **Images**: `<Picture>` from `astro:assets` with `formats={['avif','webp']}`, a `width`, `widths` and `sizes`. Photos of Sam other than the headshot stay at most 640px wide.

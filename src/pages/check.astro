@@ -1,0 +1,26 @@
+---
+/**
+ * /check: the 60-second eligibility checker.
+ * The checker itself is a React island (src/components/Checker.tsx).
+ * Nothing typed or ticked here leaves the browser.
+ */
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import Checker from '../components/Checker';
+import { site } from '../config/site';
+---
+
+<Base
+  title="Check if this is for you"
+  description={`A 60-second check to see whether ${site.name}'s adult ADHD assessment suits you. Nothing you tick is saved or sent anywhere.`}
+>
+  <Container class="py-8 sm:py-12">
+    <div class="mx-auto max-w-2xl">
+      <h1 class="text-[1.6rem] sm:text-[2rem]">Check if this is for you</h1>
+      <p class="mt-2 text-ink-muted">Six quick questions. About 60 seconds. Nothing you tick is saved or sent anywhere.</p>
+      <div class="mt-6">
+        <Checker client:load />
+      </div>
+    </div>
+  </Container>
+</Base>

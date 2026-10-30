@@ -108,6 +108,8 @@ export const site = {
       { label: 'Suicide Call Back Service', number: '1300 659 467', tel: 'tel:1300659467' },
       { label: '13YARN (Aboriginal and Torres Strait Islander people)', number: '13 92 76', tel: 'tel:139276' },
     ],
+    /** Shown on the checker's support screen when the person said they are under 18. */
+    youth: { label: 'Kids Helpline (ages 5 to 25)', number: '1800 55 1800', tel: 'tel:1800551800' },
   },
 
   /** External links */
