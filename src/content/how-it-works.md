@@ -12,6 +12,7 @@ shortVersion:
   - "Reviews every 2-4 weeks while treatment is adjusted, then ongoing care with Dr Sam or your own GP."
 
 stepsHeading: "The 8 steps"
+stepsNote: "{appointments.lengthsNote}"
 steps:
   - title: "Check if this is for you"
     time: "60 sec"
@@ -34,7 +35,7 @@ steps:
     you: "Talk about your history and what day-to-day life is like."
     doctor: "Goes through your intake with you and assesses for ADHD. Treatment isn't started at this appointment."
   - title: "Video appointment 2: diagnosis and a written plan"
-    time: "30-45 min"
+    time: "about 30-45 min"
     you: "Hear what Dr Sam found and ask anything you like."
     doctor: "Explains the outcome, talks through all your options and gives you a written plan."
   - title: "Reviews while treatment is adjusted"

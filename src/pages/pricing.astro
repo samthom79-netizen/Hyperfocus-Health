@@ -31,6 +31,7 @@ const total = firstThreeMonths(assessmentTotal, review, n);
 
       <section aria-labelledby="table-heading" class="mt-12">
         <h2 id="table-heading">{c.tableHeading}</h2>
+        {c.tableNote && <p class="mt-3" set:html={renderInline(c.tableNote)} data-lengths-note />}
         <div class="mt-5 overflow-hidden rounded-card border border-line bg-surface">
           <table class="stack-table w-full text-left">
             <thead class="bg-accent-soft font-display text-primary">

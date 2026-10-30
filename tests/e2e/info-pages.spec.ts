@@ -21,11 +21,21 @@ test.describe('/pricing', () => {
     await expect(page.locator('[data-example]')).toContainText(`${site.prices.typicalReviewsFirst3Months} reviews`);
     await expect(page.locator('[data-example]')).toContainText('(an assumption)');
     await expect(main).toContainText('face-to-face visit with the same practice in the last 12 months');
-    await expect(main).toContainText('In-person visits at Cannonvale Medical Centre in Cannonvale do attract a Medicare rebate.');
+    await expect(main).toContainText('In person at Cannonvale Medical Centre in Cannonvale, the fees are the same.');
+    await expect(main).toContainText('GP chronic condition management plan');
+    await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
     await expect(main).toContainText('GST:');
     await expect(main).toContainText(site.policies.paymentTiming);
     await expect(main).toContainText("If Dr Sam finds this service isn't right for you");
     await expect(main.getByRole('link', { name: 'cancellations and refunds' })).toHaveAttribute('href', '/cancellations');
+  });
+
+  test('worked example adds up from the prices in site.ts', async ({ page }) => {
+    const { assessmentTotal, review, typicalReviewsFirst3Months: n } = site.prices;
+    test.skip(typeof assessmentTotal !== 'number' || typeof review !== 'number', 'prices not set');
+    await page.goto('/pricing');
+    const total = (assessmentTotal as number) + n * (review as number);
+    await expect(page.locator('[data-example-total]')).toHaveText(`$${total.toLocaleString('en-AU')}`);
   });
 
   test('worked example shows a TODO until prices are set', async ({ page }) => {
@@ -45,6 +55,7 @@ test.describe('/how-it-works', () => {
       await expect(step.locator('dt')).toHaveText(['What you do:', 'What Dr Sam does:']);
     }
     await expect(steps.nth(4)).toContainText("Treatment isn't started at this appointment.");
+    await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
   });
 
   test('what you will need checklist, linkable from the FAQ', async ({ page }) => {

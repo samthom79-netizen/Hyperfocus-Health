@@ -8,7 +8,7 @@ heading: "Common questions"
 readingTime: "4 min read"
 shortVersion:
   - "No referral needed. Specialist GPs in Queensland can diagnose ADHD in adults."
-  - "Video appointments have no Medicare rebate. In-person visits at Cannonvale do."
+  - "Video appointments have no Medicare rebate. In person at Cannonvale, the fees are the same and you may get a rebate."
   - "Struggling right now? Call 000 in an emergency, or Lifeline on 13 11 14."
 
 groups:
@@ -24,7 +24,7 @@ groups:
   - heading: "Cost"
     items:
       - question: "Why is there no Medicare rebate for telehealth?"
-        answer: "Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have. In-person visits at Cannonvale do attract a rebate. [See all prices](/pricing)."
+        answer: "Medicare only pays for a GP video appointment if you've had a face-to-face visit with the same practice in the last 12 months. As a new patient of a video service, you won't have. In person at Cannonvale, the fees are the same and you may be able to claim a rebate. [See all prices](/pricing)."
 
   - heading: "The assessment"
     items:

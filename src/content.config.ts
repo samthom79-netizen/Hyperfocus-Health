@@ -117,6 +117,7 @@ const pricing = defineCollection({
   schema: z.object({
     ...basePage,
     tableHeading: z.string(),
+    tableNote: z.string().optional(),
     rows: z.array(
       z.object({ stage: z.string(), whatYouGet: z.string(), cost: z.string(), note: z.string().optional() }),
     ).min(1),
@@ -132,6 +133,7 @@ const howItWorks = defineCollection({
   schema: z.object({
     ...basePage,
     stepsHeading: z.string(),
+    stepsNote: z.string().optional(),
     steps: z.array(z.object({ title: z.string(), time: z.string(), you: z.string(), doctor: z.string() })).length(8),
     needHeading: z.string(),
     need: z.array(z.string()).min(1),

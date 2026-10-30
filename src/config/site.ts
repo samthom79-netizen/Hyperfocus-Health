@@ -97,6 +97,11 @@ export const site = {
       hotdocUrl: 'https://www.hotdoc.com.au/medical-centres/cannonvale-QLD-4802/cannonvale-medical-centre/doctors/dr-sam-thomas-5',
       /** Patients must say this when booking, so the right appointment length is set aside. */
       sayWhenBooking: "say it's for an ADHD assessment",
+      /** Sam, 31 Oct 2026: same fees in person; a Medicare rebate may apply (standard GP consult items). */
+      feeNote: 'Same fees as video. You may be able to claim a Medicare rebate for each appointment.',
+      /** Sam, 31 Oct 2026: care plan can be done in appointment 2 if in person and a regular patient there. */
+      carePlanNote:
+        "If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.",
     },
     /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,
@@ -104,18 +109,16 @@ export const site = {
 
   /** Prices in AUD. Keep as numbers; format in the UI. */
   prices: {
-    /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. */
-    assessmentTotal: 'TODO: e.g. 695',
-    /** Each review appointment while treatment is adjusted. */
-    review: 'TODO',
+    /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
+    assessmentTotal: 745,
+    /** Each review appointment while treatment is adjusted, until things are stable. Set by Sam 31 Oct 2026. */
+    review: 89,
     /** Optional bundle: diagnosis + 3 months of reviews. */
     bundle: 'TODO',
     /** Rule 5: any discount states its terms. */
     bundleTerms: 'TODO: how many reviews the bundle covers, and what happens to any unused ones',
     /** Ongoing review once stable (every 3-6 months). */
     ongoingReview: 'TODO',
-    /** In-person at Cannonvale: typical out-of-pocket after the Medicare rebate. */
-    inPersonGap: 'TODO',
     reviewLengthMinutes: 'TODO: e.g. 20',
     gstNote: 'TODO: confirm GST treatment with accountant',
     /** Wording for the blood test / ECG row on /pricing. */
@@ -149,6 +152,8 @@ export const site = {
     diagnosis: { min: 30, max: 45 },
     reviewIntervalWeeks: { min: 2, max: 4 },
     stableIntervalMonths: { min: 3, max: 6 },
+    /** Sam, 31 Oct 2026: lengths are approximate. */
+    lengthsNote: 'Appointment lengths are approximate. They depend on how complex your situation is.',
   },
 
   /** Crisis numbers: shown in every footer and on the checker safety screen. */
