@@ -39,6 +39,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_AU" />
+    <!-- Page-specific head content, e.g. JSON-LD structured data. -->
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">
     <a

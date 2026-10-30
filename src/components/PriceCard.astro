@@ -59,6 +59,7 @@ const shown = formatPrice(price);
     }
   </ul>
   {note && <p class="mt-4 text-[0.92rem] text-ink-muted" set:html={renderTokens(note)} />}
+  <slot />
   {
     cta && (
       <div class="mt-5 pt-1">

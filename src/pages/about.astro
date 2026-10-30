@@ -1,0 +1,105 @@
+---
+/**
+ * /about: Meet Dr Sam. Words: src/content/about.md. Credentials and
+ * placeholders: site.doctor in src/config/site.ts.
+ */
+import { getEntry } from 'astro:content';
+import { Picture, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import Timeline from '../components/Timeline.astro';
+import IntroVideo from '../components/IntroVideo.astro';
+import Button from '../components/Button.astro';
+import CtaLabel from '../components/CtaLabel.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config/site';
+import { images } from '../config/images';
+import { renderTokens } from '../lib/tokens';
+import { physicianSchema } from '../lib/schema';
+
+const entry = await getEntry('about', 'about');
+if (!entry) throw new Error('src/content/about.md is missing');
+const c = entry.data;
+
+// A fixed-size copy of the headshot for search engines and link previews.
+const schemaImage = await getImage({ src: images.headshot.src, width: 640, format: 'webp' });
+const base = Astro.site ?? new URL(site.url);
+const pageUrl = new URL('/about', base).href;
+const schema = physicianSchema({ pageUrl, imageUrl: new URL(schemaImage.src, base).href });
+---
+
+<Base title={c.title} description={c.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+  <Container class="py-10 sm:py-14">
+    <div class="grid gap-8 md:grid-cols-[auto_1fr] md:items-start md:gap-12">
+      <Picture
+        src={images.headshot.src}
+        alt={images.headshot.alt}
+        width={320}
+        widths={[320, 640, 960]}
+        sizes="(min-width: 380px) 320px, calc(100vw - 32px)"
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] w-full max-w-[320px] rounded-card bg-accent-soft object-cover"
+      />
+      <div class="max-w-3xl">
+        <h1>{c.heading}</h1>
+        <ul class="mt-3 flex flex-wrap gap-2" aria-label="At a glance">
+          {
+            c.sub.map((item) => (
+              <li class="rounded-full bg-accent-soft px-3 py-1 font-display text-[0.92rem] font-bold text-primary">{item}</li>
+            ))
+          }
+        </ul>
+        <ShortVersion bullets={c.shortVersion} readingTime={c.readingTime} class="mt-6" />
+      </div>
+    </div>
+
+    <div class="mt-4 max-w-3xl">
+      <IntroVideo />
+
+      <section aria-labelledby="why-heading" class="mt-12">
+        <h2 id="why-heading">{c.why.heading}</h2>
+        <div class="mt-4 space-y-3">
+          {c.why.paragraphs.map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+
+      <section aria-labelledby="timeline-heading" class="mt-12">
+        <h2 id="timeline-heading">{c.timeline.heading}</h2>
+        <Timeline items={c.timeline.items} class="mt-6" />
+      </section>
+
+      {
+        c.sections.map((s, i) => (
+          <section aria-labelledby={`about-${i}`} class="mt-12">
+            <h2 id={`about-${i}`}>{s.heading}</h2>
+            <ul class="mt-4 space-y-2.5">
+              {s.points.map((point) => (
+                <li class="flex gap-2.5">
+                  <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+                  <span set:html={renderTokens(point)} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+
+      <section aria-labelledby="outside-heading" class="mt-12">
+        <h2 id="outside-heading">{c.outsideWork.heading}</h2>
+        <p class="mt-4" set:html={renderTokens(c.outsideWork.text)} />
+      </section>
+
+      <div class="mt-12 rounded-card border border-line bg-surface p-5 sm:p-7">
+        <p class="font-display text-[1.15rem] font-bold text-primary">Wondering if this service suits you?</p>
+        <p class="mt-4">
+          <Button href={site.cta.href} arrow data-cta="about"><CtaLabel /></Button>
+        </p>
+      </div>
+    </div>
+  </Container>
+</Base>

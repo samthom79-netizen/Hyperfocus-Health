@@ -1,0 +1,34 @@
+---
+/**
+ * Dr Sam's 60-second intro video for /about.
+ * Renders NOTHING until site.doctor.introVideo.src is set. When it is:
+ * self-hosted MP4, captions track, poster image, controls, no autoplay,
+ * and nothing downloads until the visitor presses play (preload="none").
+ *
+ * To add the video: put the files in public/video/ and set src, poster
+ * and captions in src/config/site.ts.
+ */
+import { site } from '../config/site';
+
+const { src, poster, captions } = site.doctor.introVideo;
+---
+
+<!-- INTRO VIDEO SLOT: hidden until site.doctor.introVideo.src is set -->
+{
+  src && (
+    <figure class="mt-10" data-intro-video>
+      <video
+        controls
+        preload="none"
+        playsinline
+        poster={poster || undefined}
+        class="aspect-video w-full rounded-card bg-primary"
+        aria-label={`A short introduction from ${site.doctor.name}`}
+      >
+        <source src={src} type="video/mp4" />
+        {captions && <track kind="captions" src={captions} srclang="en-AU" label="English" default />}
+      </video>
+      <figcaption class="mt-2 text-[0.9rem] text-ink-muted">A 60-second hello from {site.doctor.shortName}. Captions available.</figcaption>
+    </figure>
+  )
+}

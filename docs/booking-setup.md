@@ -54,7 +54,7 @@ Commit and push; the preview updates in a few minutes.
 
 ## Not decided yet (placeholders on the site)
 
-- `booking.provider`, `booking.url`, `booking.inPerson`
+- `booking.provider`, `booking.url`
 - `prices.assessmentTotal`, `prices.inPersonGap`, `prices.reviewLengthMinutes`
 - `policies.cancellation`, `policies.noShow`, `policies.refundIfUnsuitable`, `policies.notDiagnosed`
 - `contact.email`

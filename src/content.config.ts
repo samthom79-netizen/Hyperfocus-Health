@@ -10,7 +10,7 @@ import { z } from 'astro/zod';
 
 /** Simple pages: frontmatter + Markdown body (e.g. other-options.md). */
 const pages = defineCollection({
-  loader: glob({ pattern: ['**/*.{md,mdx}', '!home.md', '!README.md'], base: './src/content' }),
+  loader: glob({ pattern: ['**/*.{md,mdx}', '!home.md', '!about.md', '!README.md'], base: './src/content' }),
   schema: z.object({
     title: z.string(),
     description: z.string().max(155, 'Meta descriptions must be 155 characters or fewer'),
@@ -80,4 +80,24 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { pages, home };
+/** The Meet Dr Sam page (/about). */
+const about = defineCollection({
+  loader: glob({ pattern: 'about.md', base: './src/content' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(155, 'Meta descriptions must be 155 characters or fewer'),
+    heading: z.string(),
+    sub: z.array(z.string()).min(1),
+    readingTime: z.string(),
+    shortVersion: z.array(z.string()).length(3),
+    why: z.object({ heading: z.string(), paragraphs: z.array(z.string()).min(1) }),
+    timeline: z.object({
+      heading: z.string(),
+      items: z.array(z.object({ when: z.string().optional(), text: z.string() })).min(2),
+    }),
+    sections: z.array(z.object({ heading: z.string(), points: z.array(z.string()).min(1) })),
+    outsideWork: z.object({ heading: z.string(), text: z.string() }),
+  }),
+});
+
+export const collections = { pages, home, about };

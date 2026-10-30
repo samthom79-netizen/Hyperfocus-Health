@@ -42,8 +42,24 @@ const { clinic } = site;
         price={site.prices.inPersonGap}
         priceLabel="about, out of pocket after the Medicare rebate"
         includes={['Medicare rebate available', `${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}`]}
-        note="To book in person: {booking.inPerson}"
-      />
+        note="Booked through the clinic, not online here."
+      >
+        <div class="mt-4 rounded-xl bg-accent-soft p-4" data-in-person>
+          <p class="font-bold text-primary">To book, {site.booking.inPerson.sayWhenBooking}:</p>
+          <ul class="mt-2 space-y-1">
+            <li>
+              <a href={site.booking.inPerson.hotdocUrl} rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+                Book online with HotDoc <Icon name="arrow-right" size={20} />
+              </a>
+            </li>
+            <li>
+              <a href={clinic.tel} class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+                <Icon name="phone" size={20} /> Call {clinic.name}: {clinic.phone}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </PriceCard>
     </div>
 
     <Callout class="mt-6" title={`Your first video appointment will be at least ${site.booking.minLeadDays} days away`}>

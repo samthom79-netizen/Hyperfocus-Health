@@ -1,0 +1,26 @@
+---
+/**
+ * Vertical timeline: a line with mint dots, an optional year label and text.
+ * Items may use {tokens}.
+ */
+import { renderTokens } from '../lib/tokens';
+
+interface Props {
+  items: { when?: string; text: string }[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+---
+
+<ol class={`relative ml-2 border-l-2 border-line ${className}`}>
+  {
+    items.map((item) => (
+      <li class="relative pb-6 pl-7 last:pb-0">
+        <span class="absolute top-1.5 -left-[9px] size-4 rounded-full border-2 border-surface bg-accent ring-2 ring-accent" aria-hidden="true" />
+        {item.when && <p class="font-display text-[0.95rem] font-extrabold text-accent-ink">{item.when}</p>}
+        <p set:html={renderTokens(item.text)} />
+      </li>
+    ))
+  }
+</ol>

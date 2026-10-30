@@ -44,10 +44,24 @@ export const site = {
     /** Wording rule: 'special interest in adult ADHD', never 'ADHD specialist'. */
     focus: 'Special interest in adult ADHD',
     ahpra: 'MED0002290862',
+    /** List only units actually completed, with year. */
+    adhdTraining:
+      "TODO: list only the units completed, with year, e.g. 'Unit 1: Adult ADHD: Diagnosis, Assessment and Physical Health Management (2026)'",
+    /** One or two lines for the 'Outside work' section on /about. */
+    outsideWork: 'TODO: one or two lines Sam is happy for patients to know',
     /** Third-person short bio for DoctorCard, schema and directory listings. */
     bioShort:
       'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video.',
     // Photos live in src/config/images.ts so the build can optimise them.
+    /**
+     * Optional 60-second intro video for /about. Leave src empty until it exists;
+     * the video block stays hidden while empty. Put files in public/video/.
+     */
+    introVideo: {
+      src: '',
+      poster: '',
+      captions: '',
+    },
   },
 
   /** Physical clinic: the only one. Never imply a clinic anywhere else. */
@@ -58,6 +72,9 @@ export const site = {
     state: 'QLD',
     postcode: '4802',
     region: 'Whitsundays',
+    /** Verified on Healthdirect, 31 Oct 2026. */
+    phone: '07 4948 0041',
+    tel: 'tel:0749480041',
   },
 
   /** Contact */
@@ -75,8 +92,12 @@ export const site = {
     /** ONE-LINE SWITCH: 'VELLUTO_MSGP' or 'HALAXY'. Then set url below. */
     provider: 'TODO' as BookingProvider,
     url: 'TODO: booking URL',
-    /** How people book an in-person visit at Cannonvale (link or phone). */
-    inPerson: 'TODO: how to book in person at Cannonvale (clinic phone or online booking link)',
+    /** In-person visits at Cannonvale: booked through the clinic, not the online platform. */
+    inPerson: {
+      hotdocUrl: 'https://www.hotdoc.com.au/medical-centres/cannonvale-QLD-4802/cannonvale-medical-centre/doctors/dr-sam-thomas-5',
+      /** Patients must say this when booking, so the right appointment length is set aside. */
+      sayWhenBooking: "say it's for an ADHD assessment",
+    },
     /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,
   },
