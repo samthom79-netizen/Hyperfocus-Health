@@ -105,20 +105,22 @@ export const site = {
    * Agent instructions: docs/receptionist/. Vendor not chosen yet.
    */
   receptionist: {
-    /** 'ELEVENLABS', 'VORAL' or 'TODO'. */
-    vendor: 'TODO' as 'ELEVENLABS' | 'VORAL' | 'TODO',
+    /**
+     * Sam, 31 Oct 2026: must store data in Australia (ElevenLabs ruled out).
+     * Shortlist in docs/receptionist/README.md.
+     */
+    vendor: 'TODO' as 'MAYAAI' | 'AIDIAL' | 'VORAL' | 'TODO',
     /** Shown next to the phone number on /contact. Must stay true: change it if the set-up changes. */
     label:
       "Our phone is answered by an AI assistant, 24/7. It can answer questions about the service, costs and booking. It can't give medical advice. A person replies to messages within 1 business day.",
     /**
      * Optional 'Talk to the assistant in your browser' button. Stays hidden
      * until both are set AND the vendor allows embedding. The script loads only
-     * after the visitor clicks. ElevenLabs example:
-     *   scriptUrl 'https://unpkg.com/@elevenlabs/convai-widget-embed', tag 'elevenlabs-convai'
+     * after the visitor clicks. Copy both values from the vendor's embed code.
      */
     webWidget: {
       scriptUrl: '',
-      /** Custom element the vendor's script defines, e.g. 'elevenlabs-convai'. */
+      /** Custom element the vendor's script defines (from its embed code). */
       tag: '',
       agentId: '',
     },
