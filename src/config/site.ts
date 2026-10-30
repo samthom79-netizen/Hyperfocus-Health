@@ -1,0 +1,160 @@
+/**
+ * Single source of truth for every value on the site that might change.
+ * Nothing in src/pages or src/components may hard-code these: import from here.
+ *
+ * Any value starting with 'TODO:' is a placeholder. The compliance check
+ * (Prompt 11) blocks production builds while any TODO remains.
+ */
+
+export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'TODO';
+
+export const site = {
+  /** Brand */
+  name: 'Hyperfocus Health',
+  tagline: 'Adult ADHD assessment by video, for Queenslanders',
+  /** TODO: replace with the real domain once registered */
+  url: 'https://hyperfocushealth.example',
+  /** TODO: operating entity (not JIC Global) and its ABN */
+  legalEntity: 'TODO: operating entity name',
+  abn: 'TODO: ABN',
+
+  /** Clinician */
+  doctor: {
+    name: 'Dr Sam Thomas',
+    shortName: 'Dr Sam',
+    title: 'Specialist GP (FRACGP)',
+    /** Wording rule: 'special interest in adult ADHD', never 'ADHD specialist'. */
+    focus: 'Special interest in adult ADHD',
+    ahpra: 'MED0002290862',
+    /** Third-person short bio for DoctorCard, schema and directory listings. */
+    bioShort:
+      'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video.',
+    photos: {
+      headshot: '/images/dr-sam-headshot.png',
+      desk: '/images/dr-sam-desk.png',
+      consult: '/images/dr-sam-consult.png',
+    },
+  },
+
+  /** Physical clinic: the only one. Never imply a clinic anywhere else. */
+  clinic: {
+    name: 'Cannonvale Medical Centre',
+    street: 'Unit 7/230 Shute Harbour Road',
+    suburb: 'Cannonvale',
+    state: 'QLD',
+    postcode: '4802',
+    region: 'Whitsundays',
+  },
+
+  /** Contact */
+  contact: {
+    phone: 'TODO: phone number',
+    /** Public email for enquiries (not Sam's personal address). */
+    email: 'TODO: public email',
+    /** Business hours within which a human replies to messages. */
+    humanReplyWithin: 'TODO: e.g. 1 business day',
+    complaintsReplyWithin: 'TODO: e.g. 5 business days',
+  },
+
+  /** Booking */
+  booking: {
+    provider: 'TODO' as BookingProvider,
+    url: 'TODO: booking URL',
+    /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
+    minLeadDays: 10,
+  },
+
+  /** Prices in AUD. Keep as numbers; format in the UI. */
+  prices: {
+    /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. */
+    assessmentTotal: 'TODO: e.g. 695',
+    /** Each review appointment while treatment is adjusted. */
+    review: 'TODO',
+    /** Optional bundle: diagnosis + 3 months of reviews. */
+    bundle: 'TODO',
+    /** Ongoing review once stable (every 3-6 months). */
+    ongoingReview: 'TODO',
+    /** In-person at Cannonvale: typical out-of-pocket after the Medicare rebate. */
+    inPersonGap: 'TODO',
+    reviewLengthMinutes: 'TODO: e.g. 20',
+    gstNote: 'TODO: confirm GST treatment with accountant',
+    currency: 'AUD',
+  },
+
+  /** Policies: wording shown to patients. */
+  policies: {
+    refundIfUnsuitable: 'TODO: refund rule if Dr Sam finds the service unsuitable after reviewing the intake',
+    cancellation: 'TODO: cancellation and no-show rules',
+    notDiagnosed: 'TODO: what the patient receives, and the fee, if ADHD is not diagnosed',
+  },
+
+  /** Appointment lengths (minutes). */
+  appointments: {
+    assessment: 60,
+    diagnosis: { min: 30, max: 45 },
+    reviewIntervalWeeks: { min: 2, max: 4 },
+    stableIntervalMonths: { min: 3, max: 6 },
+  },
+
+  /** Crisis numbers: shown in every footer and on the checker safety screen. */
+  crisis: {
+    emergency: { label: 'In an emergency call 000', number: '000', tel: 'tel:000' },
+    lines: [
+      { label: 'Lifeline', number: '13 11 14', tel: 'tel:131114' },
+      { label: '1300 MH CALL', number: '1300 642 255', tel: 'tel:1300642255' },
+      { label: 'Suicide Call Back Service', number: '1300 659 467', tel: 'tel:1300659467' },
+      { label: '13YARN (Aboriginal and Torres Strait Islander people)', number: '13 92 76', tel: 'tel:139276' },
+    ],
+  },
+
+  /** External links */
+  links: {
+    qldGovAdhd: 'https://www.qld.gov.au/health/conditions/all/adhd',
+    oaic: 'https://www.oaic.gov.au',
+    oho: 'https://www.oho.qld.gov.au',
+    ahpra: 'https://www.ahpra.gov.au',
+  },
+
+  /** Social: leave empty until accounts exist. */
+  social: {
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+  },
+
+  /** Analytics: Plausible or Cloudflare Web Analytics only. Empty = none loaded. */
+  analytics: {
+    provider: '' as '' | 'plausible' | 'cloudflare',
+    token: '',
+  },
+
+  /** Site-wide primary call to action. */
+  cta: {
+    label: 'Check if this is for you (60 sec)',
+    href: '/check',
+  },
+
+  /** Service limits, used in copy and in the eligibility checker. */
+  eligibility: {
+    minAge: 18,
+    state: 'Queensland',
+  },
+} as const;
+
+export type SiteConfig = typeof site;
+
+/** True when a config value is still a placeholder. Used by tests and the compliance check. */
+export function isTodo(value: unknown): boolean {
+  return typeof value === 'string' && value.trim().toUpperCase().startsWith('TODO');
+}
+
+/** Walks the config and returns every placeholder path, e.g. "contact.phone". */
+export function listTodos(obj: unknown = site, prefix = ''): string[] {
+  if (isTodo(obj)) return [prefix];
+  if (obj && typeof obj === 'object') {
+    return Object.entries(obj as Record<string, unknown>).flatMap(([key, value]) =>
+      listTodos(value, prefix ? `${prefix}.${key}` : key),
+    );
+  }
+  return [];
+}

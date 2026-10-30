@@ -1,0 +1,20 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# test output
+test-results/
+playwright-report/
+docs/screenshots/*.png
+
+# OS / editor
+.DS_Store
+*.log

@@ -1,0 +1,23 @@
+---
+/**
+ * Placeholder homepage. Prompt 3 builds the real one from src/content/home.md.
+ */
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+---
+
+<Base title={site.name} description={site.tagline}>
+  <h1 class="text-3xl font-bold">{site.tagline}</h1>
+  <p class="mt-4">
+    One doctor who has ADHD himself, from your first appointment to ongoing care. The full cost is shown upfront.
+  </p>
+  <p class="mt-6">
+    <a
+      href={site.cta.href}
+      class="inline-block rounded-lg bg-slate-900 px-5 py-3 font-semibold text-white"
+    >
+      {site.cta.label}
+    </a>
+  </p>
+  <p class="mt-8 text-sm text-slate-600">Site under construction.</p>
+</Base>

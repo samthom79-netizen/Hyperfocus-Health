@@ -1,0 +1,67 @@
+---
+/**
+ * Minimal page shell. Prompt 2 replaces this with the full design system
+ * (header, nav, Focus mode, footer components). It exists now so every page
+ * already carries the required footer and metadata.
+ */
+import '../styles/global.css';
+import { site } from '../config/site';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <meta name="color-scheme" content="light" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-slate-900">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:p-3 focus:underline"
+    >
+      Skip to content
+    </a>
+
+    <header class="border-b border-slate-200 px-4 py-3">
+      <a href="/" class="inline-flex items-center gap-3">
+        <img src="/images/logo.png" alt={`${site.name} logo`} width="48" height="48" />
+        <span class="font-semibold">{site.name}</span>
+      </a>
+    </header>
+
+    <main id="main" class="flex-1 px-4 py-8">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 px-4 py-6 text-sm leading-relaxed">
+      <p class="font-semibold">{site.crisis.emergency.label}</p>
+      <ul class="mt-1 space-y-1">
+        {site.crisis.lines.slice(0, 2).map((line) => (
+          <li>
+            {line.label}: <a class="underline" href={line.tel}>{line.number}</a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4">{site.eligibility.state} adults {site.eligibility.minAge}+ only.</p>
+      <p>
+        {site.doctor.name}, {site.doctor.title}. AHPRA registration {site.doctor.ahpra}.
+      </p>
+      <p>
+        {site.clinic.name}, {site.clinic.street}, {site.clinic.suburb} {site.clinic.state} {site.clinic.postcode}.
+      </p>
+      <p class="mt-2 text-slate-600">ABN {site.abn}</p>
+    </footer>
+  </body>
+</html>
