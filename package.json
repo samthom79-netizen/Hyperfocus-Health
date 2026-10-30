@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "contrast": "node scripts/check-contrast.ts",
     "shots": "node scripts/screenshots.mjs",
-    "kb": "UPDATE_KB=1 vitest run tests/unit/knowledge-base.test.ts"
+    "kb": "UPDATE_KB=1 vitest run tests/unit/knowledge-base.test.ts",
+    "og": "node scripts/make-og-images.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",

@@ -1,0 +1,53 @@
+---
+/** /adhd-assessment: hub for the Queensland location pages. */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Container from '../../components/Container.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import CtaLabel from '../../components/CtaLabel.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../config/site';
+
+const places = (await getCollection('locations')).sort((a, b) => a.data.order - b.data.order);
+const trail = [{ name: 'Areas we cover', href: '/adhd-assessment' }];
+---
+
+<Base
+  title="Adult ADHD assessment across Queensland"
+  description="Adult ADHD assessment by video for anyone living in Queensland, from Cairns to the Gold Coast. Our only physical clinic is in Cannonvale."
+  crumbs={trail}
+>
+  <Container class="py-8 sm:py-12">
+    <div class="max-w-3xl">
+      <Breadcrumbs trail={trail} />
+      <h1 class="mt-2">Areas we cover</h1>
+      <p class="mt-4">
+        Appointments are by video, so you can see Dr Sam from anywhere in Queensland. Our only physical clinic is in {site.clinic.suburb},
+        in the Whitsundays.
+      </p>
+      <p class="mt-3">You need to live in Queensland and be in Queensland for each appointment.</p>
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        {
+          places.map((p) => (
+            <li>
+              <a
+                href={`/adhd-assessment/${p.id}`}
+                class="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-3 font-bold no-underline hover:border-primary"
+              >
+                <span class="flex items-center gap-2">
+                  <Icon name="map-pin" size={20} class="text-accent-ink" /> {p.data.city}
+                </span>
+                <Icon name="arrow-right" size={20} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-ink-muted">Not listed? It doesn't matter: anywhere in Queensland is covered.</p>
+      <p class="mt-10">
+        <Button href={site.cta.href} arrow data-cta="areas"><CtaLabel /></Button>
+      </p>
+    </div>
+  </Container>
+</Base>

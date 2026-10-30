@@ -70,8 +70,8 @@ test.describe('/about', () => {
 
   test('structured data: IndividualPhysician linked to the clinic', async ({ page }) => {
     await page.goto('/about');
-    const raw = await page.locator('head script[type="application/ld+json"]').textContent();
-    const data = JSON.parse(raw!);
+    const all = (await page.locator('head script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b));
+    const data = all.find((d) => d['@type'] === 'IndividualPhysician');
     expect(data['@context']).toBe('https://schema.org');
     expect(data['@type']).toBe('IndividualPhysician');
     expect(data.name).toBe('Dr Sam Thomas');

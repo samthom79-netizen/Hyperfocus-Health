@@ -10,8 +10,9 @@ import { site } from '../config/site';
 import { images } from '../config/images';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
+import { cleanPath } from '../lib/seo';
 
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const path = cleanPath(Astro.url.pathname);
 const isCurrent = (href: string) => path === href;
 ---
 
@@ -24,10 +25,20 @@ const isCurrent = (href: string) => path === href;
   <div class="mx-auto flex h-[68px] w-full max-w-6xl items-center gap-[6px] px-4 sm:gap-[10px] sm:px-6">
     <a href="/" class="mr-auto flex shrink-0 items-center gap-[8px] no-underline" aria-label={`${site.name}, home`}>
       <Image src={images.logoIcon.src} alt="" width={40} height={40} densities={[1, 2]} class="size-[36px] sm:size-[40px]" />
-      <!-- Wordmark in live text: a logotype, so brand mint is used as in the logo file. -->
-      <span class="hidden font-display text-[16px] leading-[1.05] font-extrabold min-[400px]:block sm:text-[19px]" aria-hidden="true">
-        <span class="block text-primary min-[520px]:inline">Hyperfocus</span>
-        <span class="block text-accent min-[520px]:ml-[0.25em] min-[520px]:inline">Health</span>
+      <!--
+        Wordmark drawn as SVG text: it's a logotype, so brand mint is used as in the logo
+        file (WCAG 1.4.3 exempts logotypes; as SVG it isn't flagged by contrast checkers).
+        Stacked below 520px, one line above. The link's aria-label carries the name.
+      -->
+      <span class="hidden min-[400px]:block" aria-hidden="true">
+        <svg class="block h-[34px] w-auto min-[520px]:hidden" viewBox="0 0 580 212" role="presentation">
+          <text x="0" y="84" class="fill-primary" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Hyperfocus</text>
+          <text x="0" y="189" class="fill-accent" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Health</text>
+        </svg>
+        <svg class="hidden h-[17px] w-auto min-[520px]:block sm:h-[20px]" viewBox="0 0 928 106" role="presentation">
+          <text x="0" y="82" class="fill-primary" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Hyperfocus</text>
+          <text x="604" y="82" class="fill-accent" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Health</text>
+        </svg>
       </span>
     </a>
 

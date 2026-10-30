@@ -2,7 +2,7 @@
 # /how-it-works. The 8 steps must match the pathway in CLAUDE.md exactly.
 # Rules: no medicine names, no wait-time promises.
 
-title: "How it works"
+title: "How an adult ADHD assessment works"
 description: "The eight steps of an adult ADHD assessment with Hyperfocus Health, from a 60-second check to ongoing care. What you do, and what Dr Sam does."
 heading: "How it works"
 readingTime: "3 min read"

@@ -2,7 +2,7 @@
 # Meet Dr Sam (/about). Edit the words in quotes; keep the structure.
 # Rules: no medicine names, no superlatives, never "ADHD specialist", no promised outcomes.
 
-title: "Dr Sam Thomas"
+title: "Dr Sam Thomas, specialist GP"
 description: "Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. Video appointments across Queensland."
 heading: "Dr Sam Thomas"
 sub:

@@ -1,5 +1,5 @@
 ---
-title: "Contact"
+title: "Contact us"
 description: "Contact Hyperfocus Health by phone or email. Our phone is answered by an AI assistant that can answer questions about the service, costs and booking."
 heading: "Contact us"
 readingTime: "1 min read"

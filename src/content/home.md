@@ -3,7 +3,7 @@
 # {prices.assessmentTotal} and similar pull values from src/config/site.ts.
 # Rules: no medicine names, no superlatives, no wait times, no testimonials.
 
-title: "Hyperfocus Health"
+title: "Adult ADHD assessment in Queensland"
 description: "Adult ADHD assessment by video for Queenslanders 18+. One specialist GP who has ADHD himself, from first appointment to ongoing care."
 
 hero:

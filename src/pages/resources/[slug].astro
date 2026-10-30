@@ -1,0 +1,85 @@
+---
+/**
+ * /resources/<slug>: articles. Words and references: src/content/resources/<slug>.md.
+ * Rules: CLAUDE.md advertising rules; references are government or peer-reviewed only;
+ * 'Reviewed by' shows a TODO until Dr Sam has read and approved the article.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Container from '../../components/Container.astro';
+import ShortVersion from '../../components/ShortVersion.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import CtaLabel from '../../components/CtaLabel.astro';
+import Val from '../../components/Val.astro';
+import { site } from '../../config/site';
+import { articleHtml, isReviewDate } from '../../lib/articles';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('resources');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const html = articleHtml(entry.rendered?.html ?? '', d.references.length);
+const trail = [
+  { name: 'Resources', href: '/resources' },
+  { name: d.heading, href: `/resources/${entry.id}` },
+];
+const base = Astro.site ?? new URL(site.url);
+const reviewed = isReviewDate(d.reviewed);
+const reviewedText = reviewed
+  ? new Date(`${d.reviewed}T00:00:00`).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })
+  : d.reviewed;
+
+// MedicalWebPage: who reviewed it and when. Only once Sam has actually reviewed it.
+const pageSchema = reviewed
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'MedicalWebPage',
+      name: d.heading,
+      description: d.description,
+      url: new URL(`/resources/${entry.id}`, base).href,
+      inLanguage: 'en-AU',
+      lastReviewed: d.reviewed,
+      reviewedBy: { '@type': 'IndividualPhysician', '@id': `${new URL('/about', base).href}#physician`, name: site.doctor.name },
+      citation: d.references.map((r) => r.url),
+    }
+  : null;
+---
+
+<Base title={d.title} description={d.description} crumbs={trail} ogType="article">
+  {pageSchema && <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} slot="head" />}
+  <Container class="py-8 sm:py-12">
+    <article class="max-w-3xl">
+      <Breadcrumbs trail={trail} />
+      <h1 class="mt-2">{d.heading}</h1>
+      <p class="mt-4 text-ink-muted" data-reviewed>
+        Reviewed by <a href="/about" class="font-bold">{site.doctor.name}</a>, specialist GP.
+        Review date: {reviewed ? reviewedText : <Val value={d.reviewed} />}
+      </p>
+      <ShortVersion bullets={d.shortVersion} readingTime={d.readingTime} class="mt-6" />
+
+      <div class="prose-hf mt-8" set:html={html} />
+
+      <section aria-labelledby="refs-heading" class="mt-12 border-t border-line pt-8">
+        <h2 id="refs-heading" class="text-[1.3rem]">References</h2>
+        <ol class="mt-4 list-decimal space-y-3 pl-6" data-references>
+          {
+            d.references.map((r, i) => (
+              <li id={`ref-${i + 1}`} class="marker:font-bold marker:text-accent-ink">
+                {r.publisher}. <a href={r.url} rel="noopener">{r.title}</a>. Accessed {r.accessed}.
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <p class="mt-8 text-ink-muted">General information only, not medical advice. In an emergency call 000.</p>
+      <p class="mt-8">
+        <Button href={site.cta.href} arrow data-cta={`resource-${entry.id}`}><CtaLabel /></Button>
+      </p>
+    </article>
+  </Container>
+</Base>

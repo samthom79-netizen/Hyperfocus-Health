@@ -138,6 +138,7 @@ export default function Checker() {
         </p>
         <div
           role="progressbar"
+          aria-label="Progress"
           aria-valuemin={1}
           aria-valuemax={TOTAL_QUESTIONS}
           aria-valuenow={number}

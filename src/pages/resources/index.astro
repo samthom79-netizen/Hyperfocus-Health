@@ -1,0 +1,41 @@
+---
+/** /resources: list of articles. */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Container from '../../components/Container.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import TimeBadge from '../../components/TimeBadge.astro';
+import Icon from '../../components/Icon.astro';
+
+const articles = (await getCollection('resources')).sort((a, b) => a.data.order - b.data.order);
+const trail = [{ name: 'Resources', href: '/resources' }];
+---
+
+<Base
+  title="Adult ADHD resources"
+  description="Plain-English articles on adult ADHD in Queensland: GP diagnosis, the assessment, sleep, work and Medicare. Every article lists its sources."
+  crumbs={trail}
+>
+  <Container class="py-8 sm:py-12">
+    <div class="max-w-3xl">
+      <Breadcrumbs trail={trail} />
+      <h1 class="mt-2">Resources</h1>
+      <p class="mt-4">Short, plain-English articles. Each one lists its sources, all from government or peer-reviewed research.</p>
+      <ul class="mt-8 space-y-4">
+        {
+          articles.map((a) => (
+            <li class="rounded-card border border-line bg-surface p-5">
+              <h2 class="text-[1.2rem]">
+                <a href={`/resources/${a.id}`} class="inline-flex min-h-11 items-center gap-2">
+                  {a.data.heading} <Icon name="arrow-right" size={20} />
+                </a>
+              </h2>
+              <p class="mt-1">{a.data.description}</p>
+              <TimeBadge label={a.data.readingTime} class="mt-3" />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</Base>

@@ -2,7 +2,7 @@
 # /pricing. Prices come from src/config/site.ts via {tokens}.
 # Rule: one clear total to diagnosis, every other likely cost on the same page.
 
-title: "Prices"
+title: "Adult ADHD assessment prices"
 description: "What an adult ADHD assessment with Hyperfocus Health costs, including reviews and a typical first 3 months. No hidden fees."
 heading: "What it costs"
 readingTime: "2 min read"

@@ -1,0 +1,28 @@
+---
+/** Visible breadcrumb trail for nested pages. The JSON-LD version lives in Base. */
+import type { Crumb } from '../lib/schema';
+
+interface Props {
+  trail: Crumb[];
+  class?: string;
+}
+const { trail, class: className = '' } = Astro.props;
+const all = [{ name: 'Home', href: '/' }, ...trail];
+---
+
+<nav aria-label="Breadcrumb" class={`text-[0.95rem] ${className}`}>
+  <ol class="flex flex-wrap items-center gap-x-2">
+    {
+      all.map((c, i) =>
+        i < all.length - 1 ? (
+          <li class="flex items-center gap-2">
+            <a href={c.href} class="inline-flex min-h-11 items-center">{c.name}</a>
+            <span aria-hidden="true" class="text-ink-muted">›</span>
+          </li>
+        ) : (
+          <li aria-current="page" class="text-ink-muted">{c.name}</li>
+        ),
+      )
+    }
+  </ol>
+</nav>

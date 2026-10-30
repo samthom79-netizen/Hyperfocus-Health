@@ -1,0 +1,30 @@
+---
+/**
+ * How to book in person at Cannonvale (HotDoc or phone). Used on /book and
+ * on location pages that offer the in-person option.
+ */
+import { site } from '../config/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  class?: string;
+}
+const { class: className = 'mt-4' } = Astro.props;
+const { clinic } = site;
+---
+
+<div class={`rounded-xl bg-accent-soft p-4 ${className}`} data-in-person>
+  <p class="font-bold text-primary">To book, {site.booking.inPerson.sayWhenBooking}:</p>
+  <ul class="mt-2 space-y-1">
+    <li>
+      <a href={site.booking.inPerson.hotdocUrl} rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+        Book online with HotDoc <Icon name="arrow-right" size={20} />
+      </a>
+    </li>
+    <li>
+      <a href={clinic.tel} class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+        <Icon name="phone" size={20} /> Call {clinic.name}: {clinic.phone}
+      </a>
+    </li>
+  </ul>
+</div>

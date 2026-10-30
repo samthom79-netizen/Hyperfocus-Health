@@ -1,0 +1,104 @@
+---
+/**
+ * /adhd-assessment/<city>: Queensland location pages. Words: src/content/locations/<city>.md.
+ * Rule (CLAUDE.md 8): never imply a clinic in the city. The first line says so on every page.
+ */
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Container from '../../components/Container.astro';
+import ShortVersion from '../../components/ShortVersion.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import InPersonBooking from '../../components/InPersonBooking.astro';
+import Button from '../../components/Button.astro';
+import CtaLabel from '../../components/CtaLabel.astro';
+import Icon from '../../components/Icon.astro';
+import { site } from '../../config/site';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('locations');
+  return entries.map((entry) => ({ params: { city: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+const where = d.cityIn ?? `in ${d.city}`;
+const trail = [
+  { name: 'Areas we cover', href: '/adhd-assessment' },
+  { name: d.city, href: `/adhd-assessment/${entry.id}` },
+];
+---
+
+<Base title={d.title} description={d.description} crumbs={trail}>
+  <Container class="py-8 sm:py-12">
+    <div class="max-w-3xl">
+      <Breadcrumbs trail={trail} />
+      <h1 class="mt-2">ADHD assessment for adults {where}</h1>
+      <p class="mt-4 text-[1.1rem] font-bold text-primary" data-first-line>
+        Video appointments for adults {where}. Our only physical clinic is in {site.clinic.suburb}.
+      </p>
+      <ShortVersion bullets={d.shortVersion} readingTime="2 min read" class="mt-6" />
+      <p class="mt-6" data-nearby>
+        <span class="font-bold text-primary">Areas:</span>{' '}
+        {d.nearby.join(', ')} and anywhere else in Queensland. You need to live in Queensland and be in Queensland for each appointment.
+      </p>
+
+      <div class="prose-hf mt-8"><Content /></div>
+
+      <section aria-labelledby="same-heading" class="mt-10" data-same-everywhere>
+        <h2 id="same-heading">The same wherever you live</h2>
+        <ul class="mt-4 space-y-3">
+          <li class="flex gap-2.5">
+            <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+            <span>
+              <b class="text-primary">Baseline checks:</b> blood pressure, pulse and weight before appointment 1, usually by your own GP or a
+              pharmacy. Blood tests or an ECG only if your history needs them.
+            </span>
+          </li>
+          <li class="flex gap-2.5">
+            <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+            <span>
+              <b class="text-primary">Ongoing care:</b> once things are stable, keep seeing Dr Sam every 3-6 months, or move to a GP of your
+              choice who agrees in writing. The <a href="https://www.healthdirect.gov.au/australian-health-services" rel="noopener">healthdirect service finder</a> lists GPs near you.
+            </span>
+          </li>
+          {
+            !d.inPerson && (
+              <li class="flex gap-2.5">
+                <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+                <span>
+                  <b class="text-primary">Face to face:</b> our only physical clinic is in {site.clinic.suburb}. For an in-person assessment closer to
+                  home, start with your own GP or see <a href="/other-options">other options</a>.
+                </span>
+              </li>
+            )
+          }
+        </ul>
+      </section>
+
+      {
+        d.inPerson && (
+          <section aria-labelledby="in-person-heading" class="mt-10 rounded-card border border-line bg-surface p-5 sm:p-6">
+            <h2 id="in-person-heading" class="text-[1.3rem]">
+              Booking in person at {site.clinic.suburb}
+            </h2>
+            <p class="mt-3">
+              {site.clinic.name}, {site.clinic.street}, {site.clinic.suburb} {site.clinic.state} {site.clinic.postcode}.{' '}
+              {site.booking.inPerson.feeNote}
+            </p>
+            <InPersonBooking />
+          </section>
+        )
+      }
+
+      <p class="mt-10">
+        <Button href={site.cta.href} arrow data-cta={`location-${entry.id}`}><CtaLabel /></Button>
+      </p>
+      <p class="mt-4">
+        <a href="/pricing" class="inline-flex min-h-11 items-center font-bold">See every cost</a>
+        <span aria-hidden="true" class="mx-2 text-ink-muted">·</span>
+        <a href="/how-it-works" class="inline-flex min-h-11 items-center font-bold">How it works</a>
+      </p>
+    </div>
+  </Container>
+</Base>

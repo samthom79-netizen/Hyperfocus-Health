@@ -47,6 +47,9 @@ const linkClass = 'inline-flex min-h-11 items-center text-white underline decora
           {site.nav.map((item) => (
             <li><a class={linkClass} href={item.href}>{item.label}</a></li>
           ))}
+          {site.footerExplore.map((item) => (
+            <li><a class={linkClass} href={item.href}>{item.label}</a></li>
+          ))}
           <li><a class={linkClass} href={site.contact.page.href}>{site.contact.page.label}</a></li>
         </ul>
       </nav>

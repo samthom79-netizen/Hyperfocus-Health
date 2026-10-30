@@ -87,6 +87,12 @@ export const site = {
     tel: 'tel:0749480041',
   },
 
+  /** Extra footer links (Explore column), after the main menu. */
+  footerExplore: [
+    { label: 'Areas we cover', href: '/adhd-assessment' },
+    { label: 'Resources', href: '/resources' },
+  ],
+
   /** Contact */
   contact: {
     page: { label: 'Contact', href: '/contact' },

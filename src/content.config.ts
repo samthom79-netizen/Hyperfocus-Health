@@ -11,7 +11,7 @@ import { z } from 'astro/zod';
 /** Simple pages: frontmatter + Markdown body (e.g. other-options.md). */
 const pages = defineCollection({
   loader: glob({
-    pattern: ['**/*.{md,mdx}', '!home.md', '!about.md', '!pricing.md', '!how-it-works.md', '!faq.md', '!README.md'],
+    pattern: ['*.{md,mdx}', '!home.md', '!about.md', '!pricing.md', '!how-it-works.md', '!faq.md', '!README.md'],
     base: './src/content',
   }),
   schema: z.object({
@@ -154,4 +154,45 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { pages, home, about, pricing, howItWorks, faq };
+/** Titles must fit Google's ~60 characters including ' | Hyperfocus Health' (Base drops the suffix if needed). */
+const seoTitle = z.string().max(60, 'Titles must be 60 characters or fewer');
+const seoDescription = z.string().max(155, 'Meta descriptions must be 155 characters or fewer');
+const threeBullets = z.array(z.string()).length(3);
+
+/** /resources/<slug>: articles. Body is Markdown; cite as [1], [2] matching `references`. */
+const resources = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/resources' }),
+  schema: z.object({
+    title: seoTitle,
+    description: seoDescription,
+    heading: z.string(),
+    readingTime: z.string(),
+    order: z.number().int(),
+    shortVersion: threeBullets,
+    /** Review date (YYYY-MM-DD) once Dr Sam has read and approved it; a TODO until then. */
+    reviewed: z.string(),
+    references: z
+      .array(z.object({ title: z.string(), publisher: z.string(), url: z.string().url(), accessed: z.string() }))
+      .min(1),
+  }),
+});
+
+/** /adhd-assessment/<slug>: Queensland location pages. Body is Markdown. */
+const locations = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/locations' }),
+  schema: z.object({
+    city: z.string(),
+    /** Place with its preposition, e.g. 'on the Gold Coast'. Defaults to 'in <city>'. */
+    cityIn: z.string().optional(),
+    title: seoTitle,
+    description: seoDescription,
+    order: z.number().int(),
+    shortVersion: threeBullets,
+    /** Nearby towns and suburbs, for the 'Areas' line. Real places only. */
+    nearby: z.array(z.string()).min(3),
+    /** Show the in-person Cannonvale option box (Mackay, Whitsundays). */
+    inPerson: z.boolean().default(false),
+  }),
+});
+
+export const collections = { pages, home, about, pricing, howItWorks, faq, resources, locations };

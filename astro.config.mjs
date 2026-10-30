@@ -11,13 +11,17 @@ import { site } from './src/config/site.ts';
 // React is used only for interactive islands (eligibility checker).
 export default defineConfig({
   // TODO: replace with the real domain once registered (needed for sitemap + canonical URLs)
-  site: 'https://hyperfocushealth.example',
+  site: site.url,
   output: 'static',
+  // One URL per page: /pricing, never /pricing/ (canonical tags and sitemap match).
+  trailingSlash: 'never',
+  // pricing.html rather than pricing/index.html: Cloudflare Pages then serves /pricing with no redirect to /pricing/.
+  build: { format: 'file' },
   integrations: [
     react(),
     mdx(),
     // Internal pages (e.g. /styleguide) stay out of the sitemap.
-    sitemap({ filter: (page) => !/\/(styleguide|booking-confirmed)\b/.test(page) }),
+    sitemap({ filter: (page) => !/\/(styleguide|booking-confirmed|demo)\b/.test(page) }),
     // While site.launched is false, every response carries X-Robots-Tag: noindex.
     prelaunchHeaders({ launched: site.launched }),
   ],

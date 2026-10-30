@@ -95,7 +95,8 @@ test.describe('/faq', () => {
 
   test('FAQPage structured data matches the questions on the page', async ({ page }) => {
     await page.goto('/faq');
-    const data = JSON.parse((await page.locator('head script[type="application/ld+json"]').textContent())!);
+    const all = (await page.locator('head script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b));
+    const data = all.find((d) => d['@type'] === 'FAQPage');
     expect(data['@type']).toBe('FAQPage');
     expect(data.mainEntity).toHaveLength(12);
     const onPage = await page.locator('main details summary').allInnerTexts();

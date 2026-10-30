@@ -2,7 +2,7 @@
 # /faq. Answers are short. [label](url) makes a link; {tokens} pull site values.
 # Rules: no medicine names or classes, no promised outcomes, no wait times.
 
-title: "Questions"
+title: "Adult ADHD assessment: common questions"
 description: "Answers to common questions about adult ADHD assessment with Hyperfocus Health: referrals, cost, Medicare, the assessment, privacy and support."
 heading: "Common questions"
 readingTime: "4 min read"
