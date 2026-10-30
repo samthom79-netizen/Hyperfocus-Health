@@ -22,14 +22,27 @@ function lookup(path: string): unknown {
   }, site);
 }
 
+const TOKEN = /\{([a-zA-Z][\w.]*)\}/g;
+
+function tokenHtml(path: string): string {
+  const value = lookup(path);
+  if (typeof value !== 'string' && typeof value !== 'number') {
+    throw new Error(`Token {${path}} is not a single value.`);
+  }
+  if (isTodo(value)) return `<span class="todo">[${escape(String(value))}]</span>`;
+  const shown = path.startsWith('prices.') ? formatPrice(value) : String(value);
+  return escape(shown);
+}
+
+/** Plain text in, safe HTML out, with {tokens} filled. */
 export function renderTokens(text: string): string {
-  return escape(text).replace(/\{([a-zA-Z][\w.]*)\}/g, (_match, path: string) => {
-    const value = lookup(path);
-    if (typeof value !== 'string' && typeof value !== 'number') {
-      throw new Error(`Token {${path}} is not a single value.`);
-    }
-    if (isTodo(value)) return `<span class="todo">[${escape(String(value))}]</span>`;
-    const shown = path.startsWith('prices.') ? formatPrice(value) : String(value);
-    return escape(shown);
-  });
+  return escape(text).replace(TOKEN, (_m, path: string) => tokenHtml(path));
+}
+
+/**
+ * Fills {tokens} inside HTML that Markdown has already rendered (our own
+ * trusted copy). Only the token is replaced; the rest of the HTML is untouched.
+ */
+export function fillTokensInHtml(html: string): string {
+  return html.replace(TOKEN, (_m, path: string) => tokenHtml(path));
 }

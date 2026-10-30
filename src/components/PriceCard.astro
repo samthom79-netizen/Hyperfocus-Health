@@ -3,10 +3,12 @@
  * One price, clearly labelled, with what it includes.
  * Prices come from src/config/site.ts; a TODO price shows as a [TODO] box.
  * Rule: no hidden fees, so anything extra goes in `note` on the same card.
+ * `note` may use {tokens} for site values.
  */
 import Icon from './Icon.astro';
 import Button from './Button.astro';
 import { formatPrice, isTodo } from '../config/site';
+import { renderTokens } from '../lib/tokens';
 
 interface Props {
   title: string;
@@ -56,7 +58,7 @@ const shown = formatPrice(price);
       ))
     }
   </ul>
-  {note && <p class="mt-4 text-[0.92rem] text-ink-muted">{note}</p>}
+  {note && <p class="mt-4 text-[0.92rem] text-ink-muted" set:html={renderTokens(note)} />}
   {
     cta && (
       <div class="mt-5 pt-1">

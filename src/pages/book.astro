@@ -1,0 +1,57 @@
+---
+/**
+ * /book: the two ways to see Dr Sam, then the booking step.
+ * Words: src/content/book.md. Prices and booking settings: src/config/site.ts.
+ */
+import MarkdownPage from '../layouts/MarkdownPage.astro';
+import PriceCard from '../components/PriceCard.astro';
+import BookingPanel from '../components/BookingPanel.astro';
+import Callout from '../components/Callout.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config/site';
+
+const { clinic } = site;
+---
+
+<MarkdownPage slug="book">
+  <div slot="before">
+    <p class="mt-6">
+      Haven't done the 60-second check?
+      <a href={site.cta.href} class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+        Do that first <Icon name="arrow-right" size={20} />
+      </a>
+    </p>
+
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      <PriceCard
+        title="Telehealth assessment"
+        price={site.prices.assessmentTotal}
+        priceLabel="total to reach a diagnosis"
+        includes={[
+          'Video, anywhere in Queensland',
+          'Online intake on your phone',
+          `Video appointment 1 (about ${site.appointments.assessment} min)`,
+          `Video appointment 2 (${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
+          'Your written plan',
+        ]}
+        note="No Medicare rebate for video appointments."
+        featured
+      />
+      <PriceCard
+        title={`In person at ${clinic.suburb}`}
+        price={site.prices.inPersonGap}
+        priceLabel="about, out of pocket after the Medicare rebate"
+        includes={['Medicare rebate available', `${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}`]}
+        note="To book in person: {booking.inPerson}"
+      />
+    </div>
+
+    <Callout class="mt-6" title={`Your first video appointment will be at least ${site.booking.minLeadDays} days away`}>
+      <p>That gives you time to finish the intake and baseline checks.</p>
+    </Callout>
+
+    <div class="mt-6">
+      <BookingPanel />
+    </div>
+  </div>
+</MarkdownPage>

@@ -1,0 +1,35 @@
+---
+/**
+ * Layout for simple pages written in Markdown (src/content/<slug>.md, the
+ * 'pages' collection): heading, optional Short version box, body.
+ * {tokens} in the body are filled from src/config/site.ts.
+ * Slots: 'before' (above the body) and default (below it).
+ */
+import { getEntry } from 'astro:content';
+import Base from './Base.astro';
+import Container from '../components/Container.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import { fillTokensInHtml } from '../lib/tokens';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const entry = await getEntry('pages', slug);
+if (!entry) throw new Error(`src/content/${slug}.md is missing`);
+const { title, description, heading, readingTime, shortVersion, noindex } = entry.data;
+const html = fillTokensInHtml(entry.rendered?.html ?? '');
+---
+
+<Base title={title} description={description} noindex={noindex}>
+  <Container class="py-10 sm:py-14">
+    <div class="max-w-3xl">
+      <h1>{heading ?? title}</h1>
+      {shortVersion && <ShortVersion bullets={shortVersion} readingTime={readingTime} class="mt-6" />}
+      <slot name="before" />
+      <div class="prose-hf mt-8" set:html={html} />
+      <slot />
+    </div>
+  </Container>
+</Base>

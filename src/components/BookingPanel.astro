@@ -1,0 +1,89 @@
+---
+/**
+ * The booking step. Booking and payment always happen on the provider's own
+ * page: this site never collects names, dates of birth, Medicare numbers or
+ * health details.
+ *
+ * - Provider allows embedding (bookingProviders[x].embed === true): a
+ *   'Choose a time' button. Only when clicked does the provider's page load
+ *   inside an iframe (no third-party requests before that). A fallback
+ *   'Open booking in a new tab' link is always there.
+ * - Otherwise: one large button that opens the provider's booking page.
+ * - Provider or URL still TODO: a visible [TODO] box instead of a button.
+ */
+import { bookingProvider, isTodo, site } from '../config/site';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import Val from './Val.astro';
+
+interface Props {
+  /** Style guide only: preview a provider set-up without changing site.ts. */
+  demo?: { name: string; url: string; embed: boolean };
+}
+
+const { demo } = Astro.props;
+const provider = demo ?? bookingProvider();
+const url = demo?.url ?? site.booking.url;
+const ready = demo ? true : !isTodo(site.booking.provider) && !isTodo(url);
+const embed = ready && provider.embed;
+---
+
+<section aria-labelledby={demo ? undefined : "booking-heading"} aria-label={demo ? `Booking panel demo: ${demo.embed ? "embedded" : "link"}` : undefined} class="rounded-card border-2 border-primary bg-surface p-5 sm:p-7" data-booking-panel>
+  <h2 id={demo ? undefined : "booking-heading"} class="text-[1.4rem]">Choose a time and pay</h2>
+  <p class="mt-2">
+    Booking and payment happen on the secure page of our booking provider, <Val value={provider.name} />. This website never sees your
+    details.
+  </p>
+
+  {
+    !ready && (
+      <p class="mt-5" data-booking-todo>
+        <span class="todo">[TODO: set booking.provider and booking.url in src/config/site.ts]</span>
+      </p>
+    )
+  }
+
+  {
+    ready && !embed && (
+      <div class="mt-6">
+        <Button href={url} arrow data-cta="booking-open" rel="noopener">
+          Choose a time
+        </Button>
+      </div>
+    )
+  }
+
+  {
+    embed && (
+      <div class="mt-6" data-embed-root data-url={url} data-title={`Book an appointment with ${site.name} (${provider.name})`}>
+        <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+          <Button data-cta="booking-embed">Choose a time</Button>
+          <a href={url} target="_blank" rel="noopener" class="inline-flex min-h-11 items-center gap-1.5 font-bold" data-booking-fallback>
+            Open booking in a new tab <Icon name="arrow-right" size={20} />
+          </a>
+        </div>
+        <div data-embed-slot class="mt-5" />
+      </div>
+    )
+  }
+</section>
+
+<script>
+  // Load the provider's booking page only after the visitor asks for it.
+  document.querySelectorAll<HTMLElement>('[data-embed-root]').forEach((root) => {
+    const button = root.querySelector<HTMLButtonElement>('[data-cta="booking-embed"]');
+    const slot = root.querySelector<HTMLElement>('[data-embed-slot]');
+    if (!button || !slot) return;
+    button.addEventListener('click', () => {
+      if (slot.querySelector('iframe')) return;
+      const frame = document.createElement('iframe');
+      frame.src = root.dataset.url ?? '';
+      frame.title = root.dataset.title ?? 'Booking';
+      frame.className = 'h-[760px] w-full rounded-xl border border-line bg-surface';
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      slot.appendChild(frame);
+      button.hidden = true;
+      frame.focus();
+    });
+  });
+</script>

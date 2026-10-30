@@ -17,7 +17,7 @@ export default defineConfig({
     react(),
     mdx(),
     // Internal pages (e.g. /styleguide) stay out of the sitemap.
-    sitemap({ filter: (page) => !page.includes('/styleguide') }),
+    sitemap({ filter: (page) => !/\/(styleguide|booking-confirmed)\b/.test(page) }),
     // While site.launched is false, every response carries X-Robots-Tag: noindex.
     prelaunchHeaders({ launched: site.launched }),
   ],

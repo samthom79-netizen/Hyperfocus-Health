@@ -8,6 +8,17 @@
 
 export type BookingProvider = 'VELLUTO_MSGP' | 'HALAXY' | 'TODO';
 
+/**
+ * What each booking platform supports. 'embed' = its booking page may be shown
+ * inside our page (iframe). Both are false until the vendor confirms in
+ * writing that embedding works and is allowed [Requires verification].
+ */
+export const bookingProviders = {
+  VELLUTO_MSGP: { name: 'MySpecialistGP (Velluto)', embed: false },
+  HALAXY: { name: 'Halaxy', embed: false },
+  TODO: { name: 'TODO: booking platform', embed: false },
+} as const satisfies Record<BookingProvider, { name: string; embed: boolean }>;
+
 export const site = {
   /**
    * PRE-LAUNCH SWITCH. While false, every page is hidden from search engines
@@ -61,8 +72,11 @@ export const site = {
 
   /** Booking */
   booking: {
+    /** ONE-LINE SWITCH: 'VELLUTO_MSGP' or 'HALAXY'. Then set url below. */
     provider: 'TODO' as BookingProvider,
     url: 'TODO: booking URL',
+    /** How people book an in-person visit at Cannonvale (link or phone). */
+    inPerson: 'TODO: how to book in person at Cannonvale (clinic phone or online booking link)',
     /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,
   },
@@ -87,7 +101,8 @@ export const site = {
   /** Policies: wording shown to patients. */
   policies: {
     refundIfUnsuitable: 'TODO: refund rule if Dr Sam finds the service unsuitable after reviewing the intake',
-    cancellation: 'TODO: cancellation and no-show rules',
+    cancellation: 'TODO: how much notice is needed to change or cancel, and any fee',
+    noShow: 'TODO: what happens, and any fee, if an appointment is missed without notice',
     notDiagnosed: 'TODO: what the patient receives, and the fee, if ADHD is not diagnosed',
   },
 
@@ -210,4 +225,9 @@ export function listTodos(obj: unknown = site, prefix = ''): string[] {
     );
   }
   return [];
+}
+
+/** The active booking platform's settings. */
+export function bookingProvider() {
+  return bookingProviders[site.booking.provider];
 }
