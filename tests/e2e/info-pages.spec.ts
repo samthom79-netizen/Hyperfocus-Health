@@ -26,7 +26,7 @@ test.describe('/pricing', () => {
     await expect(main).toContainText('There is no GST on these fees.');
     await expect(main).toContainText('You pay $425 when you book appointment 1, and $320 when you book appointment 2.');
     await expect(main).not.toContainText('bundle');
-    await expect(main).toContainText("If Dr Sam finds this service isn't right for you");
+    await expect(main).toContainText(site.policies.refundIfUnsuitable);
     await expect(main.getByRole('link', { name: 'cancellations and refunds' })).toHaveAttribute('href', '/cancellations');
   });
 

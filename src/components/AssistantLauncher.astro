@@ -1,0 +1,53 @@
+---
+/**
+ * Optional 'Talk to the assistant in your browser' button for /contact.
+ * Renders nothing until site.receptionist.webWidget is fully set.
+ * The vendor's script is only requested after the visitor clicks
+ * (CLAUDE.md: third-party scripts load only after a click).
+ */
+import { site } from '../config/site';
+import Button from './Button.astro';
+
+interface Props {
+  /** Overrides for the /styleguide demo only. Real pages use site.ts. */
+  scriptUrl?: string;
+  tag?: string;
+  agentId?: string;
+}
+
+const w = site.receptionist.webWidget;
+const { scriptUrl = w.scriptUrl, tag = w.tag, agentId = w.agentId } = Astro.props;
+const ready = Boolean(scriptUrl && tag && agentId);
+---
+
+{
+  ready && (
+    <div data-assistant-root data-script={scriptUrl} data-tag={tag} data-agent={agentId} class="mt-6">
+      <Button variant="secondary" data-assistant-open>
+        Talk to the assistant in your browser
+      </Button>
+      <p class="mt-2 text-ink-muted">Uses your microphone. Loads only when you tap the button.</p>
+      <div data-assistant-slot />
+    </div>
+  )
+}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-assistant-root]').forEach((root) => {
+    const button = root.querySelector<HTMLElement>('[data-assistant-open]');
+    const slot = root.querySelector<HTMLElement>('[data-assistant-slot]');
+    const { script, tag, agent } = root.dataset;
+    if (!button || !slot || !script || !tag || !agent) return;
+    button.addEventListener('click', () => {
+      if (slot.childElementCount) return;
+      const widget = document.createElement(tag);
+      widget.setAttribute('agent-id', agent);
+      slot.appendChild(widget);
+      const s = document.createElement('script');
+      s.src = script;
+      s.async = true;
+      document.body.appendChild(s);
+      button.hidden = true;
+    });
+  });
+</script>

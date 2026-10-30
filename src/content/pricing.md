@@ -46,6 +46,6 @@ payment:
     - "You pay {prices.payAtBooking} when you book appointment 1, and {prices.payAppointment2} when you book appointment 2. Each review is paid when you book it."
     - "{prices.gstNote}"
     - "The fee pays for Dr Sam's time and assessment, not a particular result."
-    - "If Dr Sam finds this service isn't right for you after reading your intake: {policies.refundIfUnsuitable}"
+    - "{policies.refundIfUnsuitable}"
     - "Need to change or cancel? See [cancellations and refunds](/cancellations)."
 ---

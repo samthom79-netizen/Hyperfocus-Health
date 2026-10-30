@@ -89,13 +89,39 @@ export const site = {
 
   /** Contact */
   contact: {
+    page: { label: 'Contact', href: '/contact' },
     phone: 'TODO: phone number',
     /** Public email for enquiries (not Sam's personal address). */
     email: 'TODO: public email',
     /** Business hours within which a human replies to messages. */
     /** Sam, 31 Oct 2026. */
-    humanReplyWithin: '24 hours',
-    complaintsReplyWithin: 'TODO: e.g. 5 business days',
+    humanReplyWithin: '1 business day',
+    /** Sam, 31 Oct 2026: aim for 1 business day. */
+    complaintsReplyWithin: '1 business day',
+  },
+
+  /**
+   * AI phone receptionist (Prompt 8). FAQ and message-taking only.
+   * Agent instructions: docs/receptionist/. Vendor not chosen yet.
+   */
+  receptionist: {
+    /** 'ELEVENLABS', 'VORAL' or 'TODO'. */
+    vendor: 'TODO' as 'ELEVENLABS' | 'VORAL' | 'TODO',
+    /** Shown next to the phone number on /contact. Must stay true: change it if the set-up changes. */
+    label:
+      "Our phone is answered by an AI assistant, 24/7. It can answer questions about the service, costs and booking. It can't give medical advice. A person replies to messages within 1 business day.",
+    /**
+     * Optional 'Talk to the assistant in your browser' button. Stays hidden
+     * until both are set AND the vendor allows embedding. The script loads only
+     * after the visitor clicks. ElevenLabs example:
+     *   scriptUrl 'https://unpkg.com/@elevenlabs/convai-widget-embed', tag 'elevenlabs-convai'
+     */
+    webWidget: {
+      scriptUrl: '',
+      /** Custom element the vendor's script defines, e.g. 'elevenlabs-convai'. */
+      tag: '',
+      agentId: '',
+    },
   },
 
   /** Booking */
@@ -146,7 +172,7 @@ export const site = {
   policies: {
     /** Sam, 31 Oct 2026: fee kept because the work is done. Wording (keeping appointment 1) needs Sam's OK. */
     refundIfUnsuitable:
-      `The $${FEES.payAtBooking} for appointment 1 isn't refunded, because Dr Sam has already read your intake and prepared. You still have appointment 1, where he explains why and talks through your next steps. You won't need appointment 2 or pay for it.`,
+      `If your intake shows this service clearly isn't right for you, Dr Sam emails you to explain why and where to go instead. The $${FEES.payAtBooking} isn't refunded, because he has already read your intake and prepared. You won't pay the $${FEES.payAppointment2}.`,
     /** Sam, 31 Oct 2026. */
     cancellation:
       "You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee.",

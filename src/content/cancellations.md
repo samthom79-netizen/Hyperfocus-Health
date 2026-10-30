@@ -21,9 +21,11 @@ To change or cancel, use the link in your booking confirmation, or contact us at
 
 ## If this service isn't right for you
 
-Dr Sam reads your intake before your first appointment. If the service isn't safe or suitable for you, he'll tell you plainly and suggest where to go instead.
+Dr Sam reads your intake before your first appointment.
 
 {policies.refundIfUnsuitable}
+
+If it's less clear, he'll talk it through with you at appointment 1.
 
 ## If ADHD isn't diagnosed
 

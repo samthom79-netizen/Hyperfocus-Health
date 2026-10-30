@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { site } from '../../src/config/site';
 
-const PAGES = ['/', '/styleguide', '/other-options', '/check', '/book', '/cancellations', '/about', '/pricing', '/how-it-works', '/faq'];
+const PAGES = ['/', '/styleguide', '/other-options', '/check', '/book', '/cancellations', '/about', '/pricing', '/how-it-works', '/faq', '/contact'];
 
 async function noHorizontalScroll(page: Page) {
   return page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);

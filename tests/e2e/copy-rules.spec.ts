@@ -5,7 +5,7 @@ import { findBanned } from '../../src/lib/banned';
  * Checks the visible text and metadata of every public page against the
  * advertising rules in CLAUDE.md. Prompt 11 turns this into a full build gate.
  */
-const PAGES = ['/', '/other-options', '/check', '/book', '/booking-confirmed', '/cancellations', '/about', '/pricing', '/how-it-works', '/faq'];
+const PAGES = ['/', '/other-options', '/check', '/book', '/booking-confirmed', '/cancellations', '/about', '/pricing', '/how-it-works', '/faq', '/contact'];
 
 
 for (const path of PAGES) {

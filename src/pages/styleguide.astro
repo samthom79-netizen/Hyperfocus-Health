@@ -19,6 +19,7 @@ import CrisisStrip from '../components/CrisisStrip.astro';
 import Val from '../components/Val.astro';
 import CtaLabel from '../components/CtaLabel.astro';
 import BookingPanel from '../components/BookingPanel.astro';
+import AssistantLauncher from '../components/AssistantLauncher.astro';
 import { site } from '../config/site';
 import { palette, pairings, colourOf } from '../config/palette';
 import { AA, contrastRatio } from '../lib/contrast';
@@ -325,6 +326,13 @@ const sections = [
           <BookingPanel demo={{ name: 'Demo provider (link)', url: '/booking-confirmed', embed: false }} />
           <BookingPanel demo={{ name: 'Demo provider (embedded)', url: '/booking-confirmed', embed: true }} />
         </div>
+      </section>
+
+      <!-- Assistant launcher -->
+      <section id="assistant" aria-labelledby="h-assistant">
+        <h2 id="h-assistant">Browser assistant button</h2>
+        <p class="mt-2">Hidden on /contact until <code>receptionist.webWidget</code> is set. This demo loads a stand-in script, only after the click.</p>
+        <AssistantLauncher scriptUrl="/demo/assistant-demo.js" tag="hf-demo-assistant" agentId="demo" />
       </section>
 
       <!-- TODO -->
