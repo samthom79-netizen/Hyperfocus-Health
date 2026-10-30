@@ -8,7 +8,7 @@ import PriceCard from '../components/PriceCard.astro';
 import BookingPanel from '../components/BookingPanel.astro';
 import Callout from '../components/Callout.astro';
 import Icon from '../components/Icon.astro';
-import { site } from '../config/site';
+import { formatPrice, site } from '../config/site';
 
 const { clinic } = site;
 ---
@@ -34,7 +34,7 @@ const { clinic } = site;
           `Video appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
           'Your written plan',
         ]}
-        note="No Medicare rebate for video appointments."
+        note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for video appointments.`}
         featured
       />
       <PriceCard

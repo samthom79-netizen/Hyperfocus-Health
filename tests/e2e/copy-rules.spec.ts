@@ -19,5 +19,7 @@ for (const path of PAGES) {
     });
     const hits = findBanned(text);
     expect(hits).toEqual([]);
+    // A {token} that wasn't filled in, or a [label](url) link that wasn't turned into a link.
+    expect(text.match(/\{[a-zA-Z][\w.]*\}|\]\(\/?[\w/#.-]*\)/g) ?? []).toEqual([]);
   });
 }

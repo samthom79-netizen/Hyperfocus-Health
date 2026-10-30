@@ -7,7 +7,6 @@ test.describe('/pricing', () => {
     await expect(page.locator('main table tbody th')).toHaveText([
       'Assessment to diagnosis',
       'Review appointment',
-      'Optional bundle',
       'Ongoing reviews',
       'Blood tests or ECG',
     ]);
@@ -25,7 +24,8 @@ test.describe('/pricing', () => {
     await expect(main).toContainText('GP chronic condition management plan');
     await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
     await expect(main).toContainText('GST:');
-    await expect(main).toContainText(site.policies.paymentTiming);
+    await expect(main).toContainText('You pay $425 when you book appointment 1, and $320 when you book appointment 2.');
+    await expect(main).not.toContainText('bundle');
     await expect(main).toContainText("If Dr Sam finds this service isn't right for you");
     await expect(main.getByRole('link', { name: 'cancellations and refunds' })).toHaveAttribute('href', '/cancellations');
   });

@@ -46,7 +46,7 @@ const total = firstThreeMonths(assessmentTotal, review, n);
                 c.rows.map((row) => (
                   <tr class="border-t border-line align-top">
                     <th scope="row" class="p-4 font-display font-bold text-primary">{row.stage}</th>
-                    <td class="p-4" data-label="What you get">{row.whatYouGet}</td>
+                    <td class="p-4" data-label="What you get" set:html={renderInline(row.whatYouGet)} />
                     <td class="p-4 font-bold" data-label="Cost">
                       <span set:html={renderInline(row.cost)} />
                       {row.note && <span class="mt-1 block text-[0.9rem] font-normal text-ink-muted" set:html={renderInline(row.note)} />}

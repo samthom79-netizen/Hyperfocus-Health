@@ -16,12 +16,12 @@ Commit and push; the preview updates in a few minutes.
 
 | # | Setting | What to set | Why |
 | --- | --- | --- | --- |
-| 1 | Payment at booking | Full assessment fee taken when the booking is made | Stops no-shows; matches the website's "book and pay" step |
+| 1 | Payment at booking | $425 taken when appointment 1 is booked; $320 when appointment 2 is booked; $89 when each review is booked | Matches the split on /pricing; someone found unsuitable at appointment 1 never pays part 2 |
 | 2 | Minimum notice for appointment 1 | At least 10 days after booking | Time for the intake, the observer form (Velluto reminders run on days 2, 5 and 7) and baseline checks |
 | 3 | Appointment type: Assessment | Video, 60 minutes | Pathway step 5 |
 | 4 | Appointment type: Diagnosis and plan | Video, 30-45 minutes | Pathway step 6 |
-| 5 | Appointment type: Review | Video, `[REVIEW LENGTH]` minutes | Every 2-4 weeks while treatment is adjusted |
-| 6 | Appointment type: Ongoing review | Video, length to match | Every 3-6 months once stable |
+| 5 | Appointment type: Review | Video, 15 minutes, $89 | Every 2-4 weeks while treatment is adjusted |
+| 6 | Appointment type: Ongoing review | Video, 15 minutes, $89 | Every 3-6 months once stable |
 | 7 | Who can book appointment 1 online | New patients, Queensland only if the platform can ask | Backs up the eligibility check |
 | 8 | Reminder messages | SMS and email, e.g. 48 hours and 2 hours before | Fewer missed appointments |
 | 9 | Confirmation redirect | `https://<your domain>/booking-confirmed` (preview: `https://hyperfocus-health.pages.dev/booking-confirmed`) | Shows the "what happens next" timeline |
@@ -44,7 +44,7 @@ Commit and push; the preview updates in a few minutes.
 ## Questions for Halaxy support
 
 1. Does Halaxy offer an online booking widget I can embed on my website (iframe or script)? Is it allowed on any domain?
-2. Can I require full payment at the time of online booking, for telehealth appointments with no Medicare claim?
+2. Can I require payment at the time of online booking (a different amount per appointment type), for telehealth appointments with no Medicare claim?
 3. Can I set a minimum booking notice of 10 days for one appointment type only (the first assessment)?
 4. After a booking is paid, can the patient be redirected to a URL on my website?
 5. Can a third-party intake link (Velluto) be sent automatically after a paid booking, or would this be manual?

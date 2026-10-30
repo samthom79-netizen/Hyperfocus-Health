@@ -101,7 +101,7 @@ export const site = {
       feeNote: 'Same fees as video. You may be able to claim a Medicare rebate for each appointment.',
       /** Sam, 31 Oct 2026: care plan can be done in appointment 2 if in person and a regular patient there. */
       carePlanNote:
-        "If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.",
+        "If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and you may be able to claim a Medicare rebate for it. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.",
     },
     /** Minimum days between booking and video appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,
@@ -111,16 +111,14 @@ export const site = {
   prices: {
     /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
     assessmentTotal: 745,
+    /** Sam, 31 Oct 2026: paid in two parts (must add up to assessmentTotal; a unit test checks). */
+    payAtBooking: 425,
+    payAppointment2: 320,
     /** Each review appointment while treatment is adjusted, until things are stable. Set by Sam 31 Oct 2026. */
     review: 89,
-    /** Optional bundle: diagnosis + 3 months of reviews. */
-    bundle: 'TODO',
-    /** Rule 5: any discount states its terms. */
-    bundleTerms: 'TODO: how many reviews the bundle covers, and what happens to any unused ones',
-    /** Ongoing review once stable (every 3-6 months). */
-    ongoingReview: 'TODO',
-    reviewLengthMinutes: 'TODO: e.g. 20',
-    gstNote: 'TODO: confirm GST treatment with accountant',
+    /** Ongoing review once stable (every 3-6 months). Sam, 31 Oct 2026: same as a review. */
+    ongoingReview: 89,
+        gstNote: 'TODO: confirm GST treatment with accountant',
     /** Wording for the blood test / ECG row on /pricing. */
     testsNote: 'TODO: confirm wording: through your own GP or a pathology collection centre; costs vary',
     /**
@@ -137,8 +135,6 @@ export const site = {
     cancellation: 'TODO: how much notice is needed to change or cancel, and any fee',
     noShow: 'TODO: what happens, and any fee, if an appointment is missed without notice',
     notDiagnosed: 'TODO: what the patient receives, and the fee, if ADHD is not diagnosed',
-    /** When payment is taken. Confirm against the booking platform's settings. */
-    paymentTiming: 'You pay the assessment fee when you book. Each review is paid when you book it.',
   },
 
   /** Privacy wording used before the full privacy policy exists (Prompt 10). */
@@ -150,6 +146,8 @@ export const site = {
   appointments: {
     assessment: 60,
     diagnosis: { min: 30, max: 45 },
+    /** Every review, while adjusting and once stable. Sam, 31 Oct 2026. */
+    reviewMinutes: 15,
     reviewIntervalWeeks: { min: 2, max: 4 },
     stableIntervalMonths: { min: 3, max: 6 },
     /** Sam, 31 Oct 2026: lengths are approximate. */

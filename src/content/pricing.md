@@ -17,15 +17,12 @@ rows:
   - stage: "Assessment to diagnosis"
     whatYouGet: "Online intake, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
     cost: "{prices.assessmentTotal} total"
+    note: "Paid in 2 parts: {prices.payAtBooking} when you book, then {prices.payAppointment2} when you book appointment 2."
   - stage: "Review appointment"
-    whatYouGet: "Every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first."
+    whatYouGet: "About {appointments.reviewMinutes} min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first."
     cost: "{prices.review} each"
-  - stage: "Optional bundle"
-    whatYouGet: "Diagnosis plus 3 months of reviews, paid once"
-    cost: "{prices.bundle}"
-    note: "{prices.bundleTerms}"
   - stage: "Ongoing reviews"
-    whatYouGet: "Every 3-6 months once things are stable"
+    whatYouGet: "About {appointments.reviewMinutes} min, every 3-6 months once things are stable"
     cost: "{prices.ongoingReview} each"
   - stage: "Blood tests or ECG"
     whatYouGet: "Only if your history needs them"
@@ -33,7 +30,7 @@ rows:
 
 example:
   heading: "A typical first 3 months"
-  intro: "An example of the cost from booking to 3 months after diagnosis, if you don't choose the bundle."
+  intro: "An example of the cost from booking to 3 months after diagnosis."
   notIncluded: "Not included: any blood tests or ECG, which are arranged and charged separately."
 
 medicare:
@@ -46,7 +43,7 @@ medicare:
 payment:
   heading: "Paying, cancelling and refunds"
   points:
-    - "{policies.paymentTiming}"
+    - "You pay {prices.payAtBooking} when you book appointment 1, and {prices.payAppointment2} when you book appointment 2. Each review is paid when you book it."
     - "GST: {prices.gstNote}"
     - "If Dr Sam finds this service isn't right for you after reading your intake: {policies.refundIfUnsuitable}"
     - "Need to change or cancel? See [cancellations and refunds](/cancellations)."

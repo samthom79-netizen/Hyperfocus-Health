@@ -65,3 +65,10 @@ describe('site config', () => {
     expect(todos.every((p) => typeof p === 'string' && p.length > 0)).toBe(true);
   });
 });
+
+describe('assessment payment split', () => {
+  it('the two parts add up to the total', () => {
+    const { assessmentTotal, payAtBooking, payAppointment2 } = site.prices;
+    expect(payAtBooking + payAppointment2).toBe(assessmentTotal);
+  });
+});
