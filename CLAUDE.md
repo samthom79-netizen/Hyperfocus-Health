@@ -91,7 +91,8 @@ Look at `/styleguide` before building any page. Use these components; don't rest
 
 ## Preview and pre-launch protection
 
-- Every push to `main` deploys to Cloudflare Pages (a public `*.pages.dev` preview link).
+- Every push to `main` deploys to Cloudflare Pages: **https://hyperfocus-health.pages.dev** (public link; Cloudflare project `hyperfocus-health`, build `npm run build`, output `dist`). Give Sam this link, plus the path of any new page, at the end of every prompt.
+- The cloud build machine can't reach pages.dev (proxy 403), so check deployed pages on Sam's phone or via screenshots of the local preview.
 - `launched: false` in `src/config/site.ts` hides the whole site from search engines in three ways: `<meta name="robots" content="noindex">` on every page, `robots.txt` disallowing everything (`src/pages/robots.txt.ts`), and `X-Robots-Tag: noindex` in `dist/_headers` (`src/integrations/prelaunch-headers.mjs`).
 - Only Prompt 12 (go-live) flips `launched` to `true`. A unit test fails if it's true while any TODO remains.
 - `.node-version` pins Node 22.23.4 for Cloudflare's build (Astro 7 needs at least that).
