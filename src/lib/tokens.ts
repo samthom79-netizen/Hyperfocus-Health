@@ -66,5 +66,12 @@ export function plainText(text: string): string {
  * trusted copy). Only the token is replaced; the rest of the HTML is untouched.
  */
 export function fillTokensInHtml(html: string): string {
-  return html.replace(TOKEN, (_m, path: string) => tokenHtml(path));
+  return html
+    // Links written as [label]({links.oaic}): Markdown URL-encodes the braces.
+    .replace(/href="(?:%7B|\{)([a-zA-Z][\w.]*)(?:%7D|\})"/g, (_m, path: string) => {
+      const value = lookup(path);
+      if (typeof value !== 'string' || isTodo(value)) throw new Error(`Link token {${path}} must be a set URL.`);
+      return `href="${escape(value)}"`;
+    })
+    .replace(TOKEN, (_m, path: string) => tokenHtml(path));
 }

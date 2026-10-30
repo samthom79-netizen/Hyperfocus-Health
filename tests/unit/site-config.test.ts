@@ -72,3 +72,18 @@ describe('assessment payment split', () => {
     expect(payAtBooking + payAppointment2).toBe(assessmentTotal);
   });
 });
+
+describe('legal drafts block launch', () => {
+  it('no page is still a legal draft, and no Markdown TODO remains, once launched', async () => {
+    const { readdirSync, readFileSync } = await import('node:fs');
+    const files = ['src/content', 'src/content/resources', 'src/content/locations'].flatMap((d) =>
+      readdirSync(d).filter((f) => f.endsWith('.md') && f !== 'README.md').map((f) => `${d}/${f}`),
+    );
+    const drafts = files.filter((f) => /^draft: true$/m.test(readFileSync(f, 'utf8')));
+    const todos = files.filter((f) => readFileSync(f, 'utf8').includes('[TODO'));
+    if (site.launched) {
+      expect(drafts, 'legal pages still marked draft').toEqual([]);
+      expect(todos, 'Markdown TODOs remain').toEqual([]);
+    }
+  });
+});

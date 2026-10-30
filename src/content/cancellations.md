@@ -4,8 +4,8 @@ description: "How to change or cancel an appointment with Hyperfocus Health, and
 heading: "Cancellations and refunds"
 readingTime: "2 min read"
 shortVersion:
-  - "Need to change or cancel? Let us know as early as you can."
-  - "If Dr Sam finds this service isn't right for you after reading your intake, you'll be told plainly and pointed to the right place."
+  - "Change or cancel for free up to 48 hours before. With less notice it's 50% of that appointment; a missed appointment is the full fee."
+  - "If the service isn't right for you, Dr Sam tells you plainly and points you to the right place. Fees already paid for work done aren't refunded."
   - "These rules don't affect your rights under Australian Consumer Law."
 ---
 

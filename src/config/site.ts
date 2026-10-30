@@ -53,6 +53,61 @@ export const site = {
     postcode: '4802',
   },
 
+  /**
+   * Every service that handles personal or health information (Prompt 10).
+   * Shown on /privacy and /collection-notice. Never guess a location or
+   * retention period: confirm in writing with the vendor (docs/legal-questions.md).
+   */
+  vendors: {
+    hosting: {
+      name: 'Cloudflare',
+      role: 'hosts this website',
+      where: 'TODO: confirm with Cloudflare where website request data (such as IP addresses) is processed',
+    },
+    booking: {
+      name: 'TODO: booking and payment platform (Halaxy, HotDoc or HealthEngine)',
+      where: 'TODO: where the booking platform stores data',
+      retention: 'TODO: how long the booking platform keeps data',
+    },
+    intake: {
+      name: 'TODO: intake platform (likely Velluto)',
+      where: 'TODO: where the intake platform stores and processes data',
+      retention: 'TODO: how long the intake platform keeps data',
+    },
+    phone: {
+      name: 'TODO: AI phone assistant (MayaAI, AiDial or other)',
+      where: 'TODO: where call recordings and transcripts are stored and processed',
+      retention: 'TODO: how long recordings and transcripts are kept',
+    },
+    records: {
+      name: 'TODO: practice software for records and video appointments (likely Halaxy)',
+      where: 'TODO: where clinical records and video calls are stored and processed',
+    },
+    scribe: {
+      name: 'TODO: AI note-taking tool used in appointments, if any (Lyrebird, Heidi or none)',
+      where: 'TODO: where the note-taking tool stores and processes data',
+    },
+    email: {
+      name: 'TODO: email service used for clinical messages',
+      where: 'TODO: where the email service stores data',
+    },
+    /** Every overseas recipient of personal information, named (APP 8). */
+    overseas: 'TODO: list every overseas recipient and country once the vendors are chosen',
+  },
+
+  /** Legal pages (Prompt 10). Drafts until a lawyer or MDO signs them off. */
+  legal: {
+    draftBanner: 'DRAFT: pending legal review',
+    lastUpdated: '31 October 2026',
+    /** How long health records are kept. Ask the MDO; never guess. */
+    retention: 'TODO: how long health records are kept (ask MDO)',
+    /** Time to respond to a request to see or correct information. Ask the MDO. */
+    accessResponse: 'TODO: how quickly access and correction requests are answered, and any fee (ask MDO)',
+    oaicPhone: '1300 363 992',
+    ohoPhone: '133 OHO (133 646)',
+    ohoHours: '9.30 am to 4 pm, Monday to Friday',
+  },
+
   /** Clinician */
   doctor: {
     name: 'Dr Sam Thomas',
@@ -238,6 +293,9 @@ export const site = {
     qldGovAdhd: 'https://www.qld.gov.au/health/conditions/all/adhd',
     oaic: 'https://www.oaic.gov.au',
     oho: 'https://www.oho.qld.gov.au',
+    ohoComplaint: 'https://www.oho.qld.gov.au/make-a-complaint',
+    oaicComplaint: 'https://www.oaic.gov.au/privacy/privacy-complaints/lodge-a-privacy-complaint-with-us',
+    wcag: 'https://www.w3.org/TR/WCAG22/',
     ahpra: 'https://www.ahpra.gov.au',
   },
 

@@ -24,6 +24,8 @@ const pages = defineCollection({
     shortVersion: z.array(z.string()).min(1).max(3).optional(),
     /** Keep out of search engines and the sitemap (e.g. /booking-confirmed). */
     noindex: z.boolean().optional(),
+    /** Legal draft: shows the 'DRAFT: pending legal review' banner. Launch is blocked while true. */
+    draft: z.boolean().optional(),
   }),
 });
 

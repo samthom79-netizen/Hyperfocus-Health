@@ -10,6 +10,7 @@ import Base from './Base.astro';
 import Container from '../components/Container.astro';
 import ShortVersion from '../components/ShortVersion.astro';
 import { fillTokensInHtml } from '../lib/tokens';
+import DraftBanner from '../components/DraftBanner.astro';
 
 interface Props {
   slug: string;
@@ -18,13 +19,15 @@ interface Props {
 const { slug } = Astro.props;
 const entry = await getEntry('pages', slug);
 if (!entry) throw new Error(`src/content/${slug}.md is missing`);
-const { title, description, heading, readingTime, shortVersion, noindex } = entry.data;
-const html = fillTokensInHtml(entry.rendered?.html ?? '');
+const { title, description, heading, readingTime, shortVersion, noindex, draft } = entry.data;
+// [TODO: ...] notes in the Markdown become visible highlighted boxes (they block launch).
+const html = fillTokensInHtml(entry.rendered?.html ?? '').replace(/\[TODO:([^\]]*)\]/g, (_m, t) => `<span class="todo">[TODO:${t}]</span>`);
 ---
 
 <Base title={title} description={description} noindex={noindex}>
   <Container class="py-10 sm:py-14">
     <div class="max-w-3xl">
+      {draft && <DraftBanner />}
       <h1>{heading ?? title}</h1>
       {shortVersion && <ShortVersion bullets={shortVersion} readingTime={readingTime} class="mt-6" />}
       <slot name="before" />

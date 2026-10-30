@@ -15,6 +15,8 @@ Most answers are on [prices](/pricing), [how it works](/how-it-works) and [commo
 
 Please don't put health details or your Medicare number in an email or a phone message. Dr Sam will ask for what he needs at the right time.
 
+Our [collection notice](/collection-notice) explains what we collect when you call, and why.
+
 ## Booking in person at Cannonvale
 
 In-person appointments are booked through {clinic.name}. Call {clinic.phone} and {booking.inPerson.sayWhenBooking}.

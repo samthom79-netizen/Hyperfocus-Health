@@ -1,0 +1,17 @@
+---
+/**
+ * 'DRAFT: pending legal review' banner for legal pages that a lawyer or MDO
+ * hasn't signed off yet. Launch is blocked while any page has `draft: true`.
+ */
+import { site } from '../config/site';
+import Icon from './Icon.astro';
+---
+
+<div
+  role="note"
+  data-draft-banner
+  class="mb-6 flex items-start gap-3 rounded-xl border-2 border-dashed border-highlight-edge bg-highlight-soft p-4 font-bold text-primary"
+>
+  <Icon name="warning" size={24} class="mt-0.5 shrink-0" />
+  <p>{site.legal.draftBanner}. This page hasn't been checked by a lawyer yet and may change.</p>
+</div>
