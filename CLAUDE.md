@@ -64,10 +64,10 @@ This is the public website for **Hyperfocus Health**, a Queensland-only adult AD
 | `src/config/images.ts` | Photos and logo icon with their alt text. Always import images from here. |
 | `src/lib/contrast.ts` | WCAG contrast maths used by the palette test and script. |
 | `src/pages/` | One file per URL. Astro pages, pre-rendered to static HTML. `/styleguide` is internal (noindex, not in sitemap). |
-| `src/layouts/Base.astro` | Page shell: metadata, Focus mode pre-paint script, Header, main, Footer. Every page uses it. |
+| `src/layouts/Base.astro` | Page shell: metadata, Header, main, Footer. Every page uses it. |
 | `src/components/` | Reusable pieces. `.astro` by default; `.tsx` React only for interactive islands. See Design system below. |
 | `src/content/` | Page copy in Markdown/MDX so Sam can edit words without touching code. |
-| `src/styles/global.css` | Fonts, Tailwind theme tokens (mirror palette.ts), base reading rules, Focus mode, `.todo` style. |
+| `src/styles/global.css` | Fonts, Tailwind theme tokens (mirror palette.ts), base reading rules, `.todo` style. |
 | `src/assets/photos/` | Photos of Sam (optimised to AVIF/WebP at build). `dr-sam-headshot.png` is the primary photo. |
 | `src/assets/brand/logo-icon.png` | Icon cut from the logo (transparent). Made by `scripts/make-logo-assets.mjs`. |
 | `public/images/logo.png` | Original full logo. `public/favicon.png`, `public/apple-touch-icon.png` are generated from it. |
@@ -84,9 +84,13 @@ Look at `/styleguide` before building any page. Use these components; don't rest
 - New colour pairing? Add it to `pairings` in `src/config/palette.ts` and run `npm run test:unit`. Changing a hex means changing it in both palette.ts and global.css (the test checks they match).
 - **Fonts**: Plus Jakarta Sans 700/800 (`font-display`, headings, buttons), Atkinson Hyperlegible 400/700 (`font-body`, everything else). Self-hosted via @fontsource. Root size 18px, so `1rem` = 18px.
 - **Components**: `Button` (primary/secondary; `size="header"` for the header only), `CtaLabel` (the site CTA text, keeps "(60 sec)" together), `Card`, `StepList`, `TimeBadge`, `Callout` (info/warning), `Accordion` (native `<details>`, works without JS), `PriceCard`, `ShortVersion` (1-3 bullets; build fails otherwise), `DoctorCard`, `CrisisStrip` (compact/full, light/dark), `Container`, `Icon`, `Val` (renders a site.ts value, showing TODOs as highlighted `[TODO]` boxes).
-- **Header** controls use fixed px sizes so Focus mode can't push them off a phone screen. Don't change them to rem.
-- **Focus mode** adds `.focus-mode` to `<html>`: root font 20px, looser lines, and hides anything marked `data-decorative`. Mark decorative images with `data-decorative`; never mark the doctor photo or anything informative.
+- **Page copy** lives in `src/content/`: `home.md` (structured frontmatter, schema in `src/content.config.ts`) and simple Markdown pages (`pages` collection, rendered inside `.prose-hf`). Copy can pull site values with `{tokens}`, e.g. `{prices.assessmentTotal}` (`src/lib/tokens.ts`); unknown tokens fail the build.
+- The **'not suitable for' list** is `site.notSuitable` in `src/config/site.ts`, word for word from this file. Use it; never retype it.
+- `Button variant="inverse"` = white button for dark teal bands. `DoctorCard layout="hero"` = tall card with a 280px photo. `Base flushFooter` joins a final dark band to the footer.
+- `tests/e2e/copy-rules.spec.ts` scans every public page for banned words; add each new page to its `PAGES` list.
+- **Header** controls use fixed px sizes so they always fit a phone screen. Don't change them to rem.
 - **Images**: `<Picture>` from `astro:assets` with `formats={['avif','webp']}`, a `width`, `widths` and `sizes`. Photos of Sam other than the headshot stay at most 640px wide.
+- **Focus mode** was removed at Sam's request (30 Oct 2026). Don't re-add it.
 - **Tap targets**: interactive elements use `min-h-11` (44px+) or `min-h-12`.
 
 ## Preview and pre-launch protection

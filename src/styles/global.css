@@ -115,24 +115,40 @@
 }
 
 /*
-  Focus mode (toggle in the header). Set on <html> as .focus-mode.
-  - Bigger text: 18px -> 20px. Because spacing uses rem, every gap grows too.
-  - Looser lines and word spacing.
-  - Decorative images (marked data-decorative) are hidden.
+  Body copy written in Markdown (src/content/*.md). Wrap rendered content in
+  .prose-hf so headings, paragraphs and lists get consistent spacing.
 */
-html.focus-mode {
-  font-size: 20px;
+.prose-hf > * + * {
+  margin-top: 1rem;
 }
-html.focus-mode body {
-  line-height: 1.8;
-  word-spacing: 0.06em;
+.prose-hf h2 {
+  margin-top: 2.25rem;
 }
-html.focus-mode p,
-html.focus-mode li {
-  margin-bottom: 0.4em;
+.prose-hf h3 {
+  margin-top: 1.75rem;
 }
-html.focus-mode [data-decorative] {
-  display: none !important;
+.prose-hf ul,
+.prose-hf ol {
+  padding-left: 1.4rem;
+}
+.prose-hf ul {
+  list-style: disc;
+}
+.prose-hf ol {
+  list-style: decimal;
+}
+.prose-hf li + li {
+  margin-top: 0.6rem;
+}
+.prose-hf li::marker {
+  color: var(--color-accent-ink);
+  font-weight: 700;
+}
+.prose-hf strong {
+  color: var(--color-primary);
+}
+.prose-hf a {
+  font-weight: 700;
 }
 
 /* Visible, unmistakable placeholder for any value still marked TODO. */

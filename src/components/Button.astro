@@ -9,8 +9,8 @@ import Icon from './Icon.astro';
 
 interface Props {
   href?: string;
-  variant?: 'primary' | 'secondary';
-  /** 'header' uses fixed pixel sizes so Focus mode can't push the header off-screen. */
+  variant?: 'primary' | 'secondary' | 'inverse';
+  /** 'header' uses fixed pixel sizes so the header always fits a phone screen. */
   size?: 'md' | 'sm' | 'header';
   type?: 'button' | 'submit';
   full?: boolean;
@@ -41,6 +41,8 @@ const sizes = {
 const variants = {
   primary: 'bg-primary text-white hover:bg-primary-hover',
   secondary: 'bg-surface text-primary border-2 border-primary hover:bg-accent-soft',
+  /** For dark (teal) bands: white button, teal text (13.35:1). */
+  inverse: 'bg-surface text-primary hover:bg-accent-soft',
 };
 const classes = [base, sizes[size], variants[variant], full ? 'w-full' : '', className].join(' ');
 ---

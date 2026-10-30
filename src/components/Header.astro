@@ -1,24 +1,23 @@
 ---
 /**
  * Sticky site header.
- * Desktop (1024px+): logo, 4 nav links, Focus mode, 'Check eligibility'.
+ * Desktop (1024px+): logo, 4 nav links, 'Check eligibility'.
  * Mobile: logo, 'Check eligibility' (always visible), menu button that opens
- * the nav links and Focus mode.
+ * the nav links.
  */
 import { Image } from 'astro:assets';
 import { site } from '../config/site';
 import { images } from '../config/images';
 import Button from './Button.astro';
 import Icon from './Icon.astro';
-import FocusModeToggle from './FocusModeToggle.astro';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => path === href;
 ---
 
 <!--
-  Header controls use fixed pixel sizes (not rem) so Focus mode, which enlarges
-  the reading area, can never push the menu button off a phone screen.
+  Header controls use fixed pixel sizes (not rem) so a larger browser text
+  setting can't push the menu button off a phone screen.
   Below 400px wide only the icon shows; the link keeps its accessible name.
 -->
 <header class="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/85">
@@ -49,10 +48,6 @@ const isCurrent = (href: string) => path === href;
         }
       </ul>
     </nav>
-
-    <div class="hidden lg:block">
-      <FocusModeToggle />
-    </div>
 
     <Button href={site.cta.href} size="header" class="shrink-0 whitespace-nowrap" data-cta="header">
       {site.cta.shortLabel}
@@ -88,9 +83,6 @@ const isCurrent = (href: string) => path === href;
           ))
         }
       </ul>
-      <div class="mt-2 border-t border-line pt-3">
-        <FocusModeToggle describe />
-      </div>
     </nav>
   </div>
 </header>

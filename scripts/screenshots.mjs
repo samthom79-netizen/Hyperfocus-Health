@@ -24,7 +24,7 @@ async function loadLazyImages(page) {
     window.scrollTo(0, 0);
   });
   await page.waitForLoadState('networkidle');
-  // Hidden images (e.g. decorative ones in Focus mode) never load: skip them.
+  // Hidden images never load: skip them.
   await page.waitForFunction(() => [...document.images].filter((img) => img.checkVisibility()).every((img) => img.complete));
 }
 
@@ -46,17 +46,13 @@ for (const path of paths) {
   }
 }
 
-// Mobile menu open, and Focus mode on, for the first path.
+// Mobile menu open, for the first path.
 {
   const ctx = await browser.newContext({ ...devices['Pixel 7'] });
   const page = await ctx.newPage();
   await page.goto(BASE + paths[0], { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: /open menu/i }).click();
   await page.screenshot({ path: `${out}${slug(paths[0])}-menu-open.png` });
-  await page.locator('#mobile-menu [data-focus-toggle]').click();
-  await page.getByRole('button', { name: /close menu/i }).click();
-  await loadLazyImages(page);
-  await page.screenshot({ path: `${out}${slug(paths[0])}-focus-mode.png`, fullPage: true });
   await ctx.close();
 }
 

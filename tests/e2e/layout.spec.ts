@@ -1,19 +1,18 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const PAGES = ['/', '/styleguide'];
+const PAGES = ['/', '/styleguide', '/other-options'];
 
 async function noHorizontalScroll(page: Page) {
   return page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
 }
 
 test.describe('header', () => {
-  test('desktop: 4 nav links, Focus mode and Check eligibility; no menu button', async ({ page }, info) => {
+  test('desktop: 4 nav links and Check eligibility; no menu button', async ({ page }, info) => {
     test.skip(info.project.name !== 'desktop', 'desktop only');
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Main', exact: true });
     await expect(nav.getByRole('link')).toHaveText(['How it works', 'Pricing', 'About Dr Sam', 'FAQ']);
     await expect(page.locator('header [data-cta="header"]')).toHaveText('Check eligibility');
-    await expect(page.locator('header [data-focus-toggle]').first()).toBeVisible();
     await expect(page.locator('[data-menu-button]')).toBeHidden();
   });
 
@@ -48,44 +47,6 @@ test.describe('header', () => {
   });
 });
 
-test.describe('focus mode', () => {
-  test('toggles, enlarges text, hides decorative images and survives a reload', async ({ page }, info) => {
-    await page.goto('/styleguide');
-    const html = page.locator('html');
-    const toggle = info.project.name === 'mobile' ? page.locator('#mobile-menu [data-focus-toggle]') : page.locator('header [data-focus-toggle]').first();
-    if (info.project.name === 'mobile') await page.locator('[data-menu-button]').click();
-
-    await expect(html).not.toHaveClass(/focus-mode/);
-    await expect(page.locator('[data-decorative]').first()).toBeVisible();
-
-    await toggle.click();
-    await expect(html).toHaveClass(/focus-mode/);
-    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
-    expect(await html.evaluate((el) => getComputedStyle(el).fontSize)).toBe('20px');
-    await expect(page.locator('[data-decorative]').first()).toBeHidden();
-
-    await page.reload();
-    await expect(html).toHaveClass(/focus-mode/);
-  });
-
-  test('still works when browser storage is blocked', async ({ page }, info) => {
-    test.skip(info.project.name !== 'desktop', 'desktop only');
-    const errors: string[] = [];
-    page.on('pageerror', (e) => errors.push(e.message));
-    await page.addInitScript(() => {
-      Object.defineProperty(window, 'localStorage', {
-        get() {
-          throw new Error('storage blocked');
-        },
-      });
-    });
-    await page.goto('/');
-    await page.locator('header [data-focus-toggle]').first().click();
-    await expect(page.locator('html')).toHaveClass(/focus-mode/);
-    expect(errors).toEqual([]);
-  });
-});
-
 test.describe('footer', () => {
   for (const path of PAGES) {
     test(`${path} carries the required footer content`, async ({ page }) => {
@@ -106,15 +67,12 @@ test.describe('footer', () => {
 test.describe('layout', () => {
   for (const path of PAGES) {
     for (const width of [320, 360, 390, 412]) {
-      for (const focus of [false, true]) {
-        test(`${path} has no sideways scroll at ${width}px${focus ? ' in Focus mode' : ''}`, async ({ page }, info) => {
-          test.skip(info.project.name !== 'mobile', 'run once');
-          if (focus) await page.addInitScript(() => localStorage.setItem('hf-focus-mode', '1'));
-          await page.setViewportSize({ width, height: 800 });
-          await page.goto(path);
-          expect(await noHorizontalScroll(page)).toBe(true);
-        });
-      }
+      test(`${path} has no sideways scroll at ${width}px`, async ({ page }, info) => {
+        test.skip(info.project.name !== 'mobile', 'run once');
+        await page.setViewportSize({ width, height: 800 });
+        await page.goto(path);
+        expect(await noHorizontalScroll(page)).toBe(true);
+      });
     }
   }
 
@@ -146,7 +104,7 @@ test.describe('style guide', () => {
 
   test('shows every component', async ({ page }) => {
     await page.goto('/styleguide');
-    for (const heading of ['Colours', 'Buttons', 'Time badges', 'Cards', 'Step list', 'Callouts', 'Accordion', 'Price cards', 'Short version', 'Doctor card', 'Crisis strip', 'Focus mode']) {
+    for (const heading of ['Colours', 'Buttons', 'Time badges', 'Cards', 'Step list', 'Callouts', 'Accordion', 'Price cards', 'Short version', 'Doctor card', 'Crisis strip']) {
       // .first(): the Short version demo box carries its own 'Short version' heading.
       await expect(page.getByRole('heading', { level: 2, name: heading, exact: true }).first()).toBeVisible();
     }

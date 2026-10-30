@@ -2,7 +2,9 @@
 /**
  * The 3-bullet 'Short version' box that sits at the top of every long page.
  * The build fails if more than 3 bullets are passed: the limit is the point.
+ * Bullets may use {tokens} for site values, e.g. {prices.assessmentTotal}.
  */
+import { renderTokens } from '../lib/tokens';
 import Icon from './Icon.astro';
 import TimeBadge from './TimeBadge.astro';
 
@@ -32,7 +34,7 @@ if (bullets.length === 0 || bullets.length > 3) {
       bullets.map((b) => (
         <li class="flex gap-2.5">
           <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
-          <span>{b}</span>
+          <span set:html={renderTokens(b)} />
         </li>
       ))
     }

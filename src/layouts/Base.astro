@@ -12,9 +12,11 @@ interface Props {
   description: string;
   /** Keep this page out of search engines (e.g. /styleguide). */
   noindex?: boolean;
+  /** Page ends with a dark band: join it to the footer without a gap. */
+  flushFooter?: boolean;
 }
 
-const { title, description, noindex: pageNoindex = false } = Astro.props;
+const { title, description, noindex: pageNoindex = false, flushFooter = false } = Astro.props;
 // Before launch, every page is hidden from search engines (see site.launched).
 const noindex = pageNoindex || !site.launched;
 const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
@@ -37,12 +39,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_AU" />
-    <!-- Apply the saved Focus mode before first paint. Storage may be blocked: ignore errors. -->
-    <script is:inline>
-      try {
-        if (localStorage.getItem('hf-focus-mode') === '1') document.documentElement.classList.add('focus-mode');
-      } catch (e) {}
-    </script>
   </head>
   <body class="flex min-h-screen flex-col">
     <a
@@ -58,6 +54,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
       <slot />
     </main>
 
-    <Footer />
+    <Footer flush={flushFooter} />
   </body>
 </html>

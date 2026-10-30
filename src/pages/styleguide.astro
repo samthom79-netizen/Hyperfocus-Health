@@ -3,7 +3,6 @@
  * Internal style guide: every component, the palette and its contrast results.
  * noindex + excluded from the sitemap (see astro.config.mjs).
  */
-import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Container from '../components/Container.astro';
 import Button from '../components/Button.astro';
@@ -20,7 +19,6 @@ import CrisisStrip from '../components/CrisisStrip.astro';
 import Val from '../components/Val.astro';
 import CtaLabel from '../components/CtaLabel.astro';
 import { site } from '../config/site';
-import { images } from '../config/images';
 import { palette, pairings, colourOf } from '../config/palette';
 import { AA, contrastRatio } from '../lib/contrast';
 
@@ -82,7 +80,6 @@ const sections = [
   ['short-version', 'Short version'],
   ['doctor', 'Doctor card'],
   ['crisis', 'Crisis strip'],
-  ['focus', 'Focus mode'],
   ['todo', 'TODO markers'],
 ] as const;
 ---
@@ -316,28 +313,6 @@ const sections = [
             <CrisisStrip tone="dark" />
           </div>
         </div>
-      </section>
-
-      <!-- Focus mode -->
-      <section id="focus" aria-labelledby="h-focus">
-        <h2 id="h-focus">Focus mode</h2>
-        <p class="mt-2">
-          Turn on Focus mode in the header (or the menu on a phone). Text gets bigger, spacing grows, and decorative pictures like the one
-          below disappear. The choice is remembered on this device.
-        </p>
-        <figure class="mt-5 max-w-xl" data-decorative>
-          <Picture
-            src={images.desk.src}
-            alt=""
-            width={576}
-            widths={[400, 576, 960]}
-            sizes="(min-width: 640px) 576px, 100vw"
-            formats={['avif', 'webp']}
-            fallbackFormat="jpg"
-            class="w-full rounded-card"
-          />
-          <figcaption class="mt-2 text-[0.9rem] text-ink-muted">Decorative image: hidden in Focus mode.</figcaption>
-        </figure>
       </section>
 
       <!-- TODO -->

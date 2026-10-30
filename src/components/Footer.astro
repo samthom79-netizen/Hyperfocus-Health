@@ -9,11 +9,17 @@ import { site } from '../config/site';
 import CrisisStrip from './CrisisStrip.astro';
 import Val from './Val.astro';
 
+interface Props {
+  /** No gap above the footer (when the page ends with its own dark band). */
+  flush?: boolean;
+}
+
+const { flush = false } = Astro.props;
 const year = new Date().getFullYear();
 const linkClass = 'inline-flex min-h-11 items-center text-white underline decoration-white/60 hover:decoration-white';
 ---
 
-<footer class="on-dark mt-16 bg-primary text-white">
+<footer class={`on-dark bg-primary text-white ${flush ? 'border-t border-white/20' : 'mt-16'}`}>
   <div class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
     <CrisisStrip tone="dark" />
 

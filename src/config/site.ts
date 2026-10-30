@@ -164,6 +164,24 @@ export const site = {
     minAge: 18,
     state: 'Queensland',
   },
+
+  /**
+   * 'Not suitable for' list, worded EXACTLY as in CLAUDE.md (the only place
+   * medical categories may appear). Shown kindly, always with a next step.
+   * Used by the homepage and the eligibility checker.
+   */
+  notSuitable: [
+    'drug or alcohol dependence now or in the past',
+    'bipolar disorder',
+    'psychosis',
+    'current significant suicidal thoughts',
+    'an eating disorder',
+    "severe depression or anxiety that isn't being treated",
+    'heart disease, uncontrolled high blood pressure or unexplained fainting',
+    'pregnancy or breastfeeding',
+    'currently taking a prescribed controlled (Schedule 8) medicine for pain, sleep or anxiety',
+    'autism or intellectual disability needing significant daily support',
+  ],
 } as const;
 
 export type SiteConfig = typeof site;

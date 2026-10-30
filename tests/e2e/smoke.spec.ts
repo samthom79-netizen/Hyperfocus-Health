@@ -11,7 +11,7 @@ test.describe('homepage', () => {
 
   test('shows the primary call to action', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('link', { name: /check if this is for you/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /check if this is for you/i }).first()).toBeVisible();
   });
 
   test('footer carries the emergency and crisis numbers', async ({ page }) => {
