@@ -1,0 +1,17 @@
+---
+/**
+ * Shows a value from src/config/site.ts. If the value is still a 'TODO:'
+ * placeholder it is rendered as a highlighted [TODO: ...] box, so missing
+ * facts are impossible to miss on screen (and Prompt 11 blocks launch).
+ */
+import { isTodo } from '../config/site';
+
+interface Props {
+  value: string | number;
+}
+
+const { value } = Astro.props;
+const todo = isTodo(value);
+---
+
+{todo ? <span class="todo">[{value}]</span> : <Fragment>{value}</Fragment>}

@@ -1,0 +1,38 @@
+---
+/**
+ * Question-and-answer accordion built on the browser's native <details>.
+ * Works with JavaScript off, is keyboard and screen-reader friendly, and the
+ * answers are in the page source for search engines.
+ *
+ * `answer` accepts simple trusted HTML written by us (e.g. a link). Never pass
+ * text from visitors or third parties.
+ */
+import Icon from './Icon.astro';
+
+export interface AccordionItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: AccordionItem[];
+  /** Heading level for the questions' container; summaries themselves aren't headings. */
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+---
+
+<div class={`rounded-card border border-line bg-surface ${className}`}>
+  {
+    items.map((item, i) => (
+      <details class={`group px-4 sm:px-5 ${i > 0 ? 'border-t border-line' : ''}`}>
+        <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 font-display text-[1.02rem] font-bold text-primary [&::-webkit-details-marker]:hidden">
+          <span>{item.question}</span>
+          <Icon name="chevron-down" size={22} class="text-accent-ink transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+        <div class="pb-4 [&_a]:underline [&_p+p]:mt-2" set:html={item.answer} />
+      </details>
+    ))
+  }
+</div>

@@ -1,0 +1,26 @@
+---
+/** White card on the off-white page. Optional title (h3) and icon slot. */
+interface Props {
+  title?: string;
+  headingLevel?: 2 | 3 | 4;
+  class?: string;
+}
+
+const { title, headingLevel = 3, class: className = '' } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+const hasIcon = Astro.slots.has('icon');
+---
+
+<div class={`rounded-card border border-line bg-surface p-5 shadow-[0_1px_2px_rgba(8,52,63,0.06)] sm:p-6 ${className}`}>
+  {
+    hasIcon && (
+      <div class="mb-3 inline-flex size-11 items-center justify-center rounded-xl bg-accent-soft text-accent-ink">
+        <slot name="icon" />
+      </div>
+    )
+  }
+  {title && <Heading class="mb-2 text-[1.2rem] font-bold">{title}</Heading>}
+  <div class="space-y-3">
+    <slot />
+  </div>
+</div>

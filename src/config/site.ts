@@ -29,11 +29,7 @@ export const site = {
     /** Third-person short bio for DoctorCard, schema and directory listings. */
     bioShort:
       'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video.',
-    photos: {
-      headshot: '/images/dr-sam-headshot.png',
-      desk: '/images/dr-sam-desk.png',
-      consult: '/images/dr-sam-consult.png',
-    },
+    // Photos live in src/config/images.ts so the build can optimise them.
   },
 
   /** Physical clinic: the only one. Never imply a clinic anywhere else. */
@@ -131,8 +127,30 @@ export const site = {
   /** Site-wide primary call to action. */
   cta: {
     label: 'Check if this is for you (60 sec)',
+    /** The same label in two parts, so '(60 sec)' never breaks onto its own line. */
+    text: 'Check if this is for you',
+    time: '60 sec',
+    /** Short label for the header button. */
+    shortLabel: 'Check eligibility',
     href: '/check',
   },
+
+  /** Main navigation: max 4 items. */
+  nav: [
+    { label: 'How it works', href: '/how-it-works' },
+    { label: 'Pricing', href: '/pricing' },
+    { label: 'About Dr Sam', href: '/about' },
+    { label: 'FAQ', href: '/faq' },
+  ],
+
+  /** Footer legal and policy links. */
+  footerLinks: [
+    { label: 'Privacy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
+    { label: 'Cancellations', href: '/cancellations' },
+    { label: 'Complaints', href: '/complaints' },
+    { label: 'Accessibility', href: '/accessibility' },
+  ],
 
   /** Service limits, used in copy and in the eligibility checker. */
   eligibility: {
@@ -146,6 +164,14 @@ export type SiteConfig = typeof site;
 /** True when a config value is still a placeholder. Used by tests and the compliance check. */
 export function isTodo(value: unknown): boolean {
   return typeof value === 'string' && value.trim().toUpperCase().startsWith('TODO');
+}
+
+/** Formats a price value: '$695' for a number or numeric string, or the TODO text as-is. */
+export function formatPrice(value: number | string): string {
+  if (typeof value === 'number') return `$${value.toLocaleString('en-AU')}`;
+  if (isTodo(value)) return value;
+  const n = Number(value);
+  return Number.isFinite(n) ? `$${n.toLocaleString('en-AU')}` : value;
 }
 
 /** Walks the config and returns every placeholder path, e.g. "contact.phone". */

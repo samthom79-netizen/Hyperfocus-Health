@@ -1,24 +1,105 @@
+/* Self-hosted fonts (bundled into the build; no requests to Google). */
+@import "@fontsource/atkinson-hyperlegible/400.css";
+@import "@fontsource/atkinson-hyperlegible/400-italic.css";
+@import "@fontsource/atkinson-hyperlegible/700.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
 @import "tailwindcss";
 
 /*
-  Design tokens are set in Prompt 2. These few base rules enforce the
-  ADHD-friendly reading defaults from CLAUDE.md so no page can ship below them.
+  Design tokens. Hex values mirror src/config/palette.ts; the palette unit test
+  fails if they drift. Contrast results: docs/contrast-report.md.
+  Mint (accent) is for shapes, icons and large text on teal ONLY.
+  Use accent-ink when mint-coloured text is needed on a light background.
 */
+@theme {
+  --color-primary: #08343F;
+  --color-primary-hover: #155463;
+  --color-accent: #13C999;
+  --color-accent-ink: #06765A;
+  --color-accent-soft: #E3F6EF;
+  --color-bg: #F7FAF8;
+  --color-surface: #FFFFFF;
+  --color-ink: #16262C;
+  --color-ink-muted: #4A5C63;
+  --color-line: #D3DFDB;
+  --color-highlight: #F5B04A;
+  --color-highlight-soft: #FDF1DC;
+  --color-highlight-edge: #B06A00;
+
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1rem;
+}
+
 @layer base {
   html {
-    font-size: 18px; /* body text 18px minimum */
+    /* 1rem = 18px: body text 18px minimum. Spacing is rem-based, so it scales too. */
+    font-size: 18px;
     line-height: 1.6;
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem; /* anchor links clear the sticky header */
   }
 
   body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-ink);
     max-width: 100%;
     overflow-x: hidden;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-weight: 800;
+    font-size: clamp(1.9rem, 1.4rem + 2.5vw, 2.8rem);
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-weight: 800;
+    font-size: clamp(1.45rem, 1.2rem + 1.2vw, 1.9rem);
+  }
+  h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
   p,
-  li {
+  li,
+  dd {
     max-width: 70ch; /* lines 70 characters max */
+  }
+
+  a {
+    color: var(--color-primary);
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 0.08em;
+  }
+  a:hover {
+    text-decoration-thickness: 0.14em;
+  }
+
+  /* One visible focus style everywhere: 3px teal ring with a gap. */
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+
+  /* Focus ring on dark (teal) backgrounds. */
+  .on-dark :focus-visible {
+    outline-color: #FFFFFF;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -31,4 +112,36 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+/*
+  Focus mode (toggle in the header). Set on <html> as .focus-mode.
+  - Bigger text: 18px -> 20px. Because spacing uses rem, every gap grows too.
+  - Looser lines and word spacing.
+  - Decorative images (marked data-decorative) are hidden.
+*/
+html.focus-mode {
+  font-size: 20px;
+}
+html.focus-mode body {
+  line-height: 1.8;
+  word-spacing: 0.06em;
+}
+html.focus-mode p,
+html.focus-mode li {
+  margin-bottom: 0.4em;
+}
+html.focus-mode [data-decorative] {
+  display: none !important;
+}
+
+/* Visible, unmistakable placeholder for any value still marked TODO. */
+.todo {
+  background: var(--color-highlight-soft);
+  color: var(--color-primary);
+  outline: 2px dashed var(--color-highlight-edge);
+  outline-offset: 1px;
+  padding: 0 0.25em;
+  border-radius: 0.2em;
+  font-weight: 700;
 }

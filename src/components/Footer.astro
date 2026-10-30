@@ -1,0 +1,61 @@
+---
+/**
+ * Site footer (dark teal). Carries everything CLAUDE.md requires on every page:
+ * crisis numbers, 'Queensland adults 18+ only', AHPRA number, ABN, and links to
+ * Privacy, Terms, Cancellations, Complaints and Accessibility.
+ * The main nav is repeated here so it is reachable even with JavaScript off.
+ */
+import { site } from '../config/site';
+import CrisisStrip from './CrisisStrip.astro';
+import Val from './Val.astro';
+
+const year = new Date().getFullYear();
+const linkClass = 'inline-flex min-h-11 items-center text-white underline decoration-white/60 hover:decoration-white';
+---
+
+<footer class="on-dark mt-16 bg-primary text-white">
+  <div class="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
+    <CrisisStrip tone="dark" />
+
+    <div class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-[1.4fr_1fr_1fr]">
+      <div class="col-span-2 space-y-2 lg:col-span-1">
+        <p class="font-display text-[1.1rem] font-extrabold">
+          <span class="text-white">Hyperfocus</span> <span class="text-accent">Health</span>
+        </p>
+        <p class="font-bold">{site.eligibility.state} adults {site.eligibility.minAge}+ only.</p>
+        <p>
+          {site.doctor.name}, {site.doctor.title}.<br />
+          AHPRA registration {site.doctor.ahpra}.
+        </p>
+        <p>
+          {site.clinic.name}<br />
+          {site.clinic.street}, {site.clinic.suburb} {site.clinic.state} {site.clinic.postcode}
+        </p>
+        <p>ABN <Val value={site.abn} /></p>
+      </div>
+
+      <nav aria-label="Footer">
+        <p class="font-display font-bold text-accent">Explore</p>
+        <ul class="mt-1">
+          <li><a class={linkClass} href={site.cta.href}>{site.cta.shortLabel}</a></li>
+          {site.nav.map((item) => (
+            <li><a class={linkClass} href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav aria-label="Policies">
+        <p class="font-display font-bold text-accent">Policies</p>
+        <ul class="mt-1">
+          {site.footerLinks.map((item) => (
+            <li><a class={linkClass} href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <p class="mt-8 border-t border-white/25 pt-6 text-[0.9rem]">
+      © {year} <Val value={site.legalEntity} />. This website is general information, not medical advice.
+    </p>
+  </div>
+</footer>

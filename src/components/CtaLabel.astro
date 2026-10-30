@@ -1,0 +1,9 @@
+---
+/**
+ * The site-wide CTA text, with '(60 sec)' kept together on one line.
+ * Wrapped in one span so a flex button treats it as a single piece of text.
+ */
+import { site } from '../config/site';
+---
+
+<span>{site.cta.text} <span class="whitespace-nowrap">({site.cta.time})</span></span>

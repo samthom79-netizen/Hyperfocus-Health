@@ -1,19 +1,22 @@
 ---
 /**
- * Minimal page shell. Prompt 2 replaces this with the full design system
- * (header, nav, Focus mode, footer components). It exists now so every page
- * already carries the required footer and metadata.
+ * Page shell used by every page: metadata, sticky header, main content, footer.
  */
 import '../styles/global.css';
 import { site } from '../config/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
   description: string;
+  /** Keep this page out of search engines (e.g. /styleguide). */
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 ---
 
 <!doctype html>
@@ -23,45 +26,36 @@ const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/png" href="/images/logo.png" />
+    {noindex ? <meta name="robots" content="noindex, nofollow" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#08343F" />
     <meta name="color-scheme" content="light" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_AU" />
+    <!-- Apply the saved Focus mode before first paint. Storage may be blocked: ignore errors. -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('hf-focus-mode') === '1') document.documentElement.classList.add('focus-mode');
+      } catch (e) {}
+    </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-white text-slate-900">
+  <body class="flex min-h-screen flex-col">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:p-3 focus:underline"
+      class="sr-only z-50 rounded-lg bg-surface px-4 py-3 font-bold text-primary focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
     >
       Skip to content
     </a>
 
-    <header class="border-b border-slate-200 px-4 py-3">
-      <a href="/" class="inline-flex items-center gap-3">
-        <img src="/images/logo.png" alt={`${site.name} logo`} width="48" height="48" />
-        <span class="font-semibold">{site.name}</span>
-      </a>
-    </header>
+    <Header />
 
-    <main id="main" class="flex-1 px-4 py-8">
+    <main id="main" class="flex-1">
       <slot />
     </main>
 
-    <footer class="border-t border-slate-200 px-4 py-6 text-sm leading-relaxed">
-      <p class="font-semibold">{site.crisis.emergency.label}</p>
-      <ul class="mt-1 space-y-1">
-        {site.crisis.lines.slice(0, 2).map((line) => (
-          <li>
-            {line.label}: <a class="underline" href={line.tel}>{line.number}</a>
-          </li>
-        ))}
-      </ul>
-      <p class="mt-4">{site.eligibility.state} adults {site.eligibility.minAge}+ only.</p>
-      <p>
-        {site.doctor.name}, {site.doctor.title}. AHPRA registration {site.doctor.ahpra}.
-      </p>
-      <p>
-        {site.clinic.name}, {site.clinic.street}, {site.clinic.suburb} {site.clinic.state} {site.clinic.postcode}.
-      </p>
-      <p class="mt-2 text-slate-600">ABN {site.abn}</p>
-    </footer>
+    <Footer />
   </body>
 </html>

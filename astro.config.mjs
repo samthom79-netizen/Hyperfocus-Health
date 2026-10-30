@@ -11,7 +11,12 @@ export default defineConfig({
   // TODO: replace with the real domain once registered (needed for sitemap + canonical URLs)
   site: 'https://hyperfocushealth.example',
   output: 'static',
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [
+    react(),
+    mdx(),
+    // Internal pages (e.g. /styleguide) stay out of the sitemap.
+    sitemap({ filter: (page) => !page.includes('/styleguide') }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -59,16 +59,35 @@ This is the public website for **Hyperfocus Health**, a Queensland-only adult AD
 | Path | What lives there |
 | --- | --- |
 | `HYPERFOCUS-BUILD-BRIEF.md` | The full brief and the 12 build prompts. Part 4 wins on any conflict. |
-| `src/config/site.ts` | Every value that might change (brand, contact, prices, booking, crisis numbers). Import it; never hard-code these elsewhere. `TODO:` values are placeholders that block production. |
-| `src/pages/` | One file per URL. Astro pages, pre-rendered to static HTML. |
-| `src/layouts/` | Page shells (header, footer with crisis strip). |
-| `src/components/` | Reusable pieces. `.astro` by default; `.tsx` React only for interactive islands. |
+| `src/config/site.ts` | Every value that might change (brand, contact, prices, booking, crisis numbers, nav, footer links, CTA). Import it; never hard-code these elsewhere. `TODO:` values are placeholders that block production. |
+| `src/config/palette.ts` | Brand colours and every approved text/background pairing (contrast-tested). |
+| `src/config/images.ts` | Photos and logo icon with their alt text. Always import images from here. |
+| `src/lib/contrast.ts` | WCAG contrast maths used by the palette test and script. |
+| `src/pages/` | One file per URL. Astro pages, pre-rendered to static HTML. `/styleguide` is internal (noindex, not in sitemap). |
+| `src/layouts/Base.astro` | Page shell: metadata, Focus mode pre-paint script, Header, main, Footer. Every page uses it. |
+| `src/components/` | Reusable pieces. `.astro` by default; `.tsx` React only for interactive islands. See Design system below. |
 | `src/content/` | Page copy in Markdown/MDX so Sam can edit words without touching code. |
-| `src/styles/global.css` | Tailwind import and base reading rules. |
-| `public/images/` | Logo and photos. `dr-sam-headshot.png` is the primary photo of Sam. |
+| `src/styles/global.css` | Fonts, Tailwind theme tokens (mirror palette.ts), base reading rules, Focus mode, `.todo` style. |
+| `src/assets/photos/` | Photos of Sam (optimised to AVIF/WebP at build). `dr-sam-headshot.png` is the primary photo. |
+| `src/assets/brand/logo-icon.png` | Icon cut from the logo (transparent). Made by `scripts/make-logo-assets.mjs`. |
+| `public/images/logo.png` | Original full logo. `public/favicon.png`, `public/apple-touch-icon.png` are generated from it. |
+| `scripts/` | `sample-logo-colours.mjs`, `make-logo-assets.mjs`, `check-contrast.ts`, `screenshots.mjs`, `preview-start.sh` / `preview-stop.sh`. |
 | `tests/unit/` | Vitest logic tests (eligibility rules, config checks). |
 | `tests/e2e/` | Playwright page checks against the built site. |
 | `docs/` | Audit reports, vendor notes, screenshots, runbooks. |
+
+## Design system (Prompt 2)
+
+Look at `/styleguide` before building any page. Use these components; don't restyle one-offs.
+
+- **Colours** (Tailwind names): `primary` #08343F (dark teal, headings, links, primary buttons), `accent` #13C999 (mint: shapes, icons, step circles, text on teal only), `accent-ink` #06765A (mint-coloured text on light), `accent-soft`, `bg`, `surface`, `ink`, `ink-muted`, `line`, `highlight`, `highlight-soft`, `highlight-edge`. Plain mint on a light background fails contrast (2.0:1): never use it for text. The only exception is the "Health" wordmark, which is a logotype.
+- New colour pairing? Add it to `pairings` in `src/config/palette.ts` and run `npm run test:unit`. Changing a hex means changing it in both palette.ts and global.css (the test checks they match).
+- **Fonts**: Plus Jakarta Sans 700/800 (`font-display`, headings, buttons), Atkinson Hyperlegible 400/700 (`font-body`, everything else). Self-hosted via @fontsource. Root size 18px, so `1rem` = 18px.
+- **Components**: `Button` (primary/secondary; `size="header"` for the header only), `CtaLabel` (the site CTA text, keeps "(60 sec)" together), `Card`, `StepList`, `TimeBadge`, `Callout` (info/warning), `Accordion` (native `<details>`, works without JS), `PriceCard`, `ShortVersion` (1-3 bullets; build fails otherwise), `DoctorCard`, `CrisisStrip` (compact/full, light/dark), `Container`, `Icon`, `Val` (renders a site.ts value, showing TODOs as highlighted `[TODO]` boxes).
+- **Header** controls use fixed px sizes so Focus mode can't push them off a phone screen. Don't change them to rem.
+- **Focus mode** adds `.focus-mode` to `<html>`: root font 20px, looser lines, and hides anything marked `data-decorative`. Mark decorative images with `data-decorative`; never mark the doctor photo or anything informative.
+- **Images**: `<Picture>` from `astro:assets` with `formats={['avif','webp']}`, a `width`, `widths` and `sizes`. Photos of Sam other than the headshot stay at most 640px wide.
+- **Tap targets**: interactive elements use `min-h-11` (44px+) or `min-h-12`.
 
 ## Stack
 
@@ -83,7 +102,11 @@ npm install        # once
 npm run dev        # local preview with live reload (http://localhost:4321)
 npm run build      # build to dist/ (must pass before every commit)
 npm run test       # unit + e2e
+npm run contrast   # print the colour contrast table, update docs/contrast-report.md
+npm run shots      # screenshots of / and /styleguide into docs/screenshots (needs scripts/preview-start.sh first)
 ```
+
+Astro 7's `astro preview` can detach into the background; use `scripts/preview-start.sh` / `scripts/preview-stop.sh` rather than `pkill` (a `pkill -f "astro preview"` inside a shell command can kill that shell).
 
 ## Working rules for Claude Code
 

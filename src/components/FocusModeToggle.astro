@@ -1,0 +1,63 @@
+---
+/**
+ * Focus mode switch: bigger text, more space, no decorative pictures.
+ * The choice is remembered in localStorage. Every storage call is wrapped in
+ * try/catch, so the toggle still works for the current page when storage is
+ * blocked (private browsing, strict privacy settings).
+ *
+ * The saved choice is applied before first paint by the inline script in
+ * src/layouts/Base.astro, so there's no flash of the wrong layout.
+ */
+interface Props {
+  /** Show the one-line explanation under the label (used in the mobile menu). */
+  describe?: boolean;
+  class?: string;
+}
+
+const { describe = false, class: className = '' } = Astro.props;
+---
+
+<button
+  type="button"
+  data-focus-toggle
+  aria-pressed="false"
+  class={`group inline-flex min-h-11 items-center gap-3 rounded-lg px-2 py-1.5 text-left text-primary hover:bg-accent-soft ${className}`}
+>
+  <span
+    class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full bg-ink-muted transition-colors group-aria-pressed:bg-accent-ink"
+    aria-hidden="true"
+  >
+    <span class="ml-1 size-4 rounded-full bg-white transition-transform group-aria-pressed:translate-x-5"></span>
+  </span>
+  <span class="flex flex-col leading-tight">
+    <span class="font-display text-[0.95rem] font-bold">Focus mode</span>
+    {describe && <span class="text-[0.85rem] text-ink-muted">Bigger text, more space, fewer pictures</span>}
+  </span>
+</button>
+
+<script>
+  const KEY = 'hf-focus-mode';
+  const root = document.documentElement;
+
+  function apply(on: boolean) {
+    root.classList.toggle('focus-mode', on);
+    document.querySelectorAll<HTMLButtonElement>('[data-focus-toggle]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(on));
+    });
+  }
+
+  // Sync every toggle on the page with the state set before paint.
+  apply(root.classList.contains('focus-mode'));
+
+  document.querySelectorAll<HTMLButtonElement>('[data-focus-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const on = !root.classList.contains('focus-mode');
+      apply(on);
+      try {
+        localStorage.setItem(KEY, on ? '1' : '0');
+      } catch {
+        // Storage blocked: the setting still applies to this page.
+      }
+    });
+  });
+</script>

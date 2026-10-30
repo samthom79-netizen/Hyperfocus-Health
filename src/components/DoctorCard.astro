@@ -1,0 +1,52 @@
+---
+/**
+ * Dr Sam at a glance: photo, name, title, AHPRA number and a link to /about.
+ * The photo is meaningful (it shows who you'll see), so it stays visible in
+ * Focus mode. It is served as AVIF/WebP at 1x and 2x.
+ */
+import { Picture } from 'astro:assets';
+import { images } from '../config/images';
+import { site } from '../config/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  showBio?: boolean;
+  showLink?: boolean;
+  headingLevel?: 2 | 3;
+  class?: string;
+}
+
+const { showBio = false, showLink = true, headingLevel = 3, class: className = '' } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+const { doctor } = site;
+---
+
+<div class={`flex flex-col gap-5 rounded-card border border-line bg-surface p-5 sm:flex-row sm:items-start sm:p-6 ${className}`}>
+  <Picture
+    src={images.headshot.src}
+    alt={images.headshot.alt}
+    width={140}
+    widths={[140, 280, 420]}
+    sizes="140px"
+    formats={['avif', 'webp']}
+    fallbackFormat="jpg"
+    class="aspect-[4/5] w-[140px] rounded-2xl bg-accent-soft object-cover"
+  />
+  <div class="min-w-0 space-y-1.5">
+    <Heading class="text-[1.35rem] font-extrabold">{doctor.name}</Heading>
+    <p class="font-bold text-primary">{doctor.title}</p>
+    <p>{doctor.focus}. Has ADHD himself.</p>
+    <p class="text-[0.9rem] text-ink-muted">AHPRA registration {doctor.ahpra}</p>
+    {showBio && <p class="pt-2">{doctor.bioShort}</p>}
+    {
+      showLink && (
+        <p class="pt-2">
+          <a href="/about" class="inline-flex min-h-11 items-center gap-1.5 font-bold">
+            About Dr Sam
+            <Icon name="arrow-right" size={20} />
+          </a>
+        </p>
+      )
+    }
+  </div>
+</div>

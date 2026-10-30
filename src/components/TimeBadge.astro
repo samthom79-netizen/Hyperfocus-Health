@@ -1,0 +1,21 @@
+---
+/**
+ * Shows the time cost of something ('60 sec', '2 min read', 'about 30 min').
+ * Screen readers hear "Time needed: 60 sec".
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-[0.85rem] leading-tight font-bold text-primary ${className}`}
+>
+  <Icon name="clock" size={16} class="text-accent-ink" />
+  <span class="sr-only">Time needed: </span>{label}
+</span>

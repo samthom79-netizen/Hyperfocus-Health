@@ -1,0 +1,40 @@
+---
+/**
+ * The 3-bullet 'Short version' box that sits at the top of every long page.
+ * The build fails if more than 3 bullets are passed: the limit is the point.
+ */
+import Icon from './Icon.astro';
+import TimeBadge from './TimeBadge.astro';
+
+interface Props {
+  bullets: string[];
+  /** Optional time cost for the full page, e.g. '2 min read'. */
+  readingTime?: string;
+  /** Only needed if a page ever shows two boxes. */
+  id?: string;
+  class?: string;
+}
+
+const { bullets, readingTime, id = 'short-version', class: className = '' } = Astro.props;
+
+if (bullets.length === 0 || bullets.length > 3) {
+  throw new Error(`ShortVersion needs 1 to 3 bullets, got ${bullets.length}.`);
+}
+---
+
+<section aria-labelledby={id} class={`rounded-card border border-accent/50 bg-accent-soft p-5 sm:p-6 ${className}`}>
+  <div class="mb-3 flex flex-wrap items-center gap-3">
+    <h2 id={id} class="text-[1.1rem] font-extrabold">Short version</h2>
+    {readingTime && <TimeBadge label={readingTime} class="bg-surface" />}
+  </div>
+  <ul class="space-y-2">
+    {
+      bullets.map((b) => (
+        <li class="flex gap-2.5">
+          <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+          <span>{b}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

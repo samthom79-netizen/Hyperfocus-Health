@@ -1,0 +1,29 @@
+---
+/**
+ * Highlighted note.
+ * - info: light mint, for helpful context.
+ * - warning: light amber, for things people must not miss. Calm, not alarming.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  variant?: 'info' | 'warning';
+  title?: string;
+  class?: string;
+}
+
+const { variant = 'info', title, class: className = '' } = Astro.props;
+
+const styles = {
+  info: { box: 'bg-accent-soft border-accent-ink', icon: 'text-accent-ink', name: 'info' as const, label: 'Note' },
+  warning: { box: 'bg-highlight-soft border-highlight-edge', icon: 'text-highlight-edge', name: 'warning' as const, label: 'Important' },
+}[variant];
+---
+
+<aside class={`flex gap-3 rounded-card border-l-4 p-4 sm:p-5 ${styles.box} ${className}`} aria-label={title ?? styles.label}>
+  <Icon name={styles.name} size={24} class={`mt-0.5 ${styles.icon}`} />
+  <div class="min-w-0 space-y-2">
+    {title && <p class="font-display font-bold text-primary">{title}</p>}
+    <slot />
+  </div>
+</aside>

@@ -1,0 +1,51 @@
+---
+/**
+ * Numbered steps, each with an optional time badge.
+ * Numbers sit in mint circles (teal number on mint: 6.26:1).
+ * Screen readers hear "Step 1: ..." because the circle number is hidden from them.
+ */
+import TimeBadge from './TimeBadge.astro';
+
+export interface Step {
+  title: string;
+  time?: string;
+  body?: string;
+}
+
+interface Props {
+  steps: Step[];
+  headingLevel?: 3 | 4;
+  class?: string;
+}
+
+const { steps, headingLevel = 3, class: className = '' } = Astro.props;
+const Heading = `h${headingLevel}` as 'h3' | 'h4';
+---
+
+<ol class={`space-y-0 ${className}`}>
+  {
+    steps.map((step, i) => (
+      <li class="relative flex gap-4 pb-7 last:pb-0">
+        {i < steps.length - 1 && (
+          <span class="absolute top-12 bottom-1 left-[1.375rem] w-0.5 -translate-x-1/2 bg-line" aria-hidden="true" />
+        )}
+        <span
+          class="relative z-10 inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[1.05rem] font-extrabold text-primary"
+          aria-hidden="true"
+        >
+          {i + 1}
+        </span>
+        <div class="min-w-0 pt-1.5">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+            <Heading class="text-[1.1rem] font-bold">
+              <span class="sr-only">Step {i + 1}: </span>
+              {step.title}
+            </Heading>
+            {step.time && <TimeBadge label={step.time} />}
+          </div>
+          {step.body && <p class="mt-1.5">{step.body}</p>}
+        </div>
+      </li>
+    ))
+  }
+</ol>

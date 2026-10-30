@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isTodo, listTodos, site } from '../../src/config/site';
+import { formatPrice, isTodo, listTodos, site } from '../../src/config/site';
 
 /**
  * Guards the values that must never regress, whatever else changes.
@@ -33,6 +33,22 @@ describe('site config', () => {
     expect(isTodo('TODO: phone number')).toBe(true);
     expect(isTodo('0749480041')).toBe(false);
     expect(isTodo(42)).toBe(false);
+  });
+
+  it('keeps the main nav to 4 items and has the required footer links', () => {
+    expect(site.nav.length).toBeLessThanOrEqual(4);
+    const footer = site.footerLinks.map((l) => l.label);
+    expect(footer).toEqual(['Privacy', 'Terms', 'Cancellations', 'Complaints', 'Accessibility']);
+  });
+
+  it('formats prices and leaves placeholders alone', () => {
+    expect(formatPrice(695)).toBe('$695');
+    expect(formatPrice('1250')).toBe('$1,250');
+    expect(formatPrice('TODO: e.g. 695')).toBe('TODO: e.g. 695');
+  });
+
+  it('keeps the CTA label and its two parts in sync', () => {
+    expect(`${site.cta.text} (${site.cta.time})`).toBe(site.cta.label);
   });
 
   it('lists every remaining placeholder by path', () => {

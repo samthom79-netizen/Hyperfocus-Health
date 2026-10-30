@@ -1,0 +1,352 @@
+---
+/**
+ * Internal style guide: every component, the palette and its contrast results.
+ * noindex + excluded from the sitemap (see astro.config.mjs).
+ */
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Container from '../components/Container.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import Icon from '../components/Icon.astro';
+import StepList from '../components/StepList.astro';
+import TimeBadge from '../components/TimeBadge.astro';
+import Callout from '../components/Callout.astro';
+import Accordion from '../components/Accordion.astro';
+import PriceCard from '../components/PriceCard.astro';
+import ShortVersion from '../components/ShortVersion.astro';
+import DoctorCard from '../components/DoctorCard.astro';
+import CrisisStrip from '../components/CrisisStrip.astro';
+import Val from '../components/Val.astro';
+import CtaLabel from '../components/CtaLabel.astro';
+import { site } from '../config/site';
+import { images } from '../config/images';
+import { palette, pairings, colourOf } from '../config/palette';
+import { AA, contrastRatio } from '../lib/contrast';
+
+const swatches = Object.entries(palette) as [keyof typeof palette, string][];
+const swatchNotes: Record<string, string> = {
+  primary: 'Headings, links, primary buttons',
+  primaryHover: 'Primary button hover',
+  accent: 'Shapes, icons, circles. Not for text on light',
+  accentInk: 'Mint-coloured text on light',
+  accentSoft: 'Info boxes, badges',
+  bg: 'Page background',
+  surface: 'Cards',
+  ink: 'Body text',
+  inkMuted: 'Small print',
+  line: 'Borders, dividers',
+  highlight: 'Warm badges (teal text on top)',
+  highlightSoft: 'Warning boxes',
+  highlightEdge: 'Warning border and icon',
+};
+const darkSwatch = (key: string) => ['primary', 'primaryHover', 'ink', 'inkMuted', 'accentInk', 'highlightEdge'].includes(key);
+
+const rows = pairings.map((p) => {
+  const ratio = contrastRatio(colourOf(p.fg), colourOf(p.bg));
+  const passes = ratio >= AA[p.use];
+  return { ...p, ratio, passes };
+});
+
+const pathway = [
+  { title: 'Check if this is for you', time: '60 sec' },
+  { title: 'Book and pay', time: 'about 3 min' },
+  { title: 'Online intake on your phone', time: 'about 30 min, can be split', body: 'Answer by voice, tick boxes or typing. Do it all at once or in short blocks.' },
+  { title: 'Video appointment 1: assessment', time: 'about 60 min' },
+  { title: 'Video appointment 2: diagnosis and a written plan', time: '30-45 min' },
+];
+
+const faq = [
+  { question: 'Do I need a referral?', answer: '<p>No. You can book directly.</p>' },
+  {
+    question: 'Can a GP diagnose ADHD in Queensland?',
+    answer: `<p>Yes. Since 1 December 2025, specialist GPs in Queensland can diagnose ADHD in adults. <a href="${site.links.qldGovAdhd}">Queensland Government information</a>.</p>`,
+  },
+  {
+    question: 'Do I need to come to Cannonvale?',
+    answer: '<p>No. Assessments are by video. In-person visits at Cannonvale are optional and attract a Medicare rebate.</p>',
+  },
+];
+
+const sections = [
+  ['colours', 'Colours'],
+  ['contrast', 'Contrast check'],
+  ['type', 'Type'],
+  ['buttons', 'Buttons'],
+  ['badges', 'Time badges'],
+  ['cards', 'Cards'],
+  ['steps', 'Step list'],
+  ['callouts', 'Callouts'],
+  ['accordion', 'Accordion'],
+  ['prices', 'Price cards'],
+  ['short-version', 'Short version'],
+  ['doctor', 'Doctor card'],
+  ['crisis', 'Crisis strip'],
+  ['focus', 'Focus mode'],
+  ['todo', 'TODO markers'],
+] as const;
+---
+
+<Base title="Style guide" description="Internal design system reference for the Hyperfocus Health website." noindex>
+  <Container class="py-10">
+    <p class="font-display text-[0.9rem] font-bold tracking-wide text-accent-ink uppercase">Internal page · not indexed</p>
+    <h1 class="mt-1">Style guide</h1>
+    <p class="mt-3">Every building block of the site in one place. Check this page after any design change.</p>
+
+    <nav aria-label="Style guide sections" class="mt-6">
+      <ul class="flex flex-wrap gap-2">
+        {
+          sections.map(([id, label]) => (
+            <li>
+              <a href={`#${id}`} class="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-4 text-[0.9rem] font-bold no-underline hover:bg-accent-soft">
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="mt-12 space-y-16">
+      <!-- Colours -->
+      <section id="colours" aria-labelledby="h-colours">
+        <h2 id="h-colours">Colours</h2>
+        <p class="mt-2">Teal and mint sampled from the logo: <strong>#08343F</strong> and <strong>#13C999</strong>.</p>
+        <ul class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {
+            swatches.map(([key, hex]) => (
+              <li class="overflow-hidden rounded-card border border-line bg-surface">
+                <div class="flex h-20 items-end p-3" style={`background:${hex}`}>
+                  <span class={`font-display text-[0.85rem] font-bold ${darkSwatch(key) ? 'text-white' : 'text-primary'}`}>{hex}</span>
+                </div>
+                <div class="p-3 text-[0.88rem] leading-snug">
+                  <p class="font-bold">{key}</p>
+                  <p class="text-ink-muted">{swatchNotes[key]}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- Contrast -->
+      <section id="contrast" aria-labelledby="h-contrast">
+        <h2 id="h-contrast">Contrast check (WCAG 2.2 AA)</h2>
+        <p class="mt-2">Normal text needs 4.5:1. Large text, icons and borders need 3:1.</p>
+        <div class="mt-5 overflow-x-auto rounded-card border border-line bg-surface">
+          <table class="w-full min-w-[640px] text-left text-[0.88rem]">
+            <thead class="bg-accent-soft font-display text-primary">
+              <tr>
+                <th class="p-3">Sample</th>
+                <th class="p-3">Text / background</th>
+                <th class="p-3">Ratio</th>
+                <th class="p-3">Needs</th>
+                <th class="p-3">Result</th>
+                <th class="p-3">Used for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                rows.map((r) => (
+                  <tr class="border-t border-line">
+                    <td class="p-3">
+                      <span class="inline-block rounded-md px-2 py-1 font-bold" style={`color:${colourOf(r.fg)};background:${colourOf(r.bg)}`}>
+                        Aa
+                      </span>
+                    </td>
+                    <td class="p-3">
+                      {r.fg} / {r.bg}
+                    </td>
+                    <td class="p-3 font-bold">{r.ratio.toFixed(2)}:1</td>
+                    <td class="p-3">{AA[r.use]}:1</td>
+                    <td class="p-3 font-bold">{r.passes ? 'Pass' : r.expectFail ? 'Fail: never use' : 'FAIL'}</td>
+                    <td class="p-3">{r.where}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Type -->
+      <section id="type" aria-labelledby="h-type">
+        <h2 id="h-type">Type</h2>
+        <div class="mt-5 space-y-4 rounded-card border border-line bg-surface p-5 sm:p-6">
+          <p class="text-[0.85rem] text-ink-muted">Headings: Plus Jakarta Sans 800 / 700</p>
+          <p class="font-display text-[2.4rem] leading-tight font-extrabold text-primary">Heading 1</p>
+          <p class="font-display text-[1.8rem] leading-tight font-extrabold text-primary">Heading 2</p>
+          <p class="font-display text-[1.2rem] font-bold text-primary">Heading 3</p>
+          <p class="pt-3 text-[0.85rem] text-ink-muted">Body: Atkinson Hyperlegible, 18px, line height 1.6</p>
+          <p>
+            Body text is 18px with generous line spacing. Paragraphs stay to three short sentences. Lines stop at about 70 characters so
+            your eyes don't lose their place.
+          </p>
+          <p><a href="#type">This is a link</a>. <strong>This is bold.</strong> <em>This is italic.</em></p>
+          <p class="text-[0.9rem] text-ink-muted">Small print uses the muted colour (6.66:1).</p>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section id="buttons" aria-labelledby="h-buttons">
+        <h2 id="h-buttons">Buttons</h2>
+        <p class="mt-2">One primary button per screen. Every button is at least 44px tall.</p>
+        <div class="mt-5 flex flex-wrap items-center gap-3">
+          <Button href={site.cta.href} arrow><CtaLabel /></Button>
+          <Button href="#buttons" variant="secondary">See how it works</Button>
+          <Button size="sm">Small primary</Button>
+          <Button size="sm" variant="secondary">Small secondary</Button>
+        </div>
+      </section>
+
+      <!-- Badges -->
+      <section id="badges" aria-labelledby="h-badges">
+        <h2 id="h-badges">Time badges</h2>
+        <p class="mt-2">Show the time cost of everything.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <TimeBadge label="60 sec" />
+          <TimeBadge label="2 min read" />
+          <TimeBadge label="about 30 min, can be split" />
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section id="cards" aria-labelledby="h-cards">
+        <h2 id="h-cards">Cards</h2>
+        <div class="mt-5 grid gap-4 md:grid-cols-3">
+          <Card title="A doctor who gets it">
+            <Icon name="focus" slot="icon" />
+            <p>Dr Sam has ADHD too.</p>
+          </Card>
+          <Card title="Built for ADHD brains">
+            <Icon name="check" slot="icon" />
+            <p>No 40-page forms. Answer by voice, tick boxes or short blocks.</p>
+          </Card>
+          <Card title="Card without an icon">
+            <p>Cards hold one idea each.</p>
+          </Card>
+        </div>
+      </section>
+
+      <!-- Steps -->
+      <section id="steps" aria-labelledby="h-steps">
+        <h2 id="h-steps">Step list</h2>
+        <div class="mt-5 rounded-card border border-line bg-surface p-5 sm:p-6">
+          <StepList steps={pathway} />
+        </div>
+      </section>
+
+      <!-- Callouts -->
+      <section id="callouts" aria-labelledby="h-callouts">
+        <h2 id="h-callouts">Callouts</h2>
+        <div class="mt-5 space-y-4">
+          <Callout title="Good to know">
+            <p>Video appointments have no Medicare rebate. In-person visits at Cannonvale do.</p>
+          </Callout>
+          <Callout variant="warning" title="Before you book">
+            <p>This service is for adults who live in Queensland and will be in Queensland for their appointments.</p>
+          </Callout>
+        </div>
+      </section>
+
+      <!-- Accordion -->
+      <section id="accordion" aria-labelledby="h-accordion">
+        <h2 id="h-accordion">Accordion</h2>
+        <p class="mt-2">Built on the browser's own expand/collapse, so it works with JavaScript off.</p>
+        <Accordion items={faq} class="mt-5" />
+      </section>
+
+      <!-- Prices -->
+      <section id="prices" aria-labelledby="h-prices">
+        <h2 id="h-prices">Price cards</h2>
+        <p class="mt-2">Prices come from the site settings. Undecided prices show as TODO boxes.</p>
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          <PriceCard
+            title="Assessment to diagnosis"
+            price={site.prices.assessmentTotal}
+            priceLabel="total"
+            includes={['Online intake', 'Video appointment 1 (about 60 min)', 'Video appointment 2 (30-45 min)', 'Your written plan']}
+            note="No Medicare rebate for video appointments."
+            featured
+            badge="Start here"
+            cta={{ label: 'Check if this is for you (60 sec)', href: site.cta.href }}
+          />
+          <PriceCard
+            title="Review appointment"
+            price={site.prices.review}
+            priceLabel="each"
+            includes={['Short check-in form first', 'Every 2-4 weeks while treatment is adjusted']}
+          />
+        </div>
+      </section>
+
+      <!-- Short version -->
+      <section id="short-version" aria-labelledby="h-short">
+        <h2 id="h-short">Short version</h2>
+        <p class="mt-2">Sits at the top of every long page. Maximum 3 bullets: the build fails with more.</p>
+        <ShortVersion
+          class="mt-5"
+          id="sv-demo"
+          readingTime="2 min read"
+          bullets={[
+            'Adult ADHD assessment by video, for Queenslanders',
+            'One doctor from first appointment to ongoing care',
+            'The full cost is shown before you book',
+          ]}
+        />
+      </section>
+
+      <!-- Doctor -->
+      <section id="doctor" aria-labelledby="h-doctor">
+        <h2 id="h-doctor">Doctor card</h2>
+        <div class="mt-5 space-y-5">
+          <DoctorCard />
+          <DoctorCard showBio showLink={false} />
+        </div>
+      </section>
+
+      <!-- Crisis -->
+      <section id="crisis" aria-labelledby="h-crisis">
+        <h2 id="h-crisis">Crisis strip</h2>
+        <p class="mt-2">Compact version in every footer. Full version on the eligibility checker's safety screen.</p>
+        <div class="mt-5 space-y-4">
+          <CrisisStrip />
+          <CrisisStrip variant="full" />
+          <div class="rounded-card bg-primary p-4">
+            <CrisisStrip tone="dark" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Focus mode -->
+      <section id="focus" aria-labelledby="h-focus">
+        <h2 id="h-focus">Focus mode</h2>
+        <p class="mt-2">
+          Turn on Focus mode in the header (or the menu on a phone). Text gets bigger, spacing grows, and decorative pictures like the one
+          below disappear. The choice is remembered on this device.
+        </p>
+        <figure class="mt-5 max-w-xl" data-decorative>
+          <Picture
+            src={images.desk.src}
+            alt=""
+            width={576}
+            widths={[400, 576, 960]}
+            sizes="(min-width: 640px) 576px, 100vw"
+            formats={['avif', 'webp']}
+            fallbackFormat="jpg"
+            class="w-full rounded-card"
+          />
+          <figcaption class="mt-2 text-[0.9rem] text-ink-muted">Decorative image: hidden in Focus mode.</figcaption>
+        </figure>
+      </section>
+
+      <!-- TODO -->
+      <section id="todo" aria-labelledby="h-todo">
+        <h2 id="h-todo">TODO markers</h2>
+        <p class="mt-2">
+          Anything not yet decided shows like this: phone <Val value={site.contact.phone} />. Launch is blocked until none remain.
+        </p>
+      </section>
+    </div>
+  </Container>
+</Base>

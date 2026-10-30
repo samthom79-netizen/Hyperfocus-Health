@@ -1,0 +1,131 @@
+---
+/**
+ * Sticky site header.
+ * Desktop (1024px+): logo, 4 nav links, Focus mode, 'Check eligibility'.
+ * Mobile: logo, 'Check eligibility' (always visible), menu button that opens
+ * the nav links and Focus mode.
+ */
+import { Image } from 'astro:assets';
+import { site } from '../config/site';
+import { images } from '../config/images';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import FocusModeToggle from './FocusModeToggle.astro';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href;
+---
+
+<!--
+  Header controls use fixed pixel sizes (not rem) so Focus mode, which enlarges
+  the reading area, can never push the menu button off a phone screen.
+  Below 400px wide only the icon shows; the link keeps its accessible name.
+-->
+<header class="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/85">
+  <div class="mx-auto flex h-[68px] w-full max-w-6xl items-center gap-[6px] px-4 sm:gap-[10px] sm:px-6">
+    <a href="/" class="mr-auto flex shrink-0 items-center gap-[8px] no-underline" aria-label={`${site.name}, home`}>
+      <Image src={images.logoIcon.src} alt="" width={40} height={40} densities={[1, 2]} class="size-[36px] sm:size-[40px]" />
+      <!-- Wordmark in live text: a logotype, so brand mint is used as in the logo file. -->
+      <span class="hidden font-display text-[16px] leading-[1.05] font-extrabold min-[400px]:block sm:text-[19px]" aria-hidden="true">
+        <span class="block text-primary min-[520px]:inline">Hyperfocus</span>
+        <span class="block text-accent min-[520px]:ml-[0.25em] min-[520px]:inline">Health</span>
+      </span>
+    </a>
+
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {
+          site.nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                class="inline-flex min-h-11 items-center rounded-lg px-3 font-display text-[0.95rem] font-bold text-primary no-underline hover:bg-accent-soft aria-[current=page]:underline aria-[current=page]:decoration-accent aria-[current=page]:decoration-[3px] aria-[current=page]:underline-offset-8"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hidden lg:block">
+      <FocusModeToggle />
+    </div>
+
+    <Button href={site.cta.href} size="header" class="shrink-0 whitespace-nowrap" data-cta="header">
+      {site.cta.shortLabel}
+    </Button>
+
+    <button
+      type="button"
+      class="inline-flex size-[44px] shrink-0 items-center justify-center rounded-lg text-primary hover:bg-accent-soft lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-button
+    >
+      <span class="sr-only" data-menu-label>Open menu</span>
+      <span data-icon-open><Icon name="menu" size={26} /></span>
+      <span data-icon-close hidden><Icon name="close" size={26} /></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="border-t border-line bg-bg lg:hidden" hidden>
+    <nav aria-label="Main (mobile)" class="mx-auto w-full max-w-6xl px-4 py-3 sm:px-6">
+      <ul class="flex flex-col">
+        {
+          site.nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+                class="flex min-h-12 items-center rounded-lg px-2 font-display text-[1.05rem] font-bold text-primary no-underline hover:bg-accent-soft aria-[current=page]:bg-accent-soft"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-2 border-t border-line pt-3">
+        <FocusModeToggle describe />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-menu-button]');
+  const panel = document.getElementById('mobile-menu');
+
+  if (button && panel) {
+    const label = button.querySelector('[data-menu-label]');
+    const iconOpen = button.querySelector<HTMLElement>('[data-icon-open]');
+    const iconClose = button.querySelector<HTMLElement>('[data-icon-close]');
+
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      if (label) label.textContent = open ? 'Close menu' : 'Open menu';
+      if (iconOpen) iconOpen.hidden = open;
+      if (iconClose) iconClose.hidden = !open;
+    };
+
+    button.addEventListener('click', () => setOpen(panel.hidden));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) {
+        setOpen(false);
+        button.focus();
+      }
+    });
+
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+
+    // Close the mobile panel if the window grows to desktop width.
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
