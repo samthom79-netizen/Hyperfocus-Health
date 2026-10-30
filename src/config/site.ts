@@ -124,7 +124,7 @@ export const site = {
     outsideWork: '',
     /** Third-person short bio for DoctorCard, schema and directory listings. */
     bioShort:
-      'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video.',
+      'Dr Sam Thomas is a specialist GP (FRACGP) with a special interest in adult ADHD, and has ADHD himself. He graduated in medicine from the University of Limerick in 2011, worked in hospitals in Ireland and New Zealand, and trained as a GP in the UK. He has worked in Australian general practice since 2019, first on the Gold Coast and now in the Whitsundays, and sees adults across Queensland by video or phone.',
     // Photos live in src/config/images.ts so the build can optimise them.
     /**
      * Optional 60-second intro video for /about. Leave src empty until it exists;
@@ -152,6 +152,7 @@ export const site = {
 
   /** Extra footer links (Explore column), after the main menu. */
   footerExplore: [
+    { label: 'Book', href: '/book' },
     { label: 'Areas we cover', href: '/adhd-assessment' },
     { label: 'Resources', href: '/resources' },
   ],
@@ -212,7 +213,7 @@ export const site = {
         'Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments.',
       /** Sam, 31 Oct 2026: care plan can be done in appointment 2 if in person and a regular patient there. */
       carePlanNote:
-        "If you'll keep seeing Dr Sam at Cannonvale as your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and you may be able to claim a Medicare rebate for it. The plan can give you Medicare rebates for some visits to a psychologist, dietitian or other allied health worker.",
+        "If Dr Sam at Cannonvale becomes your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and a Medicare rebate may apply. The plan can give you rebates for some visits to a psychologist, dietitian or other allied health worker.",
     },
     /** Minimum days between booking and appointment 1 (allows intake + baseline checks). */
     minLeadDays: 10,

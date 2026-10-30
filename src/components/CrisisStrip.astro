@@ -26,7 +26,7 @@ const dark = tone === 'dark';
 >
   <p class={`flex items-center gap-2 font-display text-[1.05rem] font-extrabold ${dark ? 'text-white' : 'text-primary'}`}>
     <Icon name="phone" size={22} class={dark ? 'text-accent' : 'text-accent-ink'} />
-    <a href={site.crisis.emergency.tel} class={`no-underline ${dark ? 'text-white' : 'text-primary'}`}>
+    <a href={site.crisis.emergency.tel} class={`inline-flex min-h-11 items-center no-underline ${dark ? 'text-white' : 'text-primary'}`}>
       {site.crisis.emergency.label}
     </a>
   </p>

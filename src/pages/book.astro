@@ -23,39 +23,41 @@ const { clinic } = site;
       </a>
     </p>
 
-    <div class="mt-6 grid gap-5 md:grid-cols-2">
-      <PriceCard
-        title="Telehealth assessment"
-        price={site.prices.assessmentTotal}
-        priceLabel="total to reach a diagnosis"
-        includes={[
-          'Video or phone, anywhere in Queensland',
-          'Online intake on your phone',
-          `Appointment 1 (about ${site.appointments.assessment} min)`,
-          `Appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
-          'Your written plan',
-        ]}
-        note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for new patients.`}
-        featured
-      />
-      <PriceCard
-        title={`In person at ${clinic.suburb}`}
-        price={site.prices.assessmentTotal}
-        priceLabel="total, same as video or phone"
-        includes={['Medicare rebate may apply', `${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}`]}
-        note={`${site.booking.inPerson.feeNote} Booked through the clinic, not online here.`}
-      >
-        <InPersonBooking />
-      </PriceCard>
-    </div>
-    <p class="mt-4 text-ink-muted" data-lengths-note>{site.appointments.lengthsNote}</p>
+    <PriceCard
+      title="Telehealth assessment"
+      price={site.prices.assessmentTotal}
+      priceLabel="total to reach a diagnosis"
+      includes={[
+        'Video or phone, anywhere in Queensland',
+        'Online intake on your phone',
+        `Appointment 1 (about ${site.appointments.assessment} min)`,
+        `Appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
+        'Your written plan',
+      ]}
+      note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for new patients. ${site.appointments.lengthsNote}`}
+      featured
+      class="mt-6"
+    />
 
-    <Callout class="mt-6" title={`Your first appointment will be at least ${site.booking.minLeadDays} days away`}>
+    <div class="mt-5">
+      <BookingPanel />
+    </div>
+
+    <Callout class="mt-5" title={`Your first appointment will be at least ${site.booking.minLeadDays} days away`}>
       <p>That gives you time to finish the intake and baseline checks.</p>
     </Callout>
 
-    <div class="mt-6">
-      <BookingPanel />
-    </div>
+    <h2 class="mt-10">Would you rather come in?</h2>
+    <p class="mt-3">Only if you can get to {clinic.suburb}, in the Whitsundays. Everything else is the same.</p>
+    <PriceCard
+      title={`In person at ${clinic.suburb}`}
+      price={site.prices.assessmentTotal}
+      priceLabel="total, same as video or phone"
+      includes={['Medicare rebate may apply', `${clinic.name}, ${clinic.street}, ${clinic.suburb} ${clinic.state} ${clinic.postcode}`]}
+      note={`${site.booking.inPerson.feeNote} Booked through the clinic, not online here.`}
+      class="mt-5"
+    >
+      <InPersonBooking />
+    </PriceCard>
   </div>
 </MarkdownPage>

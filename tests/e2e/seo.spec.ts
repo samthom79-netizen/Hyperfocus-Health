@@ -120,7 +120,8 @@ test.describe('resources', () => {
     test(`${r}: short version, reviewer line, numbered references that work`, async ({ page }) => {
       await page.goto(`/resources/${r}`);
       await expect(page.locator('main').getByRole('heading', { name: 'Short version' })).toBeVisible();
-      await expect(page.locator('[data-reviewed]')).toContainText('Reviewed by Dr Sam Thomas, specialist GP.');
+      // Until Dr Sam has reviewed an article, the page must say so plainly (never claim a review that hasn't happened).
+      await expect(page.locator('[data-reviewed]')).toContainText(/Reviewed by Dr Sam Thomas, specialist GP, on \d|Draft: not yet reviewed by Dr Sam Thomas/);
       const refs = page.locator('[data-references] li');
       const count = await refs.count();
       expect(count).toBeGreaterThanOrEqual(3);

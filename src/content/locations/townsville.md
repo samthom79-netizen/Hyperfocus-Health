@@ -5,7 +5,7 @@ description: "Adult ADHD assessment by video or phone for Townsville adults, inc
 order: 4
 shortVersion:
   - "Every appointment is by video or phone, so there's no travel for most people."
-  - "Serving Defence members should speak to their Defence health centre first."
+  - "{prices.assessmentTotal} in total to reach a diagnosis, paid in 2 parts. Every cost is on the prices page."
   - "Prefer face to face? Cannonvale, in the Whitsundays, is our only clinic."
 nearby: ["Townsville city", "Magnetic Island", "Ayr", "Home Hill", "Ingham", "Charters Towers"]
 ---

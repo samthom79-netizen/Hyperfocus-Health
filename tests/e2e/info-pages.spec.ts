@@ -6,7 +6,7 @@ test.describe('/pricing', () => {
     await page.goto('/pricing');
     await expect(page.locator('main table tbody th')).toHaveText([
       'Assessment to diagnosis',
-      'Review appointment',
+      'Review appointment (follow-up)',
       'Ongoing reviews',
       'Blood tests or ECG',
     ]);
@@ -19,7 +19,7 @@ test.describe('/pricing', () => {
     await expect(page.getByRole('heading', { name: 'A typical first 3 months' })).toBeVisible();
     await expect(page.locator('[data-example]')).toContainText(`${site.prices.typicalReviewsFirst3Months} reviews`);
     await expect(page.locator('[data-example]')).toContainText('(an assumption)');
-    await expect(main).toContainText('face-to-face visit with the same practice in the last 12 months');
+    await expect(main).toContainText("or you're registered there through MyMedicare");
     await expect(main).toContainText('In person at Cannonvale Medical Centre in Cannonvale, the fees are the same.');
     await expect(main).toContainText('GP chronic condition management plan');
     await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
@@ -83,7 +83,7 @@ test.describe('/faq', () => {
       'After diagnosis',
       'Privacy and support',
     ]);
-    await expect(page.locator('main details')).toHaveCount(12);
+    await expect(page.locator('main details')).toHaveCount(13);
   });
 
   test('Queensland Government link and the full crisis numbers', async ({ page }) => {
@@ -98,7 +98,7 @@ test.describe('/faq', () => {
     const all = (await page.locator('head script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b));
     const data = all.find((d) => d['@type'] === 'FAQPage');
     expect(data['@type']).toBe('FAQPage');
-    expect(data.mainEntity).toHaveLength(12);
+    expect(data.mainEntity).toHaveLength(13);
     const onPage = await page.locator('main details summary').allInnerTexts();
     expect(data.mainEntity.map((q: { name: string }) => q.name)).toEqual(onPage.map((t) => t.trim()));
     for (const q of data.mainEntity) {

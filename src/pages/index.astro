@@ -35,7 +35,7 @@ const textLink = 'inline-flex min-h-11 items-center gap-1.5 font-bold';
     <Container class="grid items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1fr_auto] lg:gap-16">
       <div>
         <h1 id="hero-heading">{c.hero.heading}</h1>
-        <p class="mt-4 text-[1.15rem]">{c.hero.sub}</p>
+        <p class="mt-4 text-[1.15rem]" set:html={renderTokens(c.hero.sub)} />
         <div class="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
           <Button href={site.cta.href} arrow data-cta="hero"><CtaLabel /></Button>
           <a href={c.hero.secondaryLink.href} class={textLink}>

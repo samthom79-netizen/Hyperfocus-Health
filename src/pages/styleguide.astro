@@ -117,7 +117,7 @@ const sections = [
             swatches.map(([key, hex]) => (
               <li class="overflow-hidden rounded-card border border-line bg-surface">
                 <div class="flex h-20 items-end p-3" style={`background:${hex}`}>
-                  <span class={`font-display text-[0.85rem] font-bold ${darkSwatch(key) ? 'text-white' : 'text-primary'}`}>{hex}</span>
+                  <span class={`font-display text-[1.05rem] font-bold ${darkSwatch(key) ? 'text-white' : 'text-primary'}`}>{hex}</span>
                 </div>
                 <div class="p-3 text-[0.88rem] leading-snug">
                   <p class="font-bold">{key}</p>
@@ -133,7 +133,7 @@ const sections = [
       <section id="contrast" aria-labelledby="h-contrast">
         <h2 id="h-contrast">Contrast check (WCAG 2.2 AA)</h2>
         <p class="mt-2">Normal text needs 4.5:1. Large text, icons and borders need 3:1.</p>
-        <div class="mt-5 overflow-x-auto rounded-card border border-line bg-surface">
+        <div class="mt-5 overflow-x-auto rounded-card border border-line bg-surface" tabindex="0" role="region" aria-label="Contrast results table">
           <table class="w-full min-w-[640px] text-left text-[0.88rem]">
             <thead class="bg-accent-soft font-display text-primary">
               <tr>
@@ -150,7 +150,7 @@ const sections = [
                 rows.map((r) => (
                   <tr class="border-t border-line">
                     <td class="p-3">
-                      <span class="inline-block rounded-md px-2 py-1 font-bold" style={`color:${colourOf(r.fg)};background:${colourOf(r.bg)}`}>
+                      <span class="inline-block rounded-md px-2 py-1 font-bold" style={`color:${colourOf(r.fg)};background:${colourOf(r.bg)}`} data-contrast-demo>
                         Aa
                       </span>
                     </td>
@@ -331,7 +331,7 @@ const sections = [
       <!-- Assistant launcher -->
       <section id="assistant" aria-labelledby="h-assistant">
         <h2 id="h-assistant">Browser assistant button</h2>
-        <p class="mt-2">Hidden on /contact until <code>receptionist.webWidget</code> is set. This demo loads a stand-in script, only after the click.</p>
+        <p class="mt-2">Hidden on /contact until <code>receptionist.webWidget</code> is set. This demo loads a stand-in file, only after the click.</p>
         <AssistantLauncher scriptUrl="/demo/assistant-demo.js" tag="hf-demo-assistant" agentId="demo" />
       </section>
 

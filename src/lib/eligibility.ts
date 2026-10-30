@@ -82,13 +82,18 @@ export const questions: readonly Question[] = [
   {
     id: 'unsure',
     kind: 'info',
-    title: "Anything else you're unsure about?",
-    body: ["That's fine. Dr Sam confirms whether this service suits you at your first appointment."],
+    title: 'Not sure about something?',
+    body: [
+      "That's fine. Dr Sam checks that this service suits you when he reads your intake, and you can ask him anything at your first appointment.",
+    ],
     continueLabel: 'See my result',
   },
 ] as const;
 
 export const TOTAL_QUESTIONS = questions.length;
+
+/** Shown under a tick-box question until something is ticked. */
+export const MULTI_HINT = 'Tick anything that applies, or choose None of these.';
 
 /** Is the answer to question `index` complete enough to move on? */
 export function isAnswered(index: number, a: Answers): boolean {
@@ -128,6 +133,7 @@ export const outcomes = {
       'Your first appointment is at least {minLeadDays} days after booking, so there is time for the intake and your baseline checks.',
     ],
     refundHeading: 'If Dr Sam finds this service is not right for you after reading your intake',
+    refundIntro: 'This check covers the main reasons the service might not suit someone. Now and then the intake shows something else.',
     cta: 'Book an appointment',
     restart: 'Start again',
   },
@@ -175,5 +181,6 @@ export function allCheckerCopy(): string[] {
     else if (v && typeof v === 'object') Object.values(v).forEach(walk);
   };
   walk(outcomes);
+  out.push(MULTI_HINT);
   return out;
 }

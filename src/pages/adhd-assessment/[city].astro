@@ -12,7 +12,7 @@ import InPersonBooking from '../../components/InPersonBooking.astro';
 import Button from '../../components/Button.astro';
 import CtaLabel from '../../components/CtaLabel.astro';
 import Icon from '../../components/Icon.astro';
-import { site } from '../../config/site';
+import { formatPrice, site } from '../../config/site';
 
 export async function getStaticPaths() {
   const entries = await getCollection('locations');
@@ -48,6 +48,13 @@ const trail = [
       <section aria-labelledby="same-heading" class="mt-10" data-same-everywhere>
         <h2 id="same-heading">The same wherever you live</h2>
         <ul class="mt-4 space-y-3">
+          <li class="flex gap-2.5">
+            <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
+            <span>
+              <b class="text-primary">Cost:</b> {formatPrice(site.prices.assessmentTotal)} in total to reach a diagnosis, paid in 2 parts. Follow-up
+              reviews are {formatPrice(site.prices.review)} each. <a href="/pricing">Every cost</a> is on one page.
+            </span>
+          </li>
           <li class="flex gap-2.5">
             <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
             <span>

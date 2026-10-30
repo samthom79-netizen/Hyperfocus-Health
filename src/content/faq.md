@@ -23,8 +23,10 @@ groups:
 
   - heading: "Cost"
     items:
+      - question: "How much does it cost?"
+        answer: "{prices.assessmentTotal} in total for the online intake, both appointments and your written plan, paid in 2 parts: {prices.payAtBooking} when you book and {prices.payAppointment2} when you book appointment 2. Follow-up appointments (we call them reviews) are {prices.review} each. Every cost is on the [prices page](/pricing)."
       - question: "Why is there no Medicare rebate for telehealth?"
-        answer: "Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months. New patients won't have. {booking.inPerson.telehealthRebateNote} [See all prices](/pricing)."
+        answer: "Medicare usually only pays for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. New patients of this service won't meet either, so there's no rebate. {booking.inPerson.telehealthRebateNote} [See all prices](/pricing)."
 
   - heading: "The assessment"
     items:

@@ -8,7 +8,7 @@ heading: "What it costs"
 readingTime: "2 min read"
 shortVersion:
   - "It costs {prices.assessmentTotal} in total to reach a diagnosis and a written plan."
-  - "Reviews while treatment is adjusted cost {prices.review} each. Every likely cost is on this page."
+  - "Follow-up appointments (we call them reviews) cost {prices.review} each while treatment is adjusted. Every likely cost is on this page."
   - "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
 
 tableHeading: "Every cost, stage by stage"
@@ -18,7 +18,7 @@ rows:
     whatYouGet: "Online intake, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
     cost: "{prices.assessmentTotal} total"
     note: "Paid in 2 parts: {prices.payAtBooking} when you book, then {prices.payAppointment2} when you book appointment 2."
-  - stage: "Review appointment"
+  - stage: "Review appointment (follow-up)"
     whatYouGet: "About {appointments.reviewMinutes} min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first."
     cost: "{prices.review} each"
   - stage: "Ongoing reviews"
@@ -36,7 +36,7 @@ example:
 medicare:
   heading: "Medicare in plain words"
   paragraphs:
-    - "Video and phone appointments have no Medicare rebate for new patients. Medicare only pays for a GP video or phone appointment if you've had a face-to-face visit with the same practice in the last 12 months."
+    - "Video and phone appointments have no Medicare rebate for new patients. Medicare usually only pays for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. New patients of this service won't meet either, so there's no rebate."
     - "{booking.inPerson.telehealthRebateNote}"
     - "In person at {clinic.name} in {clinic.suburb}, the fees are the same. You may be able to claim a Medicare rebate for each appointment, which lowers what you pay."
     - "{booking.inPerson.carePlanNote}"

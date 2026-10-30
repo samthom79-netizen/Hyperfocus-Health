@@ -12,5 +12,6 @@ shortVersion:
 ## Good to know before you book
 
 - You book and pay on our booking provider's secure page. This website never sees your name, date of birth, Medicare number or health details.
+- {policies.refundIfUnsuitable}
 - Need to change plans later? See [cancellations and refunds](/cancellations).
 - What we collect, and why: see our [collection notice](/collection-notice) and [privacy policy](/privacy).

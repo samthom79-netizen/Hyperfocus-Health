@@ -34,7 +34,7 @@ references:
 
 ## The answer in one line
 
-Yes, many can. In Queensland, specialist GPs can assess, diagnose and manage ADHD in adults, though not every GP chooses to [1].
+Yes. In Queensland, specialist GPs can assess, diagnose and manage ADHD in adults, though not every GP chooses to [1].
 
 It is up to each specialist GP to decide if they can offer this [1]. So the real question is whether your GP does. This page helps you find out.
 

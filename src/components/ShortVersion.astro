@@ -27,7 +27,7 @@ if (bullets.length === 0 || bullets.length > 3) {
 <section aria-labelledby={id} class={`rounded-card border border-accent/50 bg-accent-soft p-5 sm:p-6 ${className}`}>
   <div class="mb-3 flex flex-wrap items-center gap-3">
     <h2 id={id} class="text-[1.1rem] font-extrabold">Short version</h2>
-    {readingTime && <TimeBadge label={readingTime} class="bg-surface" />}
+    {readingTime && <TimeBadge label={`Whole page: ${readingTime}`} class="bg-surface" />}
   </div>
   <ul class="space-y-2">
     {

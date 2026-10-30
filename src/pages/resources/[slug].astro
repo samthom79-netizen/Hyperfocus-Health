@@ -56,8 +56,17 @@ const pageSchema = reviewed
       <Breadcrumbs trail={trail} />
       <h1 class="mt-2">{d.heading}</h1>
       <p class="mt-4 text-ink-muted" data-reviewed>
-        Reviewed by <a href="/about" class="font-bold">{site.doctor.name}</a>, specialist GP.
-        Review date: {reviewed ? reviewedText : <Val value={d.reviewed} />}
+        {
+          reviewed ? (
+            <>
+              Reviewed by <a href="/about" class="font-bold">{site.doctor.name}</a>, specialist GP, on {reviewedText}.
+            </>
+          ) : (
+            <>
+              Draft: not yet reviewed by <a href="/about" class="font-bold">{site.doctor.name}</a>. <Val value={d.reviewed} />
+            </>
+          )
+        }
       </p>
       <ShortVersion bullets={d.shortVersion} readingTime={d.readingTime} class="mt-6" />
 

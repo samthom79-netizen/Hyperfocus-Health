@@ -22,7 +22,7 @@ We aim for every page to meet the [Web Content Accessibility Guidelines (WCAG) 2
 - **Keyboard:** everything works without a mouse, with a clear focus outline.
 - **Touch:** buttons and links are at least 44px tall.
 - **Motion:** nothing plays by itself, and we respect your device's reduce-motion setting.
-- **Works without extras:** pages show their full text even with JavaScript turned off.
+- **Works without extras:** pages show their full text even with JavaScript turned off. The 60-second check and the phone menu do need it.
 
 ## What's outside our control
 

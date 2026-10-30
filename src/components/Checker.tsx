@@ -18,6 +18,7 @@ import {
   type Answers,
   type Outcome,
   type YesNo,
+  MULTI_HINT,
 } from '../lib/eligibility';
 import { track } from '../lib/analytics';
 import { formatPrice, isTodo, site } from '../config/site';
@@ -25,7 +26,7 @@ import { formatPrice, isTodo, site } from '../config/site';
 type Stage = { kind: 'question'; index: number } | { kind: 'outcome'; outcome: Outcome };
 
 const BUTTON = 'inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-2 font-display font-bold text-center no-underline transition-colors duration-150';
-const PRIMARY = `${BUTTON} bg-primary text-white hover:bg-primary-hover`;
+const PRIMARY = `${BUTTON} bg-primary text-white hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40`;
 const SECONDARY = `${BUTTON} bg-surface text-primary border-2 border-primary hover:bg-accent-soft`;
 const CHOICE = 'flex min-h-14 w-full items-center gap-3 rounded-xl border-2 border-line bg-surface px-4 py-3 text-left font-display text-[1.05rem] font-bold text-primary hover:border-primary focus-visible:border-primary';
 
@@ -192,8 +193,18 @@ export default function Checker() {
               );
             })}
           </div>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <button type="button" className={PRIMARY} onClick={() => advance(answers, index)} disabled={answers[q.id].length === 0} data-continue>
+          <p id={`${q.id}-hint`} className="mt-4 text-ink-muted">
+            {answers[q.id].length === 0 ? MULTI_HINT : ''}
+          </p>
+          <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="button"
+              className={PRIMARY}
+              onClick={() => advance(answers, index)}
+              disabled={answers[q.id].length === 0}
+              aria-describedby={answers[q.id].length === 0 ? `${q.id}-hint` : undefined}
+              data-continue
+            >
               Continue <Arrow />
             </button>
             <button type="button" className={SECONDARY} onClick={() => none(q.id)} data-none>
@@ -300,6 +311,10 @@ function OutcomeScreen({
           </span>
           <span className="text-ink-muted">total to reach a diagnosis</span>
         </p>
+        <p className="mt-1 text-ink-muted" data-split>
+          Paid in 2 parts: <Val value={site.prices.payAtBooking} price /> when you book, then <Val value={site.prices.payAppointment2} price /> when you book
+          appointment 2.
+        </p>
         <h3 className="mt-6 text-[1.15rem] font-bold">{c.nextHeading}</h3>
         <ol className="mt-3 space-y-3">
           {c.next.map((line, i) => (
@@ -312,6 +327,7 @@ function OutcomeScreen({
           ))}
         </ol>
         <h3 className="mt-6 text-[1.15rem] font-bold">{c.refundHeading}</h3>
+        <p className="mt-2">{c.refundIntro}</p>
         <p className="mt-2">
           <Val value={site.policies.refundIfUnsuitable} />
         </p>

@@ -72,7 +72,7 @@ describe('resource articles', () => {
 
   it('citations and TODO notes are turned into links and boxes', () => {
     const html = articleHtml('<p>A fact [1]. Another [3]. Unknown [TODO: source needed]</p>', 2);
-    expect(html).toContain('<a href="#ref-1" aria-label="Reference 1">[1]</a>');
+    expect(html).toMatch(/<a href="#ref-1" aria-label="Reference 1"[^>]*>\[1\]<\/a>/);
     expect(html).toContain('Another [3].');
     expect(html).toContain('<span class="todo">[TODO: source needed]</span>');
   });

@@ -28,7 +28,7 @@ test.describe('homepage', () => {
     await expect(page.getByRole('link', { name: 'See how it works' })).toHaveAttribute('href', '/how-it-works');
     await expect(page.getByRole('list', { name: 'At a glance' }).getByRole('listitem')).toHaveText([
       'Specialist GP (FRACGP)',
-      'AHPRA registered',
+      'Ahpra registered',
       'Queensland adults 18+',
       'No referral needed',
     ]);
@@ -64,7 +64,7 @@ test.describe('homepage', () => {
     await page.goto('/');
     for (const [name, href] of [
       ['See every step in detail', '/how-it-works'],
-      ['See all prices, including reviews', '/pricing'],
+      ['See all prices, including follow-up reviews', '/pricing'],
       ['Your other options, and how to ask for a referral', '/other-options'],
       ['All questions', '/faq'],
     ]) {

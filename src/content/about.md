@@ -50,7 +50,7 @@ sections:
   - heading: "Qualifications"
     points:
       - "Fellow of the Royal Australian College of General Practitioners (FRACGP)"
-      - "Registered with AHPRA as a specialist general practitioner, registration number {doctor.ahpra}"
+      - "Registered with Ahpra as a specialist general practitioner, registration number {doctor.ahpra}"
       - "Bachelor of Medicine, Bachelor of Surgery (BMBS), University of Limerick, 2011"
       - "Law degree: Bachelor of Laws (LLB), King's College London"
       - "Adult ADHD training, BeyondGP Medical Education: {doctor.adhdTraining}"

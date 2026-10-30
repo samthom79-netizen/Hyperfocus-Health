@@ -8,13 +8,13 @@ description: "Adult ADHD assessment by video or phone for Queenslanders 18+. One
 
 hero:
   heading: "Adult ADHD assessment by video or phone, for Queenslanders"
-  sub: "One doctor who has ADHD himself, from your first appointment to ongoing care. The full cost is shown upfront."
+  sub: "One doctor who has ADHD himself, from your first appointment to ongoing care. The full cost is shown upfront: {prices.assessmentTotal} in total."
   secondaryLink:
     label: "See how it works"
     href: "/how-it-works"
   trust:
     - "Specialist GP (FRACGP)"
-    - "AHPRA registered"
+    - "Ahpra registered"
     - "Queensland adults 18+"
     - "No referral needed"
 
@@ -30,7 +30,7 @@ howItWorks:
       time: "60 sec"
     - title: "Book and pay"
       time: "about 3 min"
-    - title: "Intake on your phone"
+    - title: "Online intake (questions) on your phone"
       time: "about 30 min, split it if you like"
       body: "Answer by voice, tick boxes or typing. Someone who knew you growing up fills in a short form too."
     - title: "Two appointments, video or phone"
@@ -69,7 +69,7 @@ pricing:
   includes: "Covers the online intake, both appointments and your written plan."
   medicare: "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
   link:
-    label: "See all prices, including reviews"
+    label: "See all prices, including follow-up reviews"
     href: "/pricing"
 
 fit:
@@ -94,7 +94,7 @@ faq:
     - question: "Can a GP diagnose ADHD in Queensland?"
       answer: "Yes. In Queensland, specialist GPs can assess, diagnose and manage ADHD in adults, though not every GP chooses to. If your situation needs a psychiatrist, Dr Sam will tell you."
     - question: "Is there a Medicare rebate?"
-      answer: "Not for new patients' video or phone appointments. Medicare only pays for these if you've seen the practice in person in the past 12 months. In person at Cannonvale, the fees are the same and you may be able to claim a rebate."
+      answer: "Not for new patients' video or phone appointments. Medicare usually only pays for these if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. In person at Cannonvale, the fees are the same and you may be able to claim a rebate."
     - question: "Do I need to come to Cannonvale?"
       answer: "No. Your appointments are by video or phone, wherever you are in Queensland. Seeing Dr Sam in person at Cannonvale is optional."
     - question: "What happens if I'm diagnosed?"

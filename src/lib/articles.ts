@@ -9,7 +9,7 @@ export function articleHtml(html: string, referenceCount: number): string {
     .replace(/\[(\d{1,2})\]/g, (m, n: string) => {
       const i = Number(n);
       if (i < 1 || i > referenceCount) return m;
-      return `<sup><a href="#ref-${i}" aria-label="Reference ${i}">[${i}]</a></sup>`;
+      return `<sup><a href="#ref-${i}" aria-label="Reference ${i}" class="inline-block px-1 py-2 -my-2 no-underline font-bold">[${i}]</a></sup>`;
     });
 }
 

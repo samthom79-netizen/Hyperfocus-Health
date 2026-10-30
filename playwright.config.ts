@@ -21,8 +21,10 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   projects: [
-    { name: 'mobile', use: { ...devices['Pixel 7'] } },
-    { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
+    { name: 'mobile', use: { ...devices['Pixel 7'] }, testIgnore: /audit\.spec\.ts/ },
+    { name: 'desktop', use: { ...devices['Desktop Chrome'] }, testIgnore: /audit\.spec\.ts/ },
+    // The site-wide audit (screenshots, axe, pre-render, checker parity) sets its own viewports.
+    { name: 'audit', use: { ...devices['Desktop Chrome'] }, testMatch: /audit\.spec\.ts/ },
   ],
   webServer: {
     // --ignore-lock: Astro's preview keeps a lock file; a stale one from an

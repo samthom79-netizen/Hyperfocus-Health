@@ -23,21 +23,19 @@ const isCurrent = (href: string) => path === href;
 -->
 <header class="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/85">
   <div class="mx-auto flex h-[68px] w-full max-w-6xl items-center gap-[6px] px-4 sm:gap-[10px] sm:px-6">
-    <a href="/" class="mr-auto flex shrink-0 items-center gap-[8px] no-underline" aria-label={`${site.name}, home`}>
+    <a href="/" class="-ml-[4px] mr-auto flex min-h-[44px] shrink-0 items-center gap-[8px] px-[4px] no-underline" aria-label={`${site.name}, home`}>
       <Image src={images.logoIcon.src} alt="" width={40} height={40} densities={[1, 2]} class="size-[36px] sm:size-[40px]" />
       <!--
         Wordmark drawn as SVG text: it's a logotype, so brand mint is used as in the logo
         file (WCAG 1.4.3 exempts logotypes; as SVG it isn't flagged by contrast checkers).
-        Stacked below 520px, one line above. The link's aria-label carries the name.
+        Stacked below 520px (from 360px wide), one line above. The link's aria-label carries the name.
       -->
-      <span class="hidden min-[400px]:block" aria-hidden="true">
-        <svg class="block h-[34px] w-auto min-[520px]:hidden" viewBox="0 0 580 212" role="presentation">
-          <text x="0" y="84" class="fill-primary" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Hyperfocus</text>
-          <text x="0" y="189" class="fill-accent" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Health</text>
+      <span class="hidden min-[360px]:block" aria-hidden="true">
+        <svg class="block h-[30px] w-auto min-[400px]:h-[34px] min-[520px]:hidden" viewBox="0 0 580 212" role="presentation" focusable="false">
+          <text font-family="Plus Jakarta Sans" font-weight="800" font-size="100"><tspan x="0" y="84" class="fill-primary">Hyperfocus</tspan> <tspan x="0" y="189" class="fill-accent">Health</tspan></text>
         </svg>
-        <svg class="hidden h-[17px] w-auto min-[520px]:block sm:h-[20px]" viewBox="0 0 928 106" role="presentation">
-          <text x="0" y="82" class="fill-primary" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Hyperfocus</text>
-          <text x="604" y="82" class="fill-accent" font-family="Plus Jakarta Sans" font-weight="800" font-size="100">Health</text>
+        <svg class="hidden h-[17px] w-auto min-[520px]:block sm:h-[20px]" viewBox="0 0 928 106" role="presentation" focusable="false">
+          <text x="0" y="82" font-family="Plus Jakarta Sans" font-weight="800" font-size="100"><tspan class="fill-primary">Hyperfocus</tspan> <tspan x="604" class="fill-accent">Health</tspan></text>
         </svg>
       </span>
     </a>
@@ -60,9 +58,14 @@ const isCurrent = (href: string) => path === href;
       </ul>
     </nav>
 
-    <Button href={site.cta.href} size="header" class="shrink-0 whitespace-nowrap" data-cta="header">
-      {site.cta.shortLabel}
-    </Button>
+    {
+      // On the check page itself the site CTA would point at the page you're on.
+      !isCurrent(site.cta.href) && (
+        <Button href={site.cta.href} size="header" class="shrink-0 whitespace-nowrap" data-cta="header">
+          {site.cta.shortLabel}
+        </Button>
+      )
+    }
 
     <button
       type="button"

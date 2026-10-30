@@ -25,7 +25,7 @@ test.describe('eligibility checker: paths', () => {
     await none(page);
     await expect(heading(page)).toContainText('thoughts of ending your life');
     await no(page);
-    await expect(heading(page)).toContainText("Anything else you're unsure about?");
+    await expect(heading(page)).toContainText('Not sure about something?');
     await cont(page);
     const outcome = page.locator('[data-outcome="fit"]');
     await expect(outcome).toBeVisible();

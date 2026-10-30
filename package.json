@@ -6,7 +6,7 @@
   "description": "Public website for Hyperfocus Health: adult ADHD assessment and care by video for Queensland adults.",
   "scripts": {
     "dev": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && node scripts/compliance-check.ts",
     "preview": "astro preview --host",
     "check": "astro check",
     "test": "npm run test:unit && npm run test:e2e",
@@ -15,7 +15,10 @@
     "contrast": "node scripts/check-contrast.ts",
     "shots": "node scripts/screenshots.mjs",
     "kb": "UPDATE_KB=1 vitest run tests/unit/knowledge-base.test.ts",
-    "og": "node scripts/make-og-images.mjs"
+    "og": "node scripts/make-og-images.mjs",
+    "compliance": "node scripts/compliance-check.ts",
+    "ux": "node scripts/adhd-ux-check.ts",
+    "audit": "npm run build && npm run ux && npx playwright test --project=audit"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.2",
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "latest",
+    "@axe-core/playwright": "^4.14.0",
     "@playwright/test": "1.63.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
