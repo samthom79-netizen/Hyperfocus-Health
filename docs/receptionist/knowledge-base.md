@@ -27,7 +27,7 @@ Anything marked [NOT DECIDED YET] is unknown. The agent says: "I don't know that
 - Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments.
 - Our phone number: [NOT DECIDED YET]. Our email: [NOT DECIDED YET].
 - A person replies to messages within 1 business day. Complaints get a reply within 1 business day.
-- The first appointment is at least 10 days after booking, to allow time for the intake and baseline checks. There are no other wait times to give.
+- Booking starts with a $95 intake review. Dr Sam reads the intake, then emails: an invitation to book appointment 1, a request for more information first (such as a test), or an explanation if the service isn't suitable. There are no wait times to give.
 
 ## Who the service is not suitable for
 
@@ -46,7 +46,7 @@ Read this only as general information if a caller asks who the service is not fo
 
 ## Prices
 
-- It costs $745 in total to reach a diagnosis and a written plan.
+- $745 in total for the full assessment: online intake, two appointments and a written plan.
 - Follow-up appointments (we call them reviews) cost $89 each while treatment is adjusted. Every likely cost is on this page.
 - Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate.
 
@@ -54,7 +54,7 @@ Read this only as general information if a caller asks who the service is not fo
 
 Appointment lengths are approximate. They depend on how complex your situation is. The same fees apply by video, phone or in person at Cannonvale.
 
-- Assessment to diagnosis: Online intake, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan. Cost: $745 total. Paid in 2 parts: $425 when you book, then $320 when you book appointment 2.
+- Full assessment: Online intake and Dr Sam's review of it, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan. Cost: $745 total. Paid in 3 parts: $95 when you book (intake review), $330 when you're invited to book appointment 1, and $320 when you book appointment 2.
 - Review appointment (follow-up): About 15 min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first. Cost: $89 each.
 - Ongoing reviews: About 15 min, every 3-6 months once things are stable. Cost: $89 each.
 - Blood tests or ECG: Only if your history needs them. Cost: Not included. Done at a local pathology centre or by your own GP, and often bulk-billed. Check any cost with them.
@@ -73,10 +73,10 @@ Not included: any blood tests or ECG, which are arranged and charged separately.
 
 ### Paying, cancelling and refunds
 
-- You pay $425 when you book appointment 1, and $320 when you book appointment 2. Each review is paid when you book it.
+- You pay $95 when you book, $330 when you're invited to book appointment 1, and $320 when you book appointment 2. Each review is paid when you book it.
 - There is no GST on these fees.
 - The fee pays for Dr Sam's time and assessment, not a particular result.
-- If your intake shows this service clearly isn't right for you, Dr Sam emails you to explain why and where to go instead. The $425 isn't refunded, because he has already read your intake and prepared. You won't pay the $320.
+- If your intake shows this service isn't right for you, Dr Sam emails you to explain why and where to go instead. The $95 intake review fee covers that work and isn't refunded. You don't pay anything else.
 - Need to change or cancel? See cancellations and refunds (on the website).
 
 ## How it works
@@ -84,11 +84,11 @@ Not included: any blood tests or ECG, which are arranged and charged separately.
 Appointment lengths are approximate. They depend on how complex your situation is.
 
 1. Check if this is for you (60 sec). What the patient does: Answer six quick questions. What Dr Sam does: Nothing yet. Your answers stay on your device.
-2. Book and pay (about 3 min). What the patient does: Choose a time for your first appointment, by video or phone, and pay $425. The other $320 is paid when you book appointment 2 ($745 in total). What Dr Sam does: Keeps your first appointment at least 10 days away, so there's time for the next two steps.
-3. Online intake on your phone (about 30 min, can be split). What the patient does: Answer by voice, tick boxes or typing, all at once or in short blocks. Ask a partner or parent to fill in their short form. What Dr Sam does: Reads your answers and the observer form before you meet.
-4. Baseline checks (short; tests only if needed). What the patient does: Get your blood pressure, pulse and weight checked, usually by your own GP or a pharmacy. Have blood tests or an ECG only if your history needs them. What Dr Sam does: Decides from your history whether any tests are needed, and checks the results.
-5. Appointment 1: assessment (about 60 min). What the patient does: Talk about your history and what day-to-day life is like. What Dr Sam does: Goes through your intake with you and assesses for ADHD. Treatment isn't started at this appointment.
-6. Appointment 2: diagnosis and a written plan (about 30-45 min). What the patient does: Hear what Dr Sam found and ask anything you like. What Dr Sam does: Explains the outcome, talks through all your options and gives you a written plan.
+2. Pay for the intake review, then do the online intake (about 3 min, then about 30 min (can be split)). What the patient does: Pay $95. Then answer by voice, tick boxes or typing, all at once or in short blocks. Ask a partner or parent to fill in their short form. What Dr Sam does: Nothing yet. Your intake goes to him when it's done.
+3. Dr Sam reviews your intake (he emails you). What the patient does: Read his email. It's one of three things: an invitation to book appointment 1, a request for something else first, or an explanation if this service isn't right for you. What Dr Sam does: Reads your answers and the observer form, and tells you plainly what happens next.
+4. Baseline checks (short; tests only if needed). What the patient does: Get your blood pressure, pulse and weight checked, usually by your own GP or a pharmacy. Have blood tests or an ECG only if Dr Sam asks for them. What Dr Sam does: Decides from your history whether any tests are needed, and checks the results.
+5. Appointment 1: assessment (about 60 min). What the patient does: Book it when invited and pay $330. Talk about your history and what day-to-day life is like. What Dr Sam does: Goes through your intake with you and assesses for ADHD.
+6. Appointment 2: diagnosis and a written plan (about 30-45 min). What the patient does: Book it and pay $320 ($745 in total). Hear what Dr Sam found and ask anything you like. What Dr Sam does: Explains the outcome, talks through your options and gives you a written plan.
 7. Reviews while treatment is adjusted (every 2-4 weeks). What the patient does: Fill in a short check-in form before each review. What Dr Sam does: Checks how things are going and adjusts your plan with you.
 8. Ongoing care (every 3-6 months once stable). What the patient does: Keep seeing Dr Sam, or move to a GP of your choice who agrees in writing to take over. What Dr Sam does: With your permission, sends your GP a summary so everyone is on the same page.
 
@@ -105,7 +105,7 @@ Appointment lengths are approximate. They depend on how complex your situation i
 
 ### Changing or cancelling an appointment
 
-You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee.
+You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee. In-person appointments booked through Cannonvale Medical Centre follow the clinic's own cancellation terms.
 
 To change or cancel, use the link in your booking confirmation, or contact us at [NOT DECIDED YET].
 
@@ -117,13 +117,13 @@ If you miss an appointment without telling us, you pay that appointment's full f
 
 Dr Sam reads your intake before your first appointment.
 
-If your intake shows this service clearly isn't right for you, Dr Sam emails you to explain why and where to go instead. The $425 isn't refunded, because he has already read your intake and prepared. You won't pay the $320.
+If your intake shows this service isn't right for you, Dr Sam emails you to explain why and where to go instead. The $95 intake review fee covers that work and isn't refunded. You don't pay anything else.
 
 If it's less clear, he'll talk it through with you at appointment 1.
 
 ### If ADHD isn't diagnosed
 
-If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The $425 for appointment 1 isn't refunded: it covers reading your intake, preparing and the appointment. With your permission, Dr Sam writes to your GP.
+If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The fees already paid ($95 intake review and $330 for appointment 1) cover the work done. With your permission, Dr Sam writes to your GP.
 
 ### Your rights
 
@@ -166,7 +166,7 @@ Q: I live outside Queensland. Can I use this service?
 A: Not at this stage. This service is only for adults who live in Queensland and will be in Queensland for their appointments. Your own GP is the right place to start.
 
 Q: How much does it cost?
-A: $745 in total for the online intake, both appointments and your written plan, paid in 2 parts: $425 when you book and $320 when you book appointment 2. Follow-up appointments (we call them reviews) are $89 each. Every cost is on the prices page (on the website).
+A: $745 in total for the full assessment: online intake, two appointments and your written plan. Paid in 3 parts: $95 when you book (intake review), $330 when you're invited to book appointment 1, and $320 when you book appointment 2. Follow-up appointments (we call them reviews) are $89 each. Every cost is on the prices page (on the website).
 
 Q: Why is there no Medicare rebate for telehealth?
 A: Medicare usually only pays for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. New patients of this service won't meet either, so there's no rebate. Seen Dr Sam in person at Cannonvale in the last 12 months? Then a Medicare rebate may also apply to your video and phone appointments. See all prices (on the website).
@@ -181,10 +181,10 @@ Q: What do I need for a video or phone appointment?
 A: A phone (or a laptop with a camera, for video), a quiet room where you can talk privately, and photo ID. See the full checklist (on the website).
 
 Q: What happens if I am diagnosed?
-A: You leave appointment 2 with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine. Any treatment is a decision you make together. Reviews follow every 2-4 weeks while things are adjusted.
+A: You leave appointment 2 with a written plan. Dr Sam talks you through your options and you decide together. Your plan can cover sleep, routines, work and psychology support. Reviews follow every 2-4 weeks while things are adjusted.
 
 Q: What if I'm not diagnosed with ADHD?
-A: Dr Sam explains what he found and what could help next. If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The $425 for appointment 1 isn't refunded: it covers reading your intake, preparing and the appointment. With your permission, Dr Sam writes to your GP.
+A: Dr Sam explains what he found and what could help next. If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The fees already paid ($95 intake review and $330 for appointment 1) cover the work done. With your permission, Dr Sam writes to your GP.
 
 Q: Can I move my ongoing care to my own GP later?
 A: Yes. Once things are stable, you can keep seeing Dr Sam every 3-6 months, or move to a GP of your choice who agrees in writing to take over. With your permission, Dr Sam sends them a summary.

@@ -16,7 +16,7 @@ Commit and push; the preview updates in a few minutes.
 
 | # | Setting | What to set | Why |
 | --- | --- | --- | --- |
-| 1 | Payment at booking | $425 taken when appointment 1 is booked; $320 when appointment 2 is booked; $89 when each review is booked | Matches the split on /pricing; someone found unsuitable at appointment 1 never pays part 2 |
+| 1 | Payment at booking | $95 taken at booking for the intake review (no appointment slot yet); $330 when an invited patient books appointment 1; $320 when appointment 2 is booked; $89 when each review is booked | Matches the split on /pricing; someone found unsuitable at appointment 1 never pays part 2 |
 | 2 | Minimum notice for appointment 1 | At least 10 days after booking | Time for the intake, the observer form (Velluto reminders run on days 2, 5 and 7) and baseline checks |
 | 3 | Appointment type: Assessment | Video, 60 minutes | Pathway step 5 |
 | 4 | Appointment type: Diagnosis and plan | Video, 30-45 minutes | Pathway step 6 |
@@ -56,7 +56,7 @@ Commit and push; the preview updates in a few minutes.
 
 Sam is also considering these two. Neither's current settings screens have been checked.
 
-1. Can I take a private telehealth booking with payment at the time of booking, and a different amount per appointment type ($425, $320, $89)?
+1. Can I take a private telehealth booking with payment at the time of booking, and a different amount per appointment type ($95 intake review with no appointment slot, $330, $320, $89)? Can appointment 1 be bookable only by patients Dr Sam has invited?
 2. Can these bookings run under my own practice name (Hyperfocus Health), separate from Cannonvale Medical Centre's listing?
 3. Can the first appointment require at least 10 days' notice?
 4. After a paid booking, can the patient be redirected to a page on my website?

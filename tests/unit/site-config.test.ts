@@ -68,8 +68,8 @@ describe('site config', () => {
 
 describe('assessment payment split', () => {
   it('the two parts add up to the total', () => {
-    const { assessmentTotal, payAtBooking, payAppointment2 } = site.prices;
-    expect(payAtBooking + payAppointment2).toBe(assessmentTotal);
+    const { assessmentTotal, intakeReview, payAppointment1, payAppointment2 } = site.prices;
+    expect(intakeReview + payAppointment1 + payAppointment2).toBe(assessmentTotal);
   });
 });
 

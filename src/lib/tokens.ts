@@ -1,6 +1,6 @@
 /**
  * Lets page copy in src/content/*.md refer to values in src/config/site.ts,
- * e.g. "It costs {prices.assessmentTotal} to reach a diagnosis."
+ * e.g. "It costs {prices.assessmentTotal} in total."
  *
  * - Prices (prices.*) are formatted as dollars.
  * - A value still marked TODO renders as a highlighted [TODO: ...] box.

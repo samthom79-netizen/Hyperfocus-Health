@@ -26,15 +26,15 @@ const { clinic } = site;
     <PriceCard
       title="Telehealth assessment"
       price={site.prices.assessmentTotal}
-      priceLabel="total to reach a diagnosis"
+      priceLabel="total for the full assessment"
       includes={[
         'Video or phone, anywhere in Queensland',
-        'Online intake on your phone',
+        'Online intake on your phone, reviewed by Dr Sam',
         `Appointment 1 (about ${site.appointments.assessment} min)`,
         `Appointment 2 (about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min)`,
         'Your written plan',
       ]}
-      note={`Paid in 2 parts: ${formatPrice(site.prices.payAtBooking)} when you book, then ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for new patients. ${site.appointments.lengthsNote}`}
+      note={`Paid in 3 parts: ${formatPrice(site.prices.intakeReview)} now for the intake review, ${formatPrice(site.prices.payAppointment1)} when you're invited to book appointment 1, and ${formatPrice(site.prices.payAppointment2)} for appointment 2. No Medicare rebate for new patients. ${site.appointments.lengthsNote}`}
       featured
       class="mt-6"
     />
@@ -43,8 +43,8 @@ const { clinic } = site;
       <BookingPanel />
     </div>
 
-    <Callout class="mt-5" title={`Your first appointment will be at least ${site.booking.minLeadDays} days away`}>
-      <p>That gives you time to finish the intake and baseline checks.</p>
+    <Callout class="mt-5" title="You book appointment 1 after Dr Sam has read your intake">
+      <p>He emails you an invitation to book, a request for anything else he needs first (such as a test), or an explanation if this service isn't right for you.</p>
     </Callout>
 
     <h2 class="mt-10">Would you rather come in?</h2>

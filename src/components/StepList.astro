@@ -44,7 +44,7 @@ const Heading = `h${headingLevel}` as 'h3' | 'h4';
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
             <Heading class="text-[1.1rem] font-bold">
               <span class="sr-only">Step {i + 1}: </span>
-              {step.title}
+              <Fragment set:html={renderInline(step.title)} />
             </Heading>
             {step.time && <TimeBadge label={step.time} />}
           </div>

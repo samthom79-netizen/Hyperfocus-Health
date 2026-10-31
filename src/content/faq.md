@@ -24,7 +24,7 @@ groups:
   - heading: "Cost"
     items:
       - question: "How much does it cost?"
-        answer: "{prices.assessmentTotal} in total for the online intake, both appointments and your written plan, paid in 2 parts: {prices.payAtBooking} when you book and {prices.payAppointment2} when you book appointment 2. Follow-up appointments (we call them reviews) are {prices.review} each. Every cost is on the [prices page](/pricing)."
+        answer: "{prices.assessmentTotal} in total for the full assessment: online intake, two appointments and your written plan. Paid in 3 parts: {prices.intakeReview} when you book (intake review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2. Follow-up appointments (we call them reviews) are {prices.review} each. Every cost is on the [prices page](/pricing)."
       - question: "Why is there no Medicare rebate for telehealth?"
         answer: "Medicare usually only pays for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. New patients of this service won't meet either, so there's no rebate. {booking.inPerson.telehealthRebateNote} [See all prices](/pricing)."
 
@@ -40,7 +40,7 @@ groups:
   - heading: "After diagnosis"
     items:
       - question: "What happens if I am diagnosed?"
-        answer: "You leave appointment 2 with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine. Any treatment is a decision you make together. Reviews follow every 2-4 weeks while things are adjusted."
+        answer: "You leave appointment 2 with a written plan. Dr Sam talks you through your options and you decide together. Your plan can cover sleep, routines, work and psychology support. Reviews follow every 2-4 weeks while things are adjusted."
       - question: "What if I'm not diagnosed with ADHD?"
         answer: "Dr Sam explains what he found and what could help next. {policies.notDiagnosed}"
       - question: "Can I move my ongoing care to my own GP later?"

@@ -88,6 +88,8 @@ Severity order follows the reviewer's. **Fixed** = done in this commit without c
 
 ## Decisions for Sam
 
+**Decided 31 Oct 2026:** D1 (a $95 intake review paid at booking and taken off the $425; if unsuitable, Dr Sam emails why or asks for more information, and only the $95 is kept), D2 (in-person cancellations follow Cannonvale Medical Centre's terms), D8 ('$745 total for the full assessment'; treatment and medicine lines removed). The rest are still open.
+
 Nothing below has been changed. Each has a recommended wording ready to drop in.
 
 | # | Question | Recommendation |

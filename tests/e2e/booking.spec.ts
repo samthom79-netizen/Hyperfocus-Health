@@ -11,7 +11,8 @@ test.describe('/book', () => {
     await expect(page.locator('main')).toContainText('No Medicare rebate for new patients.');
     await expect(page.locator('main')).toContainText('Medicare rebate may apply');
     await expect(page.getByRole('link', { name: /Do that first/ })).toHaveAttribute('href', '/check');
-    await expect(page.locator('main')).toContainText(`at least ${site.booking.minLeadDays} days away`);
+    await expect(page.locator('main')).toContainText('You book appointment 1 after Dr Sam has read your intake');
+    await expect(page.locator('main')).toContainText('Paid in 3 parts: $95 now for the intake review');
   });
 
   test('collects nothing: no form fields anywhere on the page', async ({ page }) => {

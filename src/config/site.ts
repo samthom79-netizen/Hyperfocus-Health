@@ -25,7 +25,8 @@ export const bookingProviders = {
  * Fees in AUD, set by Sam on 31 Oct 2026. Change them here only:
  * prices and policy wording below are built from these.
  */
-const FEES = { assessmentTotal: 745, payAtBooking: 425, payAppointment2: 320, review: 89 } as const;
+/** Sam, 31 Oct 2026 (11:42): $95 intake review first; it comes off appointment 1 ($425 - $95 = $330). Total unchanged. */
+const FEES = { assessmentTotal: 745, intakeReview: 95, payAppointment1: 330, payAppointment2: 320, review: 89 } as const;
 
 export const site = {
   /**
@@ -221,10 +222,13 @@ export const site = {
 
   /** Prices in AUD. Keep as numbers; format in the UI. */
   prices: {
-    /** Total to reach a diagnosis: intake + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
+    /** Total for the full assessment: intake review + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
     assessmentTotal: FEES.assessmentTotal,
     /** Sam, 31 Oct 2026: paid in two parts (must add up to assessmentTotal; a unit test checks). */
-    payAtBooking: FEES.payAtBooking,
+    /** Paid when you book: Dr Sam reviews the online intake (and asks for tests if needed) before inviting you to book appointment 1. */
+    intakeReview: FEES.intakeReview,
+    /** Paid when you book appointment 1, after the invitation. */
+    payAppointment1: FEES.payAppointment1,
     payAppointment2: FEES.payAppointment2,
     /** Each review appointment while treatment is adjusted, until things are stable. Set by Sam 31 Oct 2026. */
     review: FEES.review,
@@ -245,17 +249,17 @@ export const site = {
 
   /** Policies: wording shown to patients. */
   policies: {
-    /** Sam, 31 Oct 2026: fee kept because the work is done. Wording (keeping appointment 1) needs Sam's OK. */
+    /** Sam, 31 Oct 2026 (11:42): the $95 pays for the intake review; nothing else is charged if the service isn't suitable. */
     refundIfUnsuitable:
-      `If your intake shows this service clearly isn't right for you, Dr Sam emails you to explain why and where to go instead. The $${FEES.payAtBooking} isn't refunded, because he has already read your intake and prepared. You won't pay the $${FEES.payAppointment2}.`,
+      `If your intake shows this service isn't right for you, Dr Sam emails you to explain why and where to go instead. The $${FEES.intakeReview} intake review fee covers that work and isn't refunded. You don't pay anything else.`,
     /** Sam, 31 Oct 2026. */
     cancellation:
-      "You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee.",
+      "You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee. In-person appointments booked through Cannonvale Medical Centre follow the clinic's own cancellation terms.",
     /** Sam, 31 Oct 2026. */
     noShow: "If you miss an appointment without telling us, you pay that appointment's full fee.",
     /** Sam, 31 Oct 2026. */
     notDiagnosed:
-      `If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The $${FEES.payAtBooking} for appointment 1 isn't refunded: it covers reading your intake, preparing and the appointment. With your permission, Dr Sam writes to your GP.`,
+      `If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The fees already paid ($${FEES.intakeReview} intake review and $${FEES.payAppointment1} for appointment 1) cover the work done. With your permission, Dr Sam writes to your GP.`,
   },
 
   /** Privacy wording used before the full privacy policy exists (Prompt 10). */

@@ -309,11 +309,11 @@ function OutcomeScreen({
           <span className="font-display text-[1.8rem] leading-none font-extrabold text-primary">
             <Val value={site.prices.assessmentTotal} price />
           </span>
-          <span className="text-ink-muted">total to reach a diagnosis</span>
+          <span className="text-ink-muted">total for the full assessment</span>
         </p>
         <p className="mt-1 text-ink-muted" data-split>
-          Paid in 2 parts: <Val value={site.prices.payAtBooking} price /> when you book, then <Val value={site.prices.payAppointment2} price /> when you book
-          appointment 2.
+          Paid in 3 parts: <Val value={site.prices.intakeReview} price /> when you book (intake review), <Val value={site.prices.payAppointment1} price /> when
+          you're invited to book appointment 1, and <Val value={site.prices.payAppointment2} price /> for appointment 2.
         </p>
         <h3 className="mt-6 text-[1.15rem] font-bold">{c.nextHeading}</h3>
         <ol className="mt-3 space-y-3">
@@ -322,7 +322,7 @@ function OutcomeScreen({
               <span aria-hidden="true" className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-accent font-display text-[0.95rem] font-extrabold text-primary">
                 {i + 1}
               </span>
-              <span>{line.replace('{minLeadDays}', String(site.booking.minLeadDays))}</span>
+              <span>{line.replace('{intakeReview}', formatPrice(site.prices.intakeReview))}</span>
             </li>
           ))}
         </ol>

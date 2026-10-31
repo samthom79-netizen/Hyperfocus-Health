@@ -20,7 +20,7 @@ hero:
 
 shortVersion:
   - "An adult ADHD assessment by video or phone with one specialist GP, for people living in Queensland."
-  - "It costs {prices.assessmentTotal} in total to reach a diagnosis and a written plan."
+  - "{prices.assessmentTotal} in total for the full assessment: online intake, two appointments and a written plan."
   - "The online intake takes about 30 minutes, and you can split it into short blocks."
 
 howItWorks:
@@ -28,11 +28,12 @@ howItWorks:
   steps:
     - title: "Check if this is for you"
       time: "60 sec"
-    - title: "Book and pay"
-      time: "about 3 min"
-    - title: "Online intake (questions) on your phone"
+    - title: "Pay {prices.intakeReview} and do the online intake"
       time: "about 30 min, split it if you like"
       body: "Answer by voice, tick boxes or typing. Someone who knew you growing up fills in a short form too."
+    - title: "Dr Sam reviews your intake"
+      time: "he emails you"
+      body: "You're invited to book appointment 1, asked for anything else he needs first (like a test), or told why this isn't the right service and where to go instead."
     - title: "Two appointments, video or phone"
       time: "about 60 min, then about 30-45 min"
       body: "The first is your assessment. The second is your diagnosis and a written plan."
@@ -65,7 +66,7 @@ meetDrSam:
 
 pricing:
   heading: "What it costs"
-  totalLabel: "total to reach a diagnosis"
+  totalLabel: "total for the full assessment"
   includes: "Covers the online intake, both appointments and your written plan."
   medicare: "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
   link:
@@ -98,7 +99,7 @@ faq:
     - question: "Do I need to come to Cannonvale?"
       answer: "No. Your appointments are by video or phone, wherever you are in Queensland. Seeing Dr Sam in person at Cannonvale is optional."
     - question: "What happens if I'm diagnosed?"
-      answer: "You leave your second appointment with a written plan. Dr Sam talks you through all your options, including strategies that don't involve medicine, and you decide together."
+      answer: "You leave your second appointment with a written plan. Dr Sam talks you through your options and you decide together. Your plan can cover sleep, routines, work and psychology support."
   link:
     label: "All questions"
     href: "/faq"

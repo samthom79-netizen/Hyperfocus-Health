@@ -30,8 +30,8 @@ test.describe('eligibility checker: paths', () => {
     const outcome = page.locator('[data-outcome="fit"]');
     await expect(outcome).toBeVisible();
     await expect(outcome).toContainText('This service looks like a good fit.');
-    await expect(outcome).toContainText('total to reach a diagnosis');
-    await expect(outcome).toContainText('at least 10 days after booking');
+    await expect(outcome).toContainText('total for the full assessment');
+    await expect(outcome).toContainText('Book and pay $95 for Dr Sam to review your intake.');
     await expect(outcome.locator('[data-cta="book"]')).toHaveAttribute('href', '/book');
   });
 
