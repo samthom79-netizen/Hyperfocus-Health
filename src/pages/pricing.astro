@@ -50,6 +50,19 @@ const total = firstThreeMonths(assessmentTotal, review, n);
                     <td class="p-4 font-bold" data-label="Cost">
                       <span set:html={renderInline(row.cost)} />
                       {row.note && <span class="mt-1 block text-[0.9rem] font-normal text-ink-muted" set:html={renderInline(row.note)} />}
+                      {row.breakdown && (
+                        <ol class="fee-parts mt-3 font-normal" aria-label="Paid in 3 parts" data-fee-parts>
+                          {site.prices.parts.map((p) => (
+                            <li class="flex items-start justify-between gap-4 border-t border-line py-2.5">
+                              <span>
+                                <span class="block font-bold text-primary">{p.label}</span>
+                                <span class="block text-[0.9rem] text-ink-muted">{p.when}</span>
+                              </span>
+                              <span class="shrink-0 font-bold tabular-nums text-primary">{formatPrice(p.amount)}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      )}
                     </td>
                   </tr>
                 ))

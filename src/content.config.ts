@@ -121,7 +121,7 @@ const pricing = defineCollection({
     tableHeading: z.string(),
     tableNote: z.string().optional(),
     rows: z.array(
-      z.object({ stage: z.string(), whatYouGet: z.string(), cost: z.string(), note: z.string().optional() }),
+      z.object({ stage: z.string(), whatYouGet: z.string(), cost: z.string(), note: z.string().optional(), breakdown: z.boolean().optional() }),
     ).min(1),
     example: z.object({ heading: z.string(), intro: z.string(), notIncluded: z.string() }),
     medicare: z.object({ heading: z.string(), paragraphs: z.array(z.string()).min(1) }),

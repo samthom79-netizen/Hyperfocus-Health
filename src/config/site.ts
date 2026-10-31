@@ -25,8 +25,8 @@ export const bookingProviders = {
  * Fees in AUD, set by Sam on 31 Oct 2026. Change them here only:
  * prices and policy wording below are built from these.
  */
-/** Sam, 31 Oct 2026 (11:42): $95 pre-assessment review first; it comes off appointment 1 ($425 - $95 = $330). Total unchanged. */
-const FEES = { assessmentTotal: 745, intakeReview: 95, payAppointment1: 330, payAppointment2: 320, review: 89 } as const;
+/** Sam, 31 Oct 2026 (12:48): $95 pre-assessment form review, $345 initial assessment, $305 follow-up and management plan. Total unchanged. */
+const FEES = { assessmentTotal: 745, intakeReview: 95, payAppointment1: 345, payAppointment2: 305, review: 89 } as const;
 
 export const site = {
   /**
@@ -230,6 +230,15 @@ export const site = {
     /** Paid when you book appointment 1, after the invitation. */
     payAppointment1: FEES.payAppointment1,
     payAppointment2: FEES.payAppointment2,
+    /**
+     * The 3 parts of the full assessment as patients see them on /pricing (Sam, 31 Oct 2026).
+     * Names describe the appointment, not a result: no 'diagnosis' in a price label.
+     */
+    parts: [
+      { label: 'Pre-assessment form review', when: 'Paid when you book', amount: FEES.intakeReview },
+      { label: 'Initial assessment (appointment 1)', when: "Paid when you're invited to book", amount: FEES.payAppointment1 },
+      { label: 'Follow-up and management plan (appointment 2)', when: 'Paid when you book appointment 2', amount: FEES.payAppointment2 },
+    ],
     /** Each review appointment while treatment is adjusted, until things are stable. Set by Sam 31 Oct 2026. */
     review: FEES.review,
     /** Ongoing review once stable (every 3-6 months). Sam, 31 Oct 2026: same as a review. */

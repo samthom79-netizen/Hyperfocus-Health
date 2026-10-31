@@ -17,7 +17,7 @@ rows:
   - stage: "Full assessment"
     whatYouGet: "Online pre-assessment form and Dr Sam's review of it, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
     cost: "{prices.assessmentTotal} total"
-    note: "Paid in 3 parts: {prices.intakeReview} when you book (pre-assessment review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2."
+    breakdown: true
   - stage: "Review appointment (follow-up)"
     whatYouGet: "About {appointments.reviewMinutes} min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first."
     cost: "{prices.review} each"
@@ -30,7 +30,8 @@ rows:
     note: "Usually done by your own GP or a pharmacy. Ask them about any cost."
   - stage: "Blood tests or ECG"
     whatYouGet: "Only if your history needs them"
-    cost: "{prices.testsNote}"
+    cost: "Not included"
+    note: "Done at a local pathology centre or by your own GP, and often bulk-billed. Check any cost with them."
 
 example:
   heading: "A typical first 3 months"

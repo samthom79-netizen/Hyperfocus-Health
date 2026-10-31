@@ -25,7 +25,7 @@ test.describe('/pricing', () => {
     await expect(main).toContainText('GP chronic condition management plan');
     await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
     await expect(main).toContainText('There is no GST on these fees.');
-    await expect(main).toContainText("You pay $95 when you book, $330 when you're invited to book appointment 1, and $320 when you book appointment 2.");
+    await expect(main).toContainText("You pay $95 when you book, $345 when you're invited to book appointment 1, and $305 when you book appointment 2.");
     await expect(main).not.toContainText('bundle');
     await expect(main).toContainText(site.policies.refundIfUnsuitable);
     await expect(main.getByRole('link', { name: 'cancellations and refunds' })).toHaveAttribute('href', '/cancellations');
@@ -55,7 +55,7 @@ test.describe('/how-it-works', () => {
       await expect(step.getByText('Time needed:', { exact: false })).toHaveCount(1);
       await expect(step.locator('dt')).toHaveText(['What you do:', 'What Dr Sam does:']);
     }
-    await expect(steps.nth(4)).toContainText('Book it when invited and pay $330.');
+    await expect(steps.nth(4)).toContainText('Book it when invited and pay $345.');
     await expect(page.locator('main')).not.toContainText('Treatment isn');
     await expect(page.locator('[data-lengths-note]')).toContainText('Appointment lengths are approximate');
   });

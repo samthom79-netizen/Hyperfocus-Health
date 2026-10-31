@@ -69,6 +69,9 @@
     color: var(--color-ink);
     max-width: 100%;
     overflow-x: hidden;
+    /* Even line lengths and no one-word last lines, on every phone width. */
+    text-wrap: pretty;
+    hyphens: manual;
   }
 
   h1,
@@ -193,7 +196,6 @@
   }
   .stack-table tr {
     border-top: 1px solid var(--color-line);
-    padding: 0.9rem 1.1rem;
   }
   .stack-table tr:first-child {
     border-top: 0;
@@ -202,10 +204,28 @@
   .stack-table th {
     padding: 0.15rem 0 !important;
   }
+  /* On phones each row becomes a card: stage name, then each column as a
+     small label above its value, so every line starts at the same left edge. */
+  .stack-table tr {
+    padding: 1.1rem 1.25rem;
+  }
+  .stack-table th[scope="row"] {
+    font-size: 1.2rem;
+    padding-bottom: 0.4rem !important;
+  }
+  .stack-table td[data-label] {
+    margin-top: 0.6rem;
+  }
   .stack-table td[data-label]::before {
-    content: attr(data-label) ': ';
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
     font-weight: 700;
-    color: var(--color-primary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-bottom: 0.1rem;
   }
 }
 
