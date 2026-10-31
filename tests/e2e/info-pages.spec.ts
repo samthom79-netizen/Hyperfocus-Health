@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test';
 import { site } from '../../src/config/site';
 
 test.describe('/pricing', () => {
-  test('table has the five stages with costs', async ({ page }) => {
+  test('table has every stage with its cost', async ({ page }) => {
     await page.goto('/pricing');
     await expect(page.locator('main table tbody th')).toHaveText([
       'Full assessment',
       'Review appointment (follow-up)',
       'Ongoing reviews',
+      'Baseline checks',
       'Blood tests or ECG',
     ]);
     await expect(page.locator('main table tbody tr').first()).toContainText('total');

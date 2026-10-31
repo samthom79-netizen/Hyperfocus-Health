@@ -6,7 +6,7 @@ readingTime: "1 min read"
 shortVersion:
   - "You're booking an online intake and two appointments with Dr Sam, by video or phone."
   - "{prices.assessmentTotal} in total for the full assessment. You pay {prices.intakeReview} now for Dr Sam to review your intake. There's no Medicare rebate for video or phone appointments for new patients."
-  - "In the next 24 hours you get a confirmation, then a link to the online intake by text and email."
+  - "Within 1 business day you get a confirmation, then a link to the online intake by text and email."
 ---
 
 ## Good to know before you book

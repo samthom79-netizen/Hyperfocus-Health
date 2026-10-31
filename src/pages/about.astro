@@ -18,6 +18,11 @@ import { images } from '../config/images';
 import { renderTokens } from '../lib/tokens';
 import { physicianSchema } from '../lib/schema';
 
+// Lines that use an unfilled site.ts value are left out until Sam fills it
+// (Sam, 31 Oct 2026: hide the ADHD training line until the units are listed).
+const hiddenWhileTodo = (point: string) =>
+  point.includes('{doctor.adhdTraining}') && site.doctor.adhdTraining.startsWith('TODO');
+
 const entry = await getEntry('about', 'about');
 if (!entry) throw new Error('src/content/about.md is missing');
 const c = entry.data;
@@ -78,7 +83,7 @@ const schema = physicianSchema({ pageUrl, imageUrl: new URL(schemaImage.src, bas
           <section aria-labelledby={`about-${i}`} class="mt-12">
             <h2 id={`about-${i}`}>{s.heading}</h2>
             <ul class="mt-4 space-y-2.5">
-              {s.points.map((point) => (
+              {s.points.filter((point) => !hiddenWhileTodo(point)).map((point) => (
                 <li class="flex gap-2.5">
                   <Icon name="check" size={22} class="mt-0.5 text-accent-ink" />
                   <span set:html={renderTokens(point)} />

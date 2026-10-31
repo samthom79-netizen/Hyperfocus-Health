@@ -138,7 +138,7 @@ export const outcomes = {
     restart: 'Start again',
   },
   'not-eligible': {
-    heading: "This service isn't available to you yet.",
+    heading: "Unfortunately, you don't qualify for our service.",
     adult: 'This service is for adults, so you need to be 18 or over.',
     queensland: 'This service is only for people who live in Queensland and will be in Queensland for their appointments.',
     body: 'Your own GP is the right place to start. They can assess you, or refer you to someone who can.',

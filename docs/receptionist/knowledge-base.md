@@ -57,12 +57,13 @@ Appointment lengths are approximate. They depend on how complex your situation i
 - Full assessment: Online intake and Dr Sam's review of it, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan. Cost: $745 total. Paid in 3 parts: $95 when you book (intake review), $330 when you're invited to book appointment 1, and $320 when you book appointment 2.
 - Review appointment (follow-up): About 15 min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first. Cost: $89 each.
 - Ongoing reviews: About 15 min, every 3-6 months once things are stable. Cost: $89 each.
+- Baseline checks: Blood pressure, pulse and weight. Cost: Not included. Usually done by your own GP or a pharmacy. Ask them about any cost.
 - Blood tests or ECG: Only if your history needs them. Cost: Not included. Done at a local pathology centre or by your own GP, and often bulk-billed. Check any cost with them.
 
 ### A typical first 3 months
 
 An example of the cost from booking to 3 months after diagnosis. Assessment to diagnosis $745, plus 3 reviews at $89 each (the number of reviews is an assumption, not a quote). Typical total: $1,012.
-Not included: any blood tests or ECG, which are arranged and charged separately.
+Not included: baseline checks (blood pressure, pulse, weight) and any blood tests or ECG, which are arranged and charged separately.
 
 ### Medicare in plain words
 

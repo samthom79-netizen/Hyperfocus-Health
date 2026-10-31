@@ -24,6 +24,10 @@ rows:
   - stage: "Ongoing reviews"
     whatYouGet: "About {appointments.reviewMinutes} min, every 3-6 months once things are stable"
     cost: "{prices.ongoingReview} each"
+  - stage: "Baseline checks"
+    whatYouGet: "Blood pressure, pulse and weight"
+    cost: "Not included"
+    note: "Usually done by your own GP or a pharmacy. Ask them about any cost."
   - stage: "Blood tests or ECG"
     whatYouGet: "Only if your history needs them"
     cost: "{prices.testsNote}"
@@ -31,7 +35,7 @@ rows:
 example:
   heading: "A typical first 3 months"
   intro: "An example of the cost from booking to 3 months after diagnosis."
-  notIncluded: "Not included: any blood tests or ECG, which are arranged and charged separately."
+  notIncluded: "Not included: baseline checks (blood pressure, pulse, weight) and any blood tests or ECG, which are arranged and charged separately."
 
 medicare:
   heading: "Medicare in plain words"

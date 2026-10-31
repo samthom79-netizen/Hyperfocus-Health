@@ -48,12 +48,15 @@ test.describe('/about', () => {
     await expect(main).toContainText('Fellow of the Royal Australian College of General Practitioners (FRACGP)');
   });
 
-  test('undecided lines show as TODO boxes', async ({ page }) => {
+  test('the ADHD training line stays hidden until the units are listed', async ({ page }) => {
     await page.goto('/about');
-    const todos = page.locator('main .todo');
-    await expect(todos).toHaveCount(
-      [site.doctor.adhdTraining, site.doctor.outsideWork].filter((v) => v.startsWith('TODO')).length,
-    );
+    const main = page.locator('main');
+    if (site.doctor.adhdTraining.startsWith('TODO')) {
+      await expect(main).not.toContainText('BeyondGP');
+      await expect(main.locator('.todo')).toHaveCount(0);
+    } else {
+      await expect(main).toContainText(site.doctor.adhdTraining);
+    }
   });
 
   test('intro video stays hidden until a file is set', async ({ page }) => {

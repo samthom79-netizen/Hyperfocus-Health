@@ -77,6 +77,15 @@ export default function Checker() {
     headingRef.current?.focus();
   }, [stage]);
 
+  // On any "not for you" result, hide the page intro ("Check if this is for
+  // you / Six quick questions...") so the result is the first thing seen
+  // (Sam, 31 Oct 2026). The h1 stays for screen readers.
+  useEffect(() => {
+    const notFit = stage.kind === 'outcome' && stage.outcome !== 'fit';
+    document.getElementById('check-title')?.classList.toggle('sr-only', notFit);
+    document.getElementById('check-intro')?.classList.toggle('hidden', notFit);
+  }, [stage]);
+
   const goTo = (index: number) => setStage({ kind: 'question', index });
 
   const finish = (final: Answers) => {

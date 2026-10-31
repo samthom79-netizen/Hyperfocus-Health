@@ -45,6 +45,10 @@ test.describe('eligibility checker: paths', () => {
     await cont(page);
     const outcome = page.locator('[data-outcome="not-eligible"]');
     await expect(outcome).toContainText('you need to be 18 or over');
+    await expect(outcome).toContainText("Unfortunately, you don't qualify for our service.");
+    // The page intro is hidden on a "not for you" result; the h1 stays for screen readers.
+    await expect(page.locator('#check-intro')).toBeHidden();
+    await expect(page.locator('#check-title')).toHaveClass(/sr-only/);
     await expect(outcome).toContainText('Your own GP is the right place to start');
     await expect(outcome.locator('a[href="/book"]')).toHaveCount(0);
     await expect(outcome.locator('a[href="/other-options"]')).toBeVisible();

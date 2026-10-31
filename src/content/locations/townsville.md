@@ -16,12 +16,6 @@ You can join from anywhere private in Queensland, including Magnetic Island. Wha
 
 If you're on a station property or out of town, try a short video call from the same spot first, or choose a phone appointment.
 
-## If you're in the Defence Force
-
-Serving members of the Australian Defence Force get their health care through Defence. Speak to your Defence health centre before booking any outside assessment.
-
-Family members and veterans aren't covered by this, so the usual steps apply.
-
 ## Seeing Dr Sam in person
 
 Our only physical clinic is Cannonvale Medical Centre, in the Whitsundays. If you'd rather meet face to face and can travel there, in-person appointments are booked through the clinic. The fees are the same, and a Medicare rebate may apply.
