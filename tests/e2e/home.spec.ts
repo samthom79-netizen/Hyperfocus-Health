@@ -21,7 +21,7 @@ test.describe('homepage', () => {
 
   test('hero: sub-heading, CTA, secondary link, trust row and doctor photo', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('One doctor who has ADHD himself, from your first appointment to ongoing care.')).toBeVisible();
+    await expect(page.getByText(/The full assessment, an online intake form and 2 appointments, costs \$745 in total/)).toBeVisible();
     const cta = page.locator('[data-cta="hero"]');
     await expect(cta).toHaveText(/Check if this is for you \(60 sec\)/);
     await expect(cta).toHaveAttribute('href', '/check');

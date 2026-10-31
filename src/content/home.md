@@ -8,7 +8,7 @@ description: "Adult ADHD assessment by video or phone for Queenslanders 18+. One
 
 hero:
   heading: "Adult ADHD assessment by video or phone, for Queenslanders"
-  sub: "One doctor who has ADHD himself, from your first appointment to ongoing care. The full cost is shown upfront: {prices.assessmentTotal} in total."
+  sub: "The full assessment, an online intake form and 2 appointments, costs {prices.assessmentTotal} in total. If your intake shows this service isn't right for you, you pay only {prices.intakeReview}."
   secondaryLink:
     label: "See how it works"
     href: "/how-it-works"
