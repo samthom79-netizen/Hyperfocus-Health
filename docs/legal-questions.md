@@ -74,8 +74,8 @@ Still to ask Velluto:
 
 ### Fees and the patient relationship
 
-7. Can I keep the $425 when I decide from the intake alone (with an email explaining why) that the service isn't suitable? Is this fair under Australian Consumer Law?
-8. Can I keep the $425 when ADHD isn't diagnosed at appointment 1?
+7. Can I keep the $95 pre-assessment review fee when I decide from the pre-assessment form alone (with an email explaining why) that the service isn't suitable? Is this fair under Australian Consumer Law?
+8. Can I keep $440 ($95 + $345) when ADHD isn't diagnosed at appointment 1?
 9. Are the cancellation fees (50% under 48 hours, 100% for a missed appointment) reasonable?
 10. The terms say someone becomes a patient once they book and I accept them after reading the intake. Is that the right point?
 11. What wording should the terms use to limit liability, and which state's law governs?
