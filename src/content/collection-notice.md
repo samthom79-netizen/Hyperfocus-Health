@@ -1,6 +1,6 @@
 ---
 title: "Collection notice"
-description: "A short notice about what personal and health information Hyperfocus Health collects when you call, book or do your intake, and why."
+description: "A short notice about what personal and health information Hyperfocus Health collects when you call, book or do your pre-assessment form, and why."
 heading: "Collection notice"
 readingTime: "1 min read"
 draft: true
@@ -18,13 +18,13 @@ Hyperfocus Health, run by Dr Sam Thomas, specialist GP ({legalEntity}). Contact:
 
 - **When you call:** the AI assistant may record and transcribe the call. If you leave a message, it notes your first name, number and reason for calling, so we can reply.
 - **When you book:** your contact details and payment, so we can hold your appointment.
-- **During intake and appointments:** your health information, so Dr Sam can assess you safely and plan your care.
+- **During the pre-assessment form and appointments:** your health information, so Dr Sam can assess you safely and plan your care.
 
 If you don't give us this information, we may not be able to assess you or provide care.
 
 ## Who we share it with
 
-- The services we use for phone calls, booking, intake and records: {vendors.phone.name}, {vendors.booking.name}, {vendors.intake.name}, {vendors.records.name}.
+- The services we use for phone calls, booking, the pre-assessment form and records: {vendors.phone.name}, {vendors.booking.name}, {vendors.intake.name}, {vendors.records.name}.
 - Your GP or other health professionals, with your permission.
 - Others only when the law requires or allows it.
 

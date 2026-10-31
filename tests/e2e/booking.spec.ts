@@ -11,8 +11,8 @@ test.describe('/book', () => {
     await expect(page.locator('main')).toContainText('No Medicare rebate for new patients.');
     await expect(page.locator('main')).toContainText('Medicare rebate may apply');
     await expect(page.getByRole('link', { name: /Do that first/ })).toHaveAttribute('href', '/check');
-    await expect(page.locator('main')).toContainText('You book appointment 1 after Dr Sam has read your intake');
-    await expect(page.locator('main')).toContainText('Paid in 3 parts: $95 now for the intake review');
+    await expect(page.locator('main')).toContainText('You book appointment 1 after Dr Sam has read your pre-assessment form');
+    await expect(page.locator('main')).toContainText('Paid in 3 parts: $95 now for the pre-assessment review');
   });
 
   test('collects nothing: no form fields anywhere on the page', async ({ page }) => {
@@ -65,7 +65,7 @@ test.describe('/booking-confirmed', () => {
   test('timeline of next steps, hidden from search engines and the sitemap', async ({ page, request }) => {
     await page.goto('/booking-confirmed');
     await expect(page.locator('main ol > li')).toHaveCount(5);
-    await expect(page.locator('main')).toContainText('Do the online intake on your phone.');
+    await expect(page.locator('main')).toContainText('Do the online pre-assessment form on your phone.');
     await expect(page.locator('main')).toContainText('someone who knew you growing up');
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
     const sitemap = await (await request.get('/sitemap-0.xml')).text();

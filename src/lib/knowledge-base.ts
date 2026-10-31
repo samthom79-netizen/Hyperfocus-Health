@@ -97,7 +97,7 @@ export function buildKnowledgeBase(generatedOn: string): string {
     `- ${booking.inPerson.telehealthRebateNote}`,
     `- Our phone number: ${val('contact.phone')}. Our email: ${val('contact.email')}.`,
     `- A person replies to messages within ${contact.humanReplyWithin}. Complaints get a reply within ${contact.complaintsReplyWithin}.`,
-    `- Booking starts with a ${formatPrice(site.prices.intakeReview)} intake review. Dr Sam reads the intake, then emails: an invitation to book appointment 1, a request for more information first (such as a test), or an explanation if the service isn't suitable. There are no wait times to give.`,
+    `- Booking starts with a ${formatPrice(site.prices.intakeReview)} pre-assessment review. Dr Sam reads the pre-assessment form, then emails: an invitation to book appointment 1, a request for more information first (such as a test), or an explanation if the service isn't suitable. There are no wait times to give.`,
     '',
   );
 

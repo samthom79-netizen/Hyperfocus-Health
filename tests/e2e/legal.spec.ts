@@ -20,7 +20,7 @@ test('every footer policy link resolves', async ({ page, request }) => {
 test('privacy names every vendor slot and the OAIC route', async ({ page }) => {
   await page.goto('/privacy');
   const main = page.locator('main');
-  for (const h of ['Booking and payment', 'Online intake', 'Phone assistant', 'Appointments and your health record', 'Note-taking during appointments', 'Email']) {
+  for (const h of ['Booking and payment', 'Online pre-assessment form', 'Phone assistant', 'Appointments and your health record', 'Note-taking during appointments', 'Email']) {
     await expect(main.getByRole('heading', { name: h })).toBeVisible();
   }
   await expect(main).toContainText('Information sent overseas');

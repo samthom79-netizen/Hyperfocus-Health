@@ -21,7 +21,7 @@ To change or cancel, use the link in your booking confirmation, or contact us at
 
 ## If this service isn't right for you
 
-Dr Sam reads your intake before your first appointment.
+Dr Sam reads your pre-assessment form before your first appointment.
 
 {policies.refundIfUnsuitable}
 

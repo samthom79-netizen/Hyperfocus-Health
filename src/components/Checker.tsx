@@ -321,7 +321,7 @@ function OutcomeScreen({
           <span className="text-ink-muted">total for the full assessment</span>
         </p>
         <p className="mt-1 text-ink-muted" data-split>
-          Paid in 3 parts: <Val value={site.prices.intakeReview} price /> when you book (intake review), <Val value={site.prices.payAppointment1} price /> when
+          Paid in 3 parts: <Val value={site.prices.intakeReview} price /> when you book (pre-assessment review), <Val value={site.prices.payAppointment1} price /> when
           you're invited to book appointment 1, and <Val value={site.prices.payAppointment2} price /> for appointment 2.
         </p>
         <h3 className="mt-6 text-[1.15rem] font-bold">{c.nextHeading}</h3>

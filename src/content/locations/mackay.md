@@ -5,7 +5,7 @@ description: "Adult ADHD assessment for Mackay and Isaac adults: by video or pho
 order: 7
 shortVersion:
   - "See Dr Sam by video or phone, or in person at Cannonvale, north of Mackay."
-  - "Work a roster? The intake can be done in short blocks, and video or phone works from any private room."
+  - "Work a roster? The pre-assessment form can be done in short blocks, and video or phone works from any private room."
   - "In person, the fees are the same and a Medicare rebate may apply."
 nearby: ["Mackay city", "Sarina", "Walkerston", "Marian", "Moranbah", "Dysart"]
 inPerson: true
@@ -19,6 +19,6 @@ In-person appointments are booked through the clinic. The fees are the same as v
 
 ## If you work a roster
 
-Shift and fly-in fly-out work is common around Mackay and the Bowen Basin. The online intake can be done in short blocks, whenever you have a few minutes.
+Shift and fly-in fly-out work is common around Mackay and the Bowen Basin. The online pre-assessment form can be done in short blocks, whenever you have a few minutes.
 
 For appointment 1 (about 60 min), pick a day off if you can. A private room at camp works, as long as no one can overhear.

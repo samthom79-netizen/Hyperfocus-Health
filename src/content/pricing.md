@@ -7,7 +7,7 @@ description: "What an adult ADHD assessment with Hyperfocus Health costs, includ
 heading: "What it costs"
 readingTime: "2 min read"
 shortVersion:
-  - "{prices.assessmentTotal} in total for the full assessment: online intake, two appointments and a written plan."
+  - "{prices.assessmentTotal} in total for the full assessment: online pre-assessment form, two appointments and a written plan."
   - "Follow-up appointments (we call them reviews) cost {prices.review} each while treatment is adjusted. Every likely cost is on this page."
   - "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
 
@@ -15,9 +15,9 @@ tableHeading: "Every cost, stage by stage"
 tableNote: "{appointments.lengthsNote} The same fees apply by video, phone or in person at {clinic.suburb}."
 rows:
   - stage: "Full assessment"
-    whatYouGet: "Online intake and Dr Sam's review of it, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
+    whatYouGet: "Online pre-assessment form and Dr Sam's review of it, appointment 1 (about 60 min), appointment 2 (about 30-45 min) and your written plan"
     cost: "{prices.assessmentTotal} total"
-    note: "Paid in 3 parts: {prices.intakeReview} when you book (intake review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2."
+    note: "Paid in 3 parts: {prices.intakeReview} when you book (pre-assessment review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2."
   - stage: "Review appointment (follow-up)"
     whatYouGet: "About {appointments.reviewMinutes} min, every 2-4 weeks while treatment is adjusted, until things are stable. A short check-in form comes first."
     cost: "{prices.review} each"

@@ -6,7 +6,7 @@ readingTime: "6 min read"
 draft: true
 shortVersion:
   - "This website doesn't keep anything you type, and it has no advertising trackers."
-  - "Your health information is held by the services we use for booking, intake, appointments and records. This page names each one and where it keeps your information."
+  - "Your health information is held by the services we use for booking, the pre-assessment form, appointments and records. This page names each one and where it keeps your information."
   - "You can ask to see or correct your information. If you're unhappy, tell us first, then the OAIC."
 ---
 
@@ -32,7 +32,7 @@ Questions about privacy: email {contact.email}. Our business address is {busines
 When you book and see Dr Sam, we collect:
 
 - **Who you are:** your name, date of birth, address, phone, email and emergency contact.
-- **Your health information:** your intake answers, the observer form, your history, test results, appointment notes and your written plan.
+- **Your health information:** your pre-assessment answers, the observer form, your history, test results, appointment notes and your written plan.
 - **Medicare details:** only if you're seen in person or a Medicare rebate applies.
 - **Payment details:** handled by the booking platform. [TODO: confirm we never see full card numbers]
 - **Messages:** phone messages and emails you send us.
@@ -58,10 +58,10 @@ We use outside services to run the practice. Each one only gets what it needs.
 - **Where:** {vendors.booking.where}
 - **How long:** {vendors.booking.retention}
 
-### Online intake
+### Online pre-assessment form
 
 - **Service:** {vendors.intake.name}
-- **What it holds:** your intake answers, the observer form and any documents you upload.
+- **What it holds:** your pre-assessment answers, the observer form and any documents you upload.
 - **Where:** {vendors.intake.where}
 - **How long:** {vendors.intake.retention}
 
@@ -96,7 +96,7 @@ If Dr Sam uses an AI tool to help write notes, he'll ask your permission at the 
 
 ## AI tools
 
-Some services we use include AI: for example, summarising your intake, answering the phone, or helping write notes. Dr Sam reads everything and makes every decision about your care.
+Some services we use include AI: for example, summarising your pre-assessment form, answering the phone, or helping write notes. Dr Sam reads everything and makes every decision about your care.
 
 [TODO: confirm in writing with each vendor that your information isn't used to train AI models]
 

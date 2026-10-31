@@ -115,6 +115,7 @@ Look at `/styleguide` before building any page. Use these components; don't rest
 - `tests/e2e/copy-rules.spec.ts` scans every public page for banned words; add each new page to its `PAGES` list.
 - **Header** controls use fixed px sizes so they always fit a phone screen. Don't change them to rem.
 - **Images**: `<Picture>` from `astro:assets` with `formats={['avif','webp']}`, a `width`, `widths` and `sizes`. Photos of Sam other than the headshot stay at most 640px wide.
+- **Wording (Sam, 31 Oct 2026)**: say 'pre-assessment form' and 'pre-assessment review' in visible copy, never 'intake' (code names like `intakeReview` stay). Body text uses plain zeroes: the 'Body Digits' font-face in global.css swaps in Plus Jakarta Sans digits over Atkinson's slashed zero.
 - **Focus mode** was removed at Sam's request (30 Oct 2026). Don't re-add it.
 - **Tap targets**: interactive elements use `min-h-11` (44px+) or `min-h-12`.
 

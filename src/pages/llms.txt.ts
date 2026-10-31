@@ -28,7 +28,7 @@ export const GET: APIRoute = async ({ site: siteUrl }) => {
     '',
     '## Prices (AUD, no GST)',
     '',
-    `- Full assessment: ${formatPrice(prices.assessmentTotal)} total (online intake reviewed by Dr Sam, appointment 1 of about ${site.appointments.assessment} min, appointment 2 of about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min, written plan). Paid as ${formatPrice(prices.intakeReview)} at booking for the intake review, ${formatPrice(prices.payAppointment1)} when invited to book appointment 1, and ${formatPrice(prices.payAppointment2)} for appointment 2.`,
+    `- Full assessment: ${formatPrice(prices.assessmentTotal)} total (online pre-assessment form reviewed by Dr Sam, appointment 1 of about ${site.appointments.assessment} min, appointment 2 of about ${site.appointments.diagnosis.min}-${site.appointments.diagnosis.max} min, written plan). Paid as ${formatPrice(prices.intakeReview)} at booking for the pre-assessment review, ${formatPrice(prices.payAppointment1)} when invited to book appointment 1, and ${formatPrice(prices.payAppointment2)} for appointment 2.`,
     `- Review appointments: ${formatPrice(prices.review)} each, about ${site.appointments.reviewMinutes} min, every 2-4 weeks while treatment is adjusted, then every 3-6 months once stable.`,
     ...(total !== null ? [`- Typical first 3 months: ${formatPrice(total)} (assessment plus ${prices.typicalReviewsFirst3Months} reviews; an example, not a quote).`] : []),
     `- Blood tests or ECG, only if needed: ${plainText('{prices.testsNote}')}`,

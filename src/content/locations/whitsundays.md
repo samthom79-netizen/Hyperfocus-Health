@@ -26,7 +26,7 @@ The plan can give you Medicare rebates for some visits to a psychologist, dietit
 
 ## Working in tourism or hospitality
 
-Early starts, late finishes and boat days are common here. The online intake can be done in short blocks, whenever you have a few minutes.
+Early starts, late finishes and boat days are common here. The online pre-assessment form can be done in short blocks, whenever you have a few minutes.
 
 For appointment 1 (about 60 min), choose a time when you won't be rushed.
 

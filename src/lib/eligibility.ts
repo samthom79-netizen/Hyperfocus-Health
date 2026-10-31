@@ -84,7 +84,7 @@ export const questions: readonly Question[] = [
     kind: 'info',
     title: 'Not sure about something?',
     body: [
-      "That's fine. Dr Sam checks that this service suits you when he reads your intake, and you can ask him anything at your first appointment.",
+      "That's fine. Dr Sam checks that this service suits you when he reads your pre-assessment form, and you can ask him anything at your first appointment.",
     ],
     continueLabel: 'See my result',
   },
@@ -129,12 +129,12 @@ export const outcomes = {
     nextHeading: 'What happens next',
     next: [
       'Book and pay {intakeReview} for Dr Sam to review your intake.',
-      'Do the intake on your phone: about 30 minutes, in short blocks if you like.',
+      'Do the pre-assessment form on your phone: about 30 minutes, in short blocks if you like.',
       'Dr Sam emails you: an invitation to book appointment 1, a request for anything else he needs first, or an explanation if this service isn\'t right for you.',
     ],
-    refundHeading: 'If your intake shows this service is not right for you',
-    refundIntro: 'This check covers the main reasons the service might not suit someone. Now and then the intake shows something else.',
-    cta: 'Book your intake review',
+    refundHeading: 'If your pre-assessment form shows this service is not right for you',
+    refundIntro: 'This check covers the main reasons the service might not suit someone. Now and then the pre-assessment form shows something else.',
+    cta: 'Book your pre-assessment review',
     restart: 'Start again',
   },
   'not-eligible': {

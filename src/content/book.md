@@ -4,9 +4,9 @@ description: "Book an adult ADHD assessment by video or phone with Dr Sam Thomas
 heading: "Book your assessment"
 readingTime: "1 min read"
 shortVersion:
-  - "You're booking an online intake and two appointments with Dr Sam, by video or phone."
+  - "You're booking an online pre-assessment form and two appointments with Dr Sam, by video or phone."
   - "{prices.assessmentTotal} in total for the full assessment. You pay {prices.intakeReview} now for Dr Sam to review your intake. There's no Medicare rebate for video or phone appointments for new patients."
-  - "Within 1 business day you get a confirmation, then a link to the online intake by text and email."
+  - "Within 1 business day you get a confirmation, then a link to the online pre-assessment form by text and email."
 ---
 
 ## Good to know before you book

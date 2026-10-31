@@ -18,7 +18,7 @@ If you work in the city, a booked meeting room or your parked car can work for a
 
 ## Studying or starting out
 
-If you're at university or TAFE in Brisbane, the online intake fits around classes. Do it in short blocks, by voice, tick boxes or typing.
+If you're at university or TAFE in Brisbane, the online pre-assessment form fits around classes. Do it in short blocks, by voice, tick boxes or typing.
 
 Your campus health service or your own GP can usually help with the blood pressure, pulse and weight checks before appointment 1.
 

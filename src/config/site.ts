@@ -25,7 +25,7 @@ export const bookingProviders = {
  * Fees in AUD, set by Sam on 31 Oct 2026. Change them here only:
  * prices and policy wording below are built from these.
  */
-/** Sam, 31 Oct 2026 (11:42): $95 intake review first; it comes off appointment 1 ($425 - $95 = $330). Total unchanged. */
+/** Sam, 31 Oct 2026 (11:42): $95 pre-assessment review first; it comes off appointment 1 ($425 - $95 = $330). Total unchanged. */
 const FEES = { assessmentTotal: 745, intakeReview: 95, payAppointment1: 330, payAppointment2: 320, review: 89 } as const;
 
 export const site = {
@@ -71,9 +71,9 @@ export const site = {
       retention: 'TODO: how long the booking platform keeps data',
     },
     intake: {
-      name: 'TODO: intake platform (likely Velluto)',
-      where: 'TODO: where the intake platform stores and processes data',
-      retention: 'TODO: how long the intake platform keeps data',
+      name: 'TODO: pre-assessment platform (likely Velluto)',
+      where: 'TODO: where the pre-assessment platform stores and processes data',
+      retention: 'TODO: how long the pre-assessment platform keeps data',
     },
     phone: {
       name: 'TODO: AI phone assistant (MayaAI, AiDial or other)',
@@ -216,16 +216,16 @@ export const site = {
       carePlanNote:
         "If Dr Sam at Cannonvale becomes your regular GP, you may be eligible for a GP chronic condition management plan. If so, he can do it during appointment 2 at no extra cost, and a Medicare rebate may apply. The plan can give you rebates for some visits to a psychologist, dietitian or other allied health worker.",
     },
-    /** Minimum days between booking and appointment 1 (allows intake + baseline checks). */
+    /** Minimum days between booking and appointment 1 (allows pre-assessment form + baseline checks). */
     minLeadDays: 10,
   },
 
   /** Prices in AUD. Keep as numbers; format in the UI. */
   prices: {
-    /** Total for the full assessment: intake review + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
+    /** Total for the full assessment: pre-assessment review + appointment 1 + appointment 2 + written plan. Same fee in person. Set by Sam 31 Oct 2026. */
     assessmentTotal: FEES.assessmentTotal,
     /** Sam, 31 Oct 2026: paid in two parts (must add up to assessmentTotal; a unit test checks). */
-    /** Paid when you book: Dr Sam reviews the online intake (and asks for tests if needed) before inviting you to book appointment 1. */
+    /** Paid when you book: Dr Sam reviews the online pre-assessment form (and asks for tests if needed) before inviting you to book appointment 1. */
     intakeReview: FEES.intakeReview,
     /** Paid when you book appointment 1, after the invitation. */
     payAppointment1: FEES.payAppointment1,
@@ -249,9 +249,9 @@ export const site = {
 
   /** Policies: wording shown to patients. */
   policies: {
-    /** Sam, 31 Oct 2026 (11:42): the $95 pays for the intake review; nothing else is charged if the service isn't suitable. */
+    /** Sam, 31 Oct 2026 (11:42): the $95 pays for the pre-assessment review; nothing else is charged if the service isn't suitable. */
     refundIfUnsuitable:
-      `If your intake shows this service isn't right for you, Dr Sam emails you to explain why and where to go instead. The $${FEES.intakeReview} intake review fee covers that work and isn't refunded. You don't pay anything else.`,
+      `If your pre-assessment form shows this service isn't right for you, Dr Sam emails you to explain why and where to go instead. The $${FEES.intakeReview} pre-assessment review fee covers that work and isn't refunded. You don't pay anything else.`,
     /** Sam, 31 Oct 2026. */
     cancellation:
       "You can change or cancel for free up to 48 hours before your appointment. With less than 48 hours' notice, you pay 50% of that appointment's fee. In-person appointments booked through Cannonvale Medical Centre follow the clinic's own cancellation terms.",
@@ -259,13 +259,13 @@ export const site = {
     noShow: "If you miss an appointment without telling us, you pay that appointment's full fee.",
     /** Sam, 31 Oct 2026. */
     notDiagnosed:
-      `If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The fees already paid ($${FEES.intakeReview} intake review and $${FEES.payAppointment1} for appointment 1) cover the work done. With your permission, Dr Sam writes to your GP.`,
+      `If it's clear at appointment 1 that ADHD isn't the answer, you won't need appointment 2 or pay for it. The fees already paid ($${FEES.intakeReview} pre-assessment review and $${FEES.payAppointment1} for appointment 1) cover the work done. With your permission, Dr Sam writes to your GP.`,
   },
 
   /** Privacy wording used before the full privacy policy exists (Prompt 10). */
   privacy: {
     /** Sam, 31 Oct 2026: practice software is probably Halaxy. Confirm the data location once chosen. */
-    storage: 'Your booking, intake and clinical records are kept in secure practice software, stored in Australia.',
+    storage: 'Your booking, pre-assessment form and clinical records are kept in secure practice software, stored in Australia.',
   },
 
   /** Appointment lengths (minutes). */

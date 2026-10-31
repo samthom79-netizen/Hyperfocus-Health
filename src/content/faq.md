@@ -24,7 +24,7 @@ groups:
   - heading: "Cost"
     items:
       - question: "How much does it cost?"
-        answer: "{prices.assessmentTotal} in total for the full assessment: online intake, two appointments and your written plan. Paid in 3 parts: {prices.intakeReview} when you book (intake review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2. Follow-up appointments (we call them reviews) are {prices.review} each. Every cost is on the [prices page](/pricing)."
+        answer: "{prices.assessmentTotal} in total for the full assessment: online pre-assessment form, two appointments and your written plan. Paid in 3 parts: {prices.intakeReview} when you book (pre-assessment review), {prices.payAppointment1} when you're invited to book appointment 1, and {prices.payAppointment2} when you book appointment 2. Follow-up appointments (we call them reviews) are {prices.review} each. Every cost is on the [prices page](/pricing)."
       - question: "Why is there no Medicare rebate for telehealth?"
         answer: "Medicare usually only pays for a GP video or phone appointment if you've been seen face to face at that practice in the last 12 months, or you're registered there through MyMedicare. New patients of this service won't meet either, so there's no rebate. {booking.inPerson.telehealthRebateNote} [See all prices](/pricing)."
 
@@ -32,7 +32,7 @@ groups:
     items:
       - question: "Who fills in the observer form, and what if I don't have anyone?"
         answer: "Someone who knew you growing up, like a parent, or someone who knows you well now, like a partner. If you don't have anyone, say so in your intake. Dr Sam will talk with you about other ways to fill in the picture, such as old school reports."
-      - question: "Can I do the intake in several sittings, or by voice?"
+      - question: "Can I do the pre-assessment form in several sittings, or by voice?"
         answer: "Yes. Do it all at once or in short blocks, and answer by voice, tick boxes or typing. It takes about 30 minutes in total."
       - question: "What do I need for a video or phone appointment?"
         answer: "A phone (or a laptop with a camera, for video), a quiet room where you can talk privately, and photo ID. [See the full checklist](/how-it-works#what-you-need)."

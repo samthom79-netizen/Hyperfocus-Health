@@ -14,4 +14,4 @@ nearby: ["Toowoomba city", "Highfields", "Oakey", "Pittsworth", "Dalby", "Warwic
 
 You can join from anywhere private in Queensland. What matters most is a connection that holds for about an hour.
 
-If you're on a property with satellite or fixed wireless internet, try a short video call from the same spot first, or choose a phone appointment. Busy times of year are fine too: the intake can be done in short blocks when you have a minute.
+If you're on a property with satellite or fixed wireless internet, try a short video call from the same spot first, or choose a phone appointment. Busy times of year are fine too: the pre-assessment form can be done in short blocks when you have a minute.

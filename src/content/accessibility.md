@@ -26,7 +26,7 @@ We aim for every page to meet the [Web Content Accessibility Guidelines (WCAG) 2
 
 ## What's outside our control
 
-Booking, payment and the online intake happen on other companies' pages. We've chosen services we expect to be accessible, but we can't fix their pages ourselves. [TODO: check each platform's accessibility statement once chosen]
+Booking, payment and the online pre-assessment form happen on other companies' pages. We've chosen services we expect to be accessible, but we can't fix their pages ourselves. [TODO: check each platform's accessibility statement once chosen]
 
 If one of them doesn't work for you, contact us and we'll find another way.
 

@@ -100,4 +100,4 @@ Notes on your phone are fine. Short dot points are plenty.
 
 ## How our version works
 
-Hyperfocus Health follows these same steps for adults in Queensland. There's an online intake you can do in short blocks, a short form for someone who knew you growing up, baseline checks, and two appointments by video or phone. See [how it works](/how-it-works) for each step, or [the 60-second check](/check) to see if it suits you.
+Hyperfocus Health follows these same steps for adults in Queensland. There's an online pre-assessment form you can do in short blocks, a short form for someone who knew you growing up, baseline checks, and two appointments by video or phone. See [how it works](/how-it-works) for each step, or [the 60-second check](/check) to see if it suits you.

@@ -8,7 +8,7 @@ description: "Adult ADHD assessment by video or phone for Queenslanders 18+. One
 
 hero:
   heading: "Adult ADHD assessment by video or phone, for Queenslanders"
-  sub: "The full assessment, an online intake form and 2 appointments, costs {prices.assessmentTotal} in total. If your intake shows this service isn't right for you, you pay only {prices.intakeReview}."
+  sub: "The full assessment, an online pre-assessment form and 2 appointments, costs {prices.assessmentTotal} in total. If your pre-assessment form shows this service isn't right for you, you pay only {prices.intakeReview}."
   secondaryLink:
     label: "See how it works"
     href: "/how-it-works"
@@ -20,18 +20,18 @@ hero:
 
 shortVersion:
   - "An adult ADHD assessment by video or phone with one specialist GP, for people living in Queensland."
-  - "{prices.assessmentTotal} in total for the full assessment: online intake, two appointments and a written plan."
-  - "The online intake takes about 30 minutes, and you can split it into short blocks."
+  - "{prices.assessmentTotal} in total for the full assessment: online pre-assessment form, two appointments and a written plan."
+  - "The online pre-assessment form takes about 30 minutes, and you can split it into short blocks."
 
 howItWorks:
   heading: "How it works"
   steps:
     - title: "Check if this is for you"
       time: "60 sec"
-    - title: "Pay {prices.intakeReview} and do the online intake"
+    - title: "Pay {prices.intakeReview} and do the online pre-assessment form"
       time: "about 30 min, split it if you like"
       body: "Answer by voice, tick boxes or typing. Someone who knew you growing up fills in a short form too."
-    - title: "Dr Sam reviews your intake"
+    - title: "Dr Sam reviews your pre-assessment form"
       time: "he emails you"
       body: "You're invited to book appointment 1, asked for anything else he needs first (like a test), or told why this isn't the right service and where to go instead."
     - title: "Two appointments, video or phone"
@@ -67,7 +67,7 @@ meetDrSam:
 pricing:
   heading: "What it costs"
   totalLabel: "total for the full assessment"
-  includes: "Covers the online intake, both appointments and your written plan."
+  includes: "Covers the online pre-assessment form, both appointments and your written plan."
   medicare: "Video and phone appointments have no Medicare rebate for new patients. In person at Cannonvale, the fees are the same and you may get a rebate."
   link:
     label: "See all prices, including follow-up reviews"
